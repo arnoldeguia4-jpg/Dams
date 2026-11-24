@@ -1,0 +1,88 @@
+---
+name: paldo
+description: PALDO — the full "viral cartoon history short" pipeline, start to finish. It picks an interesting true story (10 verified ideas), writes the narration, generates the voiceover with ElevenLabs using Nick's voice, animates it as a vertical 3D-cartoon MP4 with music and SFX, makes a thumbnail (Shorts + YouTube), and writes the title, description, tags and hashtags. Use this whenever the user says "PALDO", "paldo", "gawa tayo ng bagong video/short", "cartoon short", "animated history short", "like the penicillin video", asks for video ideas + script + voice + video, or wants a thumbnail/description/tags for a short made this way, even if they only ask for one stage.
+---
+
+# PALDO: idea → script → Nick voiceover → animated short → thumbnail → title, description, tags
+
+PALDO is the workflow proven on **"The Messy Desk That Saved Millions"** (penicillin, 77 s, 2026-11-24). The output is a 1080×1920, 30 fps vertical MP4: flat 2D bean-head cartoon cards in a toon-shaded 3D world with black ink outlines, depth of field and gliding cameras. It comes with a voiceover in ElevenLabs' **Nick** voice, a synthesized march-style score and SFX at 50 % of the voice level, two thumbnails, and a copy-paste publishing pack.
+
+Everything needed is bundled in `kit/`, so no network or other repo is required. The kit includes the engine, the worked penicillin example, vendored three.js r160, and the toon character library (MIT, from mromidev/claude-animated-shorts).
+
+## How to talk to the user
+- The user writes in **Tagalog/Taglish**, so reply in Tagalog. Keep code, file names and on-screen English text in English. The video itself is **English**.
+- Keep the user posted at each stage with a short line. Send previews with SendUserFile: the stills sheet before the long render, then the MP4, then the thumbnails.
+- Use AskUserQuestion for real choices, such as starting point, length, idea number, voice and take. Don't ask about things that have a sensible default.
+- When the user asks "tapos na ba?", check the real frame count and give the number. Don't guess.
+- The render runs in the cloud. Tell the user they can close the app, but must not archive or delete the session.
+
+## Rules
+- Stories, characters and shots are original. Never recreate another creator's video, and never use real living people as jokes, brand mascots or logos.
+- No captions unless asked. Diegetic text such as signs, labels or a calendar is fine, but it must read correctly and never be mirrored.
+- Never edit or re-time the voice, not even with atempo. The picture is timed to the voice.
+- Mix with `kit/mix.py`. Music goes at exactly −6 dB vs the voice's gated RMS. SFX go at or below −6 dB, with peaks ≤ 0.7× the voice peak. Use one linear gain plus a limiter at the end.
+- Verify every fact with WebSearch before offering it. Label each story **True / Disputed / Legend**, and use "legend says" or "probably" where the evidence is thin. Credit sources in the reply.
+- Commit and push the project to the session's branch after major steps. A stop hook expects a clean tree, so gitignore `frames/`, `stills/`, `node_modules/`, `work/*.log` and `out/*.wav`.
+
+## Stage 1: Intake
+Ask one AskUserQuestion: **"Where are you starting from?"** The options are: need ideas + script / have a script / voiceover ready. Also ask the length: 20–30 s or 45–60 s. This user chose **45–60 s**.
+
+## Stage 2: 10 ideas
+Give exactly 10 ideas, numbered, mixed across eras and themes: ancient, medieval, 1800s, modern, science, animals, inventions, disasters, weird laws, lucky accidents. For each idea give:
+- the **Title** (5–8 words)
+- the **Hook** line, a paradox stated as fact
+- the **Twist**, the ironic last line
+- **Why it animates well**: 2–3 big visual moments
+- **True/legend**, with the caveat
+
+Run the WebSearch checks for the candidates in parallel in one turn, then end with a "Sources:" list. Ask the user to reply with a number or "more".
+
+Good ideas have:
+- one physical cause and effect you can show
+- an everyman hero
+- escalating stakes
+- a set built from boxes and cylinders, such as a lab, town, ship or stage
+
+## Stage 3: Script
+Formula: hook (the absurd fact, with no setup) → setting (year, place, a concrete detail) → 2–4 escalating beats with one exaggeration joke → pivot ("But…" / "You see,") → twist as the last words. Use plain spoken English, contractions, and numbers written as words.
+
+**Word budget for Nick:** he reads at about **2.6 words/s including pauses**, not the usual 3.7. A 198-word script came out at 77 s. So aim for:
+- **≈ 145 words for 55 s**
+- **≈ 155 words for 60 s**
+
+Reply with the script in a code block, the word count and estimated length, a one-paragraph visual plan, and fact notes. Keep the final text in `script.txt` (one paragraph per line). It drives the timing.
+
+## Stage 4: Voiceover with ElevenLabs (Nick)
+Use the **ElevenLabs connector** (`mcp__ElevenLabs__*`; load the tools with ToolSearch). The direct API key route failed: the user pasted a key without the `sk_` prefix. If the connector is missing, offer `request_credential` for `api.elevenlabs.io` with header `xi-api-key`.
+
+1. `account_get_usage` shows the credits. The free tier has 10k credits a month, and one ~200-word take costs ~1,130. Check that the takes fit before generating.
+2. Find the voice with `creative_list_voices` (search "Nick", languages ["en"]). The user's pick is **"Nick – Relatable & Engaging Friend"**, `voice_id 7jynqzOvnVP89nA7TB0m`. Re-confirm the ID from the list; it should only come from the tool.
+3. Run `creative_create_flow` first. Then `creative_generate_speech` with model `eleven_v4`, run with `estimate_only` first, then for real with the default 2 takes. Poll `creative_get_flow_run_status`.
+4. To download the takes, `elevenlabsusercontent.com` must be an allowed host. If curl gets a 403 from the proxy, call `get_environment` and then `update_environment` with `add_allowed_hosts`.
+5. Measure each take with ffprobe and silencedetect, send both takes, and let the user choose. Report the length honestly. If a take is over the target, offer three options: keep it, shorten the script (~900 credits), or use another voice.
+6. Remind the user once that **free-plan audio may not be used commercially** (monetized channels need Starter+), and that the attribution "Voiceover generated with ElevenLabs" goes in the description.
+
+## Stage 5: Build the animation (see `references/engine.md`)
+1. Set up the project inside the repo: `penicillin/` was the example, so use `<slug>/`. Copy `kit/` there, then `cp voice_take.mp3 voice.mp3`, and run `npm i three@0.160.0` (or keep the vendored `web/three.module.js`).
+2. Get the timing: `python3 timing.py voice.mp3 script.txt --out work` writes `work/phrases.json`. It uses silence-aligned phrases with no ASR needed. Total frames = round(duration × 30).
+3. Write the shot plan by editing `web/story.js`. Each SHOT has frames a..b, a light preset, a shadow centre, camera keys, kicks and a dof function. There is usually one shot per phrase, and the reaction lands 0–3 frames before its word. Add white flashes at place or time jumps. At the twist, the music stops and there is a push-in with a roll.
+4. Build the sets in `web/world.js` (several sets far apart on x) and the cast in `web/cast.js` (outfits, ARM poses, PROPs, fx drawings).
+5. For stills, run `node render.mjs stills/a "<mid-frame of every shot>"` and then `python3 sheet.py stills/a stills/sheet_a.jpg`. Read the sheet, fix the traps listed in `references/engine.md`, re-render only the fixed frames, and repeat. Then **send the sheet to the user**.
+
+## Stage 6: Sound
+Edit the cue table at the bottom of `audio.py`, which uses frames/30. Run `python3 audio.py`, then `python3 mix.py voice.mp3 out/music.wav out/sfx.wav`. Confirm it prints music **−6.0 dB** vs voice, and SFX ≤ −6 dB with a peak ≤ 0.70×.
+
+## Stage 7: Render, finish, deliver
+- **Render:** start two workers in parallel with `RESUME=1 nohup node render.mjs frames "0-<N/2>"` and `"<N/2+1>-<N-1>"`, writing logs to `work/r1.log` and `work/r2.log`. That is ≈ 3.3 s/frame each, so about 1 h for 77 s on 4 cores.
+- **Monitor:** watch it with a Monitor loop that reports every 250 frames and exits on DONE ×2, an error, or the processes exiting. Re-arm it after 30 minutes.
+- **Finish:** run `bash finish.sh "Title"`. It applies a linear gain to about −14 LUFS and a two-stage limiter, so the true peak stays under −1 dBFS. It encodes H.264 CRF 17 with AAC 192k, runs the freeze, black and loudness QA, and writes `out/qa_sheet.jpg`.
+- **Deliver:** read the QA sheet, then send the MP4 with SendUserFile. Give a short Tagalog summary: the QA numbers and one line per shot. Commit and push.
+
+## Stage 8: Thumbnail
+1. Add a `thumb` shot at frame 9000 to `story.js`. Make it an MCU of the hero with a shocked or grinning face, holding or pointing at the story's key object (scaled-up prop), with a glow and burst fx behind the object. Make sure nothing is clipped by the card edge: keep the hand within about 50u of the shoulder.
+2. Render it with `node render.mjs stills/thumb "9000"`, then run `python3 thumb.py`. This writes `out/thumbnail_vertical.jpg` (1080×1920) and `out/thumbnail_youtube.jpg` (1280×720).
+3. Edit the two text lines in `thumb.py` to fit the story. The first is white (the setup) and the second is yellow (the payoff), set in Inter Black with a dark stroke and drop shadow. A red arrow points at the key object.
+4. Check the composite and send both. Keep the text off the face, and keep it inside the margins with font ≤ 112 px for long lines.
+
+## Stage 9: Title, description, tags (see `references/publish.md`)
+Give copy-paste code blocks: the title, the long YouTube description (story recap, facts with dates, a sources line, an "original animation" note, and the ElevenLabs credit), a short Shorts/TikTok caption, the YouTube tags (comma-separated) and 10–15 hashtags. Add the upload tips: "Not made for kids" unless sure, and the "Altered or synthetic content" toggle for the AI voice.
