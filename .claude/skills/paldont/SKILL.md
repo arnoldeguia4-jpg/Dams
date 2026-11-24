@@ -14,7 +14,7 @@ Everything needed is bundled in `kit/`, so no network or other repo is required.
 ## One-command mode (`/paldont`): the default
 The user wants **one command to run the whole pipeline**. When PALDONT is invoked as `/paldont`, `/paldont <myth>` or just "PALDONT", run all stages, 1 → 9, back to back without waiting. Pause only where a choice is truly the user's. Use these defaults so nothing blocks:
 - **Starting point:** ideas + script, unless the user attached a voiceover or a script.
-- **Length:** 45–60 s, about 120–130 Tagalog words.
+- **Length:** 45–60 s, about 112–122 Tagalog words.
 - **Topic:** if `/paldont <myth>` names one (e.g. `/paldont alamat ng pinya`), check its sources and go straight to the script. Otherwise post the 10 ideas, then **pick the strongest one yourself** and say which and why in one line. Only wait for a number if the user writes `/paldont pili`, "ako pipili", or similar.
 - **Voice:** Padre Veles (Filipino alamat narrator), 2 takes. Use the take closest to the target length and send both.
 - **Credits:** if they aren't enough for the takes, stop and ask. That is the only hard stop.
@@ -68,10 +68,9 @@ Good myth ideas have:
 ## Stage 3: Script
 Write it in **Tagalog**. Formula: hook (the strange claim, no setup) → setting ("Noong unang panahon, sa isang nayon sa paanan ng Mayon…", with one concrete detail) → 2–4 escalating beats with one exaggeration joke → pivot ("But…" / "You see,") → twist as the last words (often the origin payoff: "…kaya pala ang pinya ay may sandaang mata."). Use plain spoken Tagalog, numbers written as words. Keep a storyteller voice: "ayon sa alamat", "sabi ng matatanda".
 
-**Word budget for Padre Veles (Tagalog):** Tagalog words are longer and he narrates slowly and dramatically, so start from about **2.2 words/s including pauses**:
-- **≈ 120 words for 55 s**
-- **≈ 130 words for 60 s**
-After the first real take, replace this rate with the measured one (words ÷ seconds) in this file.
+**Word budget for Padre Veles (Tagalog):** measured on "Bakit Mataas ang Langit" (134 words → 64.6 s and 66.2 s): about **2.05 words/s including pauses**:
+- **≈ 112 words for 55 s**
+- **≈ 122 words for 60 s**
 
 Reply with the script in a code block, the word count and estimated length, a one-paragraph visual plan, and source notes (which version, from where). Keep the final text in `script.txt` (one paragraph per line). It drives the timing.
 
