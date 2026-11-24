@@ -15,6 +15,7 @@ page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') 
 page.on('pageerror', (e) => console.log('[pageerror]', e.message));
 await page.goto(`http://localhost:${port}/index.html`);
 await page.waitForFunction(() => window.ready === true, null, { timeout: 120000 });
+if (process.env.NOINK) await page.evaluate(() => { window.NOINK = 1; });
 let t0 = Date.now(), n = 0;
 for (const f of frames) {
   const file = path.join(out, `f${String(f).padStart(4, '0')}.jpg`);

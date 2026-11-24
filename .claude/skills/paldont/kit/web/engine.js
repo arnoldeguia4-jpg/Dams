@@ -104,10 +104,11 @@ export const LIGHTS = {
   day: { az: 25, el: 50, sun: '#fff3df', si: 2.6, sky: '#cfe3ff', gnd: '#8a7a66', hi: 1.15, top: '#3e7fd2', hor: '#b8d0ec', fog: [40, 420], card: [1, 1, 1], sat: 1.08, gain: 1.0 },
   lab: { az: 4, el: 50, sun: '#fff1d8', si: 2.4, sky: '#e6eeff', gnd: '#a08c70', hi: 1.3, top: '#5d93d9', hor: '#cfe0f2', fog: [60, 500], card: [1, 1, 1], sat: 1.06, gain: 1.0 },
   golden: { az: 20, el: 18, sun: '#ffcf96', si: 2.3, sky: '#c9a4c8', gnd: '#5a4a6a', hi: 0.95, top: '#ffc47c', hor: '#f3b2a0', fog: [40, 360], card: [1.06, 0.93, 0.8], sat: 1.1, gain: 1.0 },
+  lowday: { az: 25, el: 50, sun: '#fff3df', si: 2.6, sky: '#cfe3ff', gnd: '#8a7a66', hi: 1.15, top: '#e9e2d2', hor: '#e4dccb', fog: [14, 95], card: [1, 1, 1], sat: 1.08, gain: 1.0 },
   night: { az: -30, el: 40, sun: '#a9c0ff', si: 1.6, sky: '#8a9ed8', gnd: '#3a3c5c', hi: 1.35, top: '#141c3c', hor: '#33427a', fog: [30, 300], card: [0.62, 0.68, 0.95], sat: 0.95, gain: 1.0 },
   stage: { az: 10, el: 40, sun: '#ffd9a0', si: 3.0, sky: '#8a6a7a', gnd: '#3a2430', hi: 0.7, top: '#2a1622', hor: '#5a2a38', fog: [40, 300], card: [1.08, 0.97, 0.86], sat: 1.12, gain: 1.0 },
 };
-export const look = { sat: 1.08, gain: 1, card: [1, 1, 1], flash: 0, cInf: 0, focus: 5, vig: 0.28, fade: 0, inkR: 2.4 };
+export const look = { inkFar: 520, sat: 1.08, gain: 1, card: [1, 1, 1], flash: 0, cInf: 0, focus: 5, vig: 0.28, fade: 0, inkR: 2.4 };
 const cTmp = new THREE.Color(), cTmp2 = new THREE.Color();
 const mixHex = (a, b, t) => '#' + cTmp.set(a).lerp(cTmp2.set(b), t).getHexString();
 /** apply a preset (or a blend of two presets with t) around an action point `at` */
@@ -121,7 +122,7 @@ export const applyLight = (name, at = [0, 0, 0], name2 = null, t = 0, span = 14)
   hemi.color.set(mh('sky')); hemi.groundColor.set(mh('gnd')); hemi.intensity = m('hi');
   skyMat.uniforms.top.value.set(mh('top')); skyMat.uniforms.hor.value.set(mh('hor'));
   scene.fog.color.set(mh('hor')); scene.fog.near = lerp(A.fog[0], B.fog[0], t); scene.fog.far = lerp(A.fog[1], B.fog[1], t);
-  look.card = [0, 1, 2].map((i) => lerp(A.card[i], B.card[i], t)); look.sat = m('sat'); look.gain = m('gain');
+  look.inkFar = Math.min(520, scene.fog.far * 0.9); look.card = [0, 1, 2].map((i) => lerp(A.card[i], B.card[i], t)); look.sat = m('sat'); look.gain = m('gain');
 };
 
 // ---------------- cards ----------------
@@ -177,9 +178,9 @@ const quadCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1), quadScene = ne
 const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2)); quadScene.add(quad);
 const QV = `varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy,0.,1.); }`;
 const inkMat = new THREE.ShaderMaterial({
-  uniforms: { tC: { value: rtColor.texture }, tN: { value: rtND.texture }, res: { value: new THREE.Vector2(W, H) }, r: { value: 2.4 }, inkCol: { value: new THREE.Color('#0b0a0c') } },
+  uniforms: { tC: { value: rtColor.texture }, tN: { value: rtND.texture }, res: { value: new THREE.Vector2(W, H) }, r: { value: 2.4 }, inkFar: { value: 520 }, inkCol: { value: new THREE.Color('#0b0a0c') } },
   vertexShader: QV,
-  fragmentShader: `uniform sampler2D tC; uniform sampler2D tN; uniform vec2 res; uniform float r; uniform vec3 inkCol; varying vec2 vUv;
+  fragmentShader: `uniform sampler2D tC; uniform sampler2D tN; uniform vec2 res; uniform float r; uniform float inkFar; uniform vec3 inkCol; varying vec2 vUv;
     void main(){
       vec3 col = texture2D(tC, vUv).rgb; vec4 C = texture2D(tN, vUv);
       if (C.a <= 0.) { gl_FragColor = vec4(col,1.); return; }
@@ -192,7 +193,7 @@ const inkMat = new THREE.ShaderMaterial({
         if (dN - dC > max(0.03, 0.03*dC)) ink = 1.;
         else if (N.a > 0. && abs(dN-dC) < 0.08*dC) { vec3 nN = N.rgb*2.-1.; if (dot(nC,nN) < 0.8) ink = max(ink, 0.85); }
       }
-      ink *= 1. - smoothstep(140., 520., dC);
+      ink *= 1. - smoothstep(min(140., inkFar*0.45), inkFar, dC);
       gl_FragColor = vec4(mix(col, inkCol, ink), 1.);
     }`,
 });
@@ -251,7 +252,7 @@ export const renderAll = () => {
   camera.updateMatrixWorld();
   renderer.setRenderTarget(rtColor); renderer.setClearColor(0x000000, 1); renderer.clear(); renderer.render(scene, camera);
   ndPass();
-  inkMat.uniforms.r.value = look.inkR;
+  inkMat.uniforms.r.value = look.inkR; inkMat.uniforms.inkFar.value = look.inkFar;
   quad.material = inkMat; renderer.setRenderTarget(rtInk); renderer.render(quadScene, quadCam);
   const u = finalMat.uniforms;
   u.cInf.value = look.cInf; u.focus.value = look.focus; u.sat.value = look.sat; u.gain.value = look.gain; u.vig.value = look.vig; u.flash.value = look.flash; u.fade.value = look.fade;
