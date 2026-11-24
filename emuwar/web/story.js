@@ -9,17 +9,17 @@ export const STING = 1631;
 const C = (f, pos, look, fov = 40, o = {}) => ({ f, pos, look, fov, ...o });
 export const SHOTS = [
   { id: 'hook', a: 0, b: 148, light: 'day', at: [0.5, 1, 4.5], span: 8,
-    cam: [C(0, [0.55, 1.45, 9.4], [0.55, 1.25, 4.3]), C(148, [0.6, 1.42, 8.3], [0.55, 1.25, 4.3])], dof: () => ({ c: 6, pt: [0.5, 1.5, 4.4] }) },
+    cam: [C(0, [0.55, 1.5, 11.0], [0.55, 1.2, 4.3]), C(148, [0.6, 1.45, 9.9], [0.55, 1.2, 4.3])], dof: () => ({ c: 6, pt: [0.5, 1.5, 4.4] }) },
   { id: 'lost', a: 149, b: 190, light: 'day', at: [1, 1, 4.5], span: 8,
     cam: [C(149, [1.55, 1.6, 7.0], [1.2, 1.45, 4.2], 38), C(190, [1.5, 1.58, 6.6], [1.2, 1.47, 4.2], 38)], kicks: [[150, 0.02]], dof: () => ({ c: 11, pt: [1.3, 1.6, 4.2] }) },
   { id: 'wa', a: 191, b: 239, light: 'day', at: [0, 2, -6], span: 30,
     cam: [C(191, [-6, 16, 30], [3, 1.5, -8], 44), C(239, [-2, 7.5, 22], [3, 1.5, -8], 44)], dof: () => ({ c: 0 }) },
   { id: 'march', a: 240, b: 359, light: 'day', at: [2, 1, 0], span: 12,
-    cam: [C(240, [-3.2, 1.9, 7.6], [-2.2, 1.1, 0.3]), C(359, [5.2, 1.7, 7.0], [5.6, 1.1, 0.3], 40, { path: [[1.0, 1.8, 7.4]] })], dof: () => ({ c: 4, pt: [1, 1.3, 0.5] }) },
+    cam: [C(240, [-3.2, 1.9, 9.4], [-2.2, 1.1, 2.4]), C(359, [5.2, 1.7, 8.8], [5.6, 1.1, 2.4], 40, { path: [[1.0, 1.8, 9.2]] })], dof: () => ({ c: 4, pt: [1, 1.3, 2.4] }) },
   { id: 'buffet', a: 360, b: 421, light: 'day', at: [6, 1, -1], span: 8,
-    cam: [C(360, [6.6, 1.05, 4.6], [6.4, 0.85, 0.0]), C(421, [6.5, 1.0, 3.9], [6.35, 0.85, 0.0])], dof: () => ({ c: 10, pt: [6.4, 0.9, 0.2] }) },
+    cam: [C(360, [6.6, 1.6, 0.9], [6.4, 1.0, -3.4]), C(421, [6.5, 1.55, 0.4], [6.35, 1.0, -3.4])], dof: () => ({ c: 10, pt: [6.4, 1.1, -3.2] }) },
   { id: 'phone', a: 422, b: 493, light: 'day', at: [-12, 1, -10], span: 8,
-    cam: [C(422, [-10.8, 1.95, -5.8], [-11.6, 1.5, -10.2]), C(493, [-11.0, 1.92, -6.4], [-11.6, 1.52, -10.2])], kicks: [[430, 0.02]], dof: () => ({ c: 8, pt: [-11.6, 1.6, -10.2] }) },
+    cam: [C(422, [-12.5, 1.95, -6.0], [-12.6, 1.5, -10.2]), C(493, [-12.55, 1.92, -6.6], [-12.6, 1.52, -10.2])], kicks: [[430, 0.02]], dof: () => ({ c: 8, pt: [-12.6, 1.6, -10.2] }) },
   { id: 'army', a: 494, b: 683, light: 'day', at: [1, 1, 5], span: 10,
     cam: [C(494, [-2.0, 1.5, 8.9], [-2.0, 1.2, 5]), C(548, [-1.8, 1.5, 8.7], [-1.9, 1.2, 5]), C(572, [-0.35, 1.5, 9.2], [-0.35, 1.1, 5]),
       C(600, [1.9, 1.35, 8.6], [1.95, 0.8, 5]), C(632, [2.1, 1.35, 8.4], [2.0, 0.8, 5]), C(650, [3.55, 1.45, 8.2], [3.55, 0.7, 5]), C(683, [0.9, 2.5, 13.4], [0.9, 1.0, 5])],
@@ -29,22 +29,22 @@ export const SHOTS = [
   { id: 'scatter', a: 759, b: 890, light: 'day', at: [6, 1, -5], span: 16,
     cam: [C(759, [6, 9.5, 9.5], [6, 0, -4.5], 44), C(890, [6, 8.2, 7.6], [6, 0, -5], 44)], kicks: [[811, 0.03]], dof: () => ({ c: 0 }) },
   { id: 'ambush', a: 891, b: 975, light: 'day', at: [23, 1, -3], span: 10,
-    cam: [C(891, [21.2, 1.35, 4.4], [22.6, 1.0, -3]), C(975, [21.3, 1.3, 3.7], [22.4, 1.0, -2.5])], kicks: [[937, 0.04]], dof: () => ({ c: 5, pt: [21.6, 1.0, -0.2] }) },
+    cam: [C(891, [21.95, 2.5, 6.2], [22.3, 0.8, -3]), C(975, [21.95, 2.4, 5.5], [22.3, 0.8, -2.6])], kicks: [[937, 0.04]], dof: () => ({ c: 4, pt: [21.9, 1.0, 0.3] }) },
   { id: 'chase', a: 976, b: 1079, light: 'day', at: [8, 1, -1], span: 16,
-    cam: [C(976, [-1.5, 2.3, 7.5], [1.5, 1.0, -1.5], 44), C(1023, [6.5, 2.3, 7.4], [9.5, 1.0, -1.5], 44), C(1079, [12.0, 2.5, 7.8], [16, 1.0, -1.5], 44)],
+    cam: [C(976, [-8.0, 2.4, 8.2], [6.0, 1.0, 5], 44), C(1023, [0.1, 2.4, 8.2], [14.1, 1.0, 5], 44), C(1079, [6.8, 2.5, 8.2], [20.8, 1.0, 5], 44)],
     dof: () => ({ c: 0 }) },
   { id: 'tanks', a: 1080, b: 1187, light: 'day', at: [0, 1, 5], span: 8,
     cam: [C(1080, [0.3, 1.55, 8.6], [0.35, 1.6, 5]), C(1187, [0.35, 1.58, 7.8], [0.4, 1.65, 5])], kicks: [[1160, 0.02]], dof: () => ({ c: 7, pt: [0, 1.6, 5] }) },
   { id: 'home', a: 1188, b: 1367, light: 'day', at: [-6, 1, 4], span: 20,
     cam: [C(1188, [-4, 2.8, 17.5], [-4, 1.0, 4]), C(1367, [-4, 2.6, 16.0], [-4, 1.0, 4])], dof: () => ({ c: 0 }) },
   { id: 'bounty', a: 1368, b: 1536, light: 'golden', at: [-12, 1, -10], span: 8,
-    cam: [C(1368, [-11.3, 1.95, -6.0], [-12.2, 1.45, -10.6]), C(1536, [-11.5, 1.85, -7.1], [-12.2, 1.45, -10.6])], dof: () => ({ c: 7, pt: [-12.2, 1.5, -10.4] }) },
+    cam: [C(1368, [-12.95, 1.95, -5.0], [-12.95, 1.45, -10.4]), C(1536, [-12.95, 1.85, -5.9], [-12.95, 1.45, -10.4])], dof: () => ({ c: 7, pt: [-12.95, 1.5, -10.2] }) },
   { id: 'lostwar', a: 1537, b: 1630, light: 'golden', at: [0, 1, 4.5], span: 10,
     cam: [C(1537, [0.3, 1.7, 10.2], [0.2, 1.25, 4.6]), C(1630, [0.25, 1.6, 8.6], [0.2, 1.3, 4.6], 40, { roll: -2 })], dof: () => ({ c: 4, pt: [0, 1.5, 4.8] }) },
   { id: 'fly', a: 1631, b: TOTAL - 1, light: 'golden', at: [1, 1, 4.3], span: 8,
     cam: [C(1631, [1.45, 1.6, 7.6], [1.2, 1.4, 4.2], 38), C(1702, [1.4, 1.55, 6.6], [1.2, 1.45, 4.2], 38, { roll: 3 })], kicks: [[1676, 0.03]], dof: () => ({ c: 10, pt: [1.25, 1.5, 4.2] }) },
   { id: 'thumb', a: 9000, b: 9000, light: 'day', at: [0.5, 1, 4.5], span: 8,
-    cam: [C(9000, [0.7, 1.5, 8.6], [0.7, 1.35, 4.3])], dof: () => ({ c: 8, pt: [0.5, 1.5, 4.4] }) },
+    cam: [C(9000, [0.45, 1.5, 9.0], [0.45, 1.35, 4.4])], dof: () => ({ c: 8, pt: [0.45, 1.5, 4.4] }) },
 ];
 export const shotAt = (f) => SHOTS.find((s) => f >= s.a && f <= s.b) || SHOTS[SHOTS.length - 2];
 
@@ -69,7 +69,7 @@ const mark = (id, txt, f, a, b, pos, h = 0.45, col = '#ffffff') => { if (f < a |
 // truck path: { x, z, ry (0 = driving +x), speed m/f, vis }
 const truckAt = (f) => {
   const S = shotAt(f).id;
-  if (S === 'chase') { const t = (f - 976) / 30; const x = -2 + 5.2 * t - 0.9 * Math.max(0, t - 1.6) ** 2; return { x, z: -1.6, ry: 0, speed: 1, vis: true, bounce: 1 }; }
+  if (S === 'chase') { const t = (f - 976) / 30; const x = -2 + 5.2 * t - 0.9 * Math.max(0, t - 1.6) ** 2; return { x, z: 5.0, ry: 0, speed: 1, vis: true, bounce: 1 }; }
   if (S === 'home') {
     if (f < 1212) return { x: -2, z: 5.0, ry: Math.PI, speed: 0, vis: true };
     if (f < 1282) return { x: -2 - 34 * easeIn(win(f, 1214, 1276)), z: 5.0, ry: Math.PI, speed: 1, vis: true, bounce: 1 };
@@ -114,19 +114,19 @@ export const actorsAt = (f) => {
       break;
     }
     case 'march': {
-      for (let i = 0; i < 12; i++) { const x = -9 + i * 1.5 + (f - 240) * 0.07; add(emu('m' + i, f, [x, 0, 0.6 + (i % 2) * 0.35], { mode: 'walk', phase: (f * 0.045 + i * 0.13) % 1, seed: i })); }
+      for (let i = 0; i < 12; i++) { const x = -9 + i * 1.5 + (f - 240) * 0.07; add(emu('m' + i, f, [x, 0, 2.3 + (i % 2) * 0.35], { mode: 'walk', phase: (f * 0.045 + i * 0.13) % 1, seed: i })); }
       break;
     }
     case 'buffet': {
-      add(emu('b0', f, [6.35, 0.55, -0.2], { mode: f > 395 ? 'stand' : 'peck', phase: (f * 0.05) % 1, bib: true, expr: f > 395 ? 'happy' : 'neutral', seed: 3 }));
-      add(emu('b1', f, [5.3, 0.55, -1.6], { mode: 'peck', phase: (f * 0.04 + 0.3) % 1, flip: true, seed: 5 }));
-      add(emu('b2', f, [7.5, 0.55, -2.4], { mode: 'peck', phase: (f * 0.045 + 0.6) % 1, seed: 7 }));
-      add(burst('bf', f, 396, [6.75, 1.9, 0.0], 0.5));
+      add(emu('b0', f, [6.35, 0.55, -3.2], { mode: f > 395 ? 'stand' : 'peck', phase: (f * 0.05) % 1, bib: true, expr: f > 395 ? 'happy' : 'neutral', seed: 3 }));
+      add(emu('b1', f, [5.1, 0.55, -4.8], { mode: 'peck', phase: (f * 0.04 + 0.3) % 1, flip: true, seed: 5 }));
+      add(emu('b2', f, [7.7, 0.55, -5.6], { mode: 'peck', phase: (f * 0.045 + 0.6) % 1, seed: 7 }));
+      add(burst('bf', f, 396, [6.8, 2.3, -3.1], 0.5));
       break;
     }
     case 'phone': {
-      add(ch('far', OUT.farmer, f, [-11.6, 0.4, -10.3], { expr: f < 450 ? 'shock' : 'laugh', armR: ARM.phone, propR: 'phone', armL: ARM.ear, propL: 'ear', tilt: 3 * Math.sin(f * 0.5) }));
-      add(mark('ph', '!', f, 428, 470, [-11.2, 2.4, -10.2], 0.4, '#ffe066'));
+      add(ch('far', OUT.farmer, f, [-12.6, 0.4, -10.3], { expr: f < 450 ? 'shock' : 'laugh', armR: ARM.phone, propR: 'phone', armL: ARM.ear, propL: 'ear', tilt: 3 * Math.sin(f * 0.5) }));
+      add(mark('ph', '!', f, 428, 470, [-12.2, 2.4, -10.2], 0.4, '#ffe066'));
       for (let i = 0; i < 3; i++) add(emu('pe' + i, f, [-6 + i * 1.8, 0, -8 - i], { mode: 'peck', phase: (f * 0.04 + i * 0.3) % 1, seed: i }));
       break;
     }
@@ -170,15 +170,15 @@ export const actorsAt = (f) => {
     }
     case 'ambush': {
       const jam = f >= 937;
-      add(ch('s1', OUT.sold1, f, [21.0, 0, 0.35], { expr: jam ? 'shock' : 'stern', mode: 'sit', armR: jam ? ARM.up : ARM.reach, armL: jam ? ARM.up : ARM.hold, tilt: 4 }));
-      add(ch('s2', OUT.sold2, f, [22.2, 0, 0.6], { expr: jam ? 'pained' : 'grin', mode: 'sit', armR: ARM.chin, armL: ARM.hang }));
+      add(ch('s1', OUT.sold1, f, [21.35, 0, 0.45], { expr: jam ? 'shock' : 'stern', mode: 'sit', armR: jam ? ARM.up : ARM.reach, armL: jam ? ARM.up : ARM.hold, tilt: 4 }));
+      add(ch('s2', OUT.sold2, f, [22.55, 0, 0.6], { expr: jam ? 'pained' : 'grin', mode: 'sit', armR: ARM.chin, armL: ARM.hang }));
       for (let i = 0; i < 4; i++) add(emu('d' + i, f, [23.5 + i * 1.3, 0, -7.6 + (i % 2) * 0.6], { mode: f > 945 ? 'stand' : 'peck', phase: (f * 0.04 + i * 0.3) % 1, flip: true, expr: f > 948 ? 'smug' : 'neutral', seed: i }));
-      add(puff('jam', f, 938, [22.3, 0.8, 0.1], 0.9, 20)); add(burst('jb', f, 937, [22.3, 0.75, 0.15], 0.5, '#ffd0a0'));
+      add(puff('jam', f, 938, [22.1, 0.8, -0.4], 0.9, 20)); add(burst('jb', f, 937, [22.1, 0.75, -0.35], 0.5, '#ffd0a0'));
       add(mark('jm', '!', f, 938, 975, [21.4, 1.7, 0.6], 0.4, '#ffe066'));
       break;
     }
     case 'chase': {
-      for (let i = 0; i < 6; i++) { const lead = 5.5 + i * 1.4 + Math.max(0, (f - 1023) / 30) * (6 + i); add(emu('c' + i, f, [T.x + lead, 0.55, -2.4 + (i % 3) * 0.8], { mode: 'run', phase: (f * 0.12 + i * 0.21) % 1, expr: f > 1023 ? 'smug' : 'neutral', seed: i })); }
+      for (let i = 0; i < 6; i++) { const lead = 5.5 + i * 1.4 + Math.max(0, (f - 1023) / 30) * (6 + i); add(emu('c' + i, f, [T.x + lead, 0, 4.4 + (i % 3) * 0.7], { mode: 'run', phase: (f * 0.12 + i * 0.21) % 1, expr: f > 1023 ? 'smug' : 'neutral', seed: i })); }
       const bob = 0.05 * Math.abs(Math.sin(f * 0.9));
       add(ch('s1', OUT.sold1, f, [T.x - 1.1, 0.82 + bob, T.z + 0.2], { expr: f > 1030 ? 'nervous' : 'stern', armR: ARM.reach, armL: ARM.hold, tilt: 5 * Math.sin(f * 0.8), still: true }));
       if (f > 1030) add(puff('ex', f, 1030 + (f - 1030) - ((f - 1030) % 10), [T.x - 2.6, 0.6, T.z], 0.6, 10));
@@ -186,15 +186,15 @@ export const actorsAt = (f) => {
     }
     case 'home': {
       if (T.vis && T.x > -14) add(ch('s1', OUT.sold1, f, [T.x + 1.1, 0.82 + 0.04 * Math.abs(Math.sin(f * 0.9)), T.z + 0.3], { expr: f < 1282 || f >= 1320 ? 'neutral' : 'grin', armR: f >= 1282 && f < 1320 ? ARM.wave : ARM.hang, armL: ARM.hang, still: true, wave: 0.5 + 0.5 * Math.sin(f * 0.5) }));
-      for (let i = 0; i < 5; i++) { const look = T.x < -2 ? -1 : 1; add(emu('h' + i, f, [0.5 + i * 1.4, 0, 2.3], { flip: (T.x < 0.5 + i * 1.4) !== (i === 99), expr: f > 1330 ? 'smug' : 'neutral', seed: i })); }
-      add(mark('q1', '?', f, 1290, 1320, [3.3, 2.1, 2.3], 0.45, '#ffe066'));
+      for (let i = 0; i < 5; i++) { const look = T.x < -2 ? -1 : 1; add(emu('h' + i, f, [-8.6 + i * 1.5, 0, 2.3], { flip: T.x < -8.6 + i * 1.5, expr: f > 1330 ? 'smug' : 'neutral', seed: i })); }
+      add(mark('q1', '?', f, 1290, 1320, [-5.3, 2.1, 2.3], 0.45, '#ffe066'));
       break;
     }
     case 'bounty': {
       const got = f >= 1400, win2 = f >= 1476;
-      add(ch('off', OUT.official, f, [-12.95, 0.4, -11.2], { expr: 'smile', armR: got ? ARM.hang : ARM.reach, armL: ARM.hang }));
-      add(ch('far', OUT.farmer, f, [-11.65, 0.4, -10.25], { expr: win2 ? 'relief_open' : got ? 'grin' : 'smile', armR: got ? (win2 ? ARM.cheer : ARM.holdHi) : ARM.reach, propR: got ? 'moneybag' : undefined, armL: win2 ? ARM.cheer : ARM.hip }));
-      add(burst('bw', f, 1478, [-11.4, 2.3, -10.1], 0.6));
+      add(ch('off', OUT.official, f, [-13.55, 0.4, -10.7], { expr: 'smile', armR: got ? ARM.hang : ARM.reach, armL: ARM.hang }));
+      add(ch('far', OUT.farmer, f, [-12.4, 0.4, -9.95], { expr: win2 ? 'relief_open' : got ? 'grin' : 'smile', armR: got ? (win2 ? ARM.cheer : ARM.holdHi) : ARM.reach, propR: got ? 'moneybag' : undefined, armL: win2 ? ARM.cheer : ARM.hip }));
+      add(burst('bw', f, 1478, [-12.1, 2.3, -10.1], 0.6));
       break;
     }
     case 'fly': {
@@ -205,8 +205,8 @@ export const actorsAt = (f) => {
       break;
     }
     case 'thumb': {
-      add(ch('maj', OUT.major, 9000, [-0.15, 0, 4.6], { expr: 'shock', armR: ARM.up, armL: ARM.up, tilt: -4, still: true, noBlink: true }));
-      add(emu('e0', 9000, [1.25, 0, 4.3], { flip: true, expr: 'smug', noBlink: true }));
+      add(ch('maj', OUT.major, 9000, [0.02, 0, 4.6], { expr: 'shock', armR: ARM.up, armL: ARM.up, tilt: -4, still: true, noBlink: true }));
+      add(emu('e0', 9000, [0.9, 0, 4.3], { flip: true, expr: 'smug', noBlink: true }));
       break;
     }
   }

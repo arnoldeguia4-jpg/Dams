@@ -7,7 +7,7 @@ const M = {
   dirt: toon('#ffffff', P.dirt()), wheat: toon('#ffffff', P.wheat()), board: toon('#ffffff', P.weatherboard()), tin: toon('#ffffff', P.corrugated()),
   wood: toon('#8a5a34'), post: toon('#6a4a2e'), dark: toon('#2a2a30'), steel: toon('#7d848a'), olive: toon('#5f6a4c'), khaki: toon('#8a7d50'),
   gumTrunk: toon('#e8e0d0'), gumLeaf: toon('#7f9a5a'), gumLeaf2: toon('#6a8a4e'), water: toon('#5d9fd1'), hay: toon('#e2c060'), red: toon('#b8402e'),
-  glass: toon('#cfe3f0'), tire: toon('#1f1d22'), coin: toon('#e8c44a'), grass: toon('#ffffff', P.grass('#9aa64e', 7)), hill: toon('#c8925a'), green: toon('#4f7a3a'),
+  glass: toon('#cfe3f0'), tire: toon('#1f1d22'), coin: toon('#e8c44a'), grass: toon('#ffffff', P.grass('#9aa64e', 7)), hill: toon('#b98a5c'), green: toon('#4f7a3a'),
 };
 
 const lewisGun = (o) => {
@@ -39,9 +39,9 @@ const truck = (o) => {
 export const build = () => {
   const H = {};
   // ground: dirt everywhere, grassy patches, distant low hills
-  tbox(300, 0.2, 300, M.dirt, { y: -0.1, tm: 4 });
+  tbox(2000, 0.2, 2000, M.dirt, { y: -0.1, tm: 4 });
   for (const [x, z, r] of [[-30, 20, 12], [30, 25, 14], [-40, -30, 16], [40, -40, 18]]) { const m = cyl(r, r, 0.04, M.grass, { x, z, y: 0.01, seg: 24 }); m.castShadow = false; }
-  for (let i = 0; i < 9; i++) { const h = sph(60 + (i % 3) * 20, M.hill, { x: -240 + i * 60, y: -52, z: -230, seg: 18 }); h.scale.set(1.6, 1, 1); }
+  for (let i = 0; i < 9; i++) { const h = sph(60 + (i % 3) * 20, M.hill, { x: -240 + i * 60, y: -40, z: -260, seg: 18 }); h.scale.set(1.6, 0.55, 1); }
   // wheat field (x -4..18, z -14..0.2): base slab + rows of tall wheat boxes
   tbox(22, 0.55, 14.2, M.wheat, { x: 7, y: 0.27, z: -6.9, tm: 1 });
   H.wheatRows = [];
@@ -59,7 +59,7 @@ export const build = () => {
   for (const x of [-2.4, 2.4]) { tbox(1.2, 1.2, 0.08, toon('#33405a'), { x, y: 2.0, z: 3.02, parent: house }); tbox(1.4, 0.12, 0.14, M.wood, { x, y: 1.35, z: 3.06, parent: house }); }
   tbox(1.0, 2.1, 0.08, toon('#5a3b2a'), { y: 1.45, z: 3.02, parent: house });
   // bounty table on the veranda (world ~ x -12.4, top y 1.18, z -10.4)
-  H.table = group({ x: -12.4, y: 0.4, z: -10.6 });
+  H.table = group({ x: -13.0, y: 0.4, z: -10.3 });
   tbox(1.4, 0.06, 0.8, M.wood, { y: 0.75, parent: H.table }); for (const [x, z] of [[-0.6, -0.32], [0.6, -0.32], [-0.6, 0.32], [0.6, 0.32]]) tbox(0.06, 0.75, 0.06, M.wood, { x, y: 0.37, z, parent: H.table });
   H.coins = []; for (let i = 0; i < 6; i++) { const c = cyl(0.06, 0.06, 0.12 + 0.04 * (i % 3), M.coin, { parent: H.table, x: -0.45 + i * 0.16, y: 0.84 + 0.02 * (i % 3), z: 0.1, seg: 14 }); H.coins.push(c); }
   // the farmer's telephone on the veranda wall
@@ -78,9 +78,9 @@ export const build = () => {
   for (const [x, z, s] of [[-22, -8, 1.2], [-20, -20, 1], [28, -12, 1.1], [34, -24, 1.3], [-30, 8, 1], [14, -26, 0.9], [-5, -26, 1.2], [40, 4, 1.1]]) gum(x, z, s);
   // dam (pond) + haystacks + bushes for the ambush
   const pond = cyl(4.2, 4.2, 0.06, M.water, { x: 26, y: 0.03, z: -6, seg: 40 }); pond.castShadow = false;
-  for (const [x, z] of [[20.4, -0.6], [22.6, 0.2]]) { cyl(0.9, 1.1, 1.0, M.hay, { x, y: 0.5, z, seg: 14 }); sph(0.9, M.hay, { x, y: 1.0, z, seg: 14 }).scale.set(1, 0.6, 1); }
+  for (const [x, z] of [[20.2, -1.1], [23.7, -1.3]]) { cyl(0.8, 1.0, 0.7, M.hay, { x, y: 0.35, z, seg: 14 }); sph(0.8, M.hay, { x, y: 0.7, z, seg: 14 }).scale.set(1, 0.5, 1); }
   for (const [x, z] of [[19.5, -3], [29, -2], [31, -9], [23, -11]]) sph(0.8, M.green, { x, y: 0.4, z, seg: 10 }).scale.set(1.3, 0.8, 1);
-  H.ambushGun = lewisGun({ x: 21.55, y: 0, z: -0.1, ry: Math.PI / 2 + 0.15 });
+  H.ambushGun = lewisGun({ x: 21.95, y: 0, z: -0.5, ry: Math.PI / 2 + 0.15 });
   // army props on the road
   H.guns = [lewisGun({ x: 1.45, z: 5.0, ry: -0.4 }), lewisGun({ x: 2.55, z: 5.1, ry: -0.6 })];
   H.crates = []; for (let i = 0; i < 6; i++) { const c = group({ x: 3.6 + (i % 3) * 0.55 - 0.55, y: 0, z: 4.9 }); tbox(0.5, 0.36, 0.42, M.khaki, { y: 0.18, parent: c }); plane(0.36, 0.12, unlit('#ffffff', P.label('AMMO', { w: 256, h: 90, bg: '#8a7d50', fg: '#2a2418', border: null, font: 'bold 64px Georgia, serif' })), { y: 0.2, z: 0.215, parent: c }); H.crates.push(c); }

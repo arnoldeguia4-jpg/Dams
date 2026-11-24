@@ -16,6 +16,8 @@ cap = 0.7 * np.abs(v).max(); pk = np.abs(s).max()
 if pk > cap: s *= cap / pk
 print(f'voice gated RMS {db(V):.1f} dBFS | music {db(grms(m)) - db(V):+.1f} dB vs voice | sfx {db(grms(s)) - db(V):+.1f} dB vs voice, peak {np.abs(s).max() / np.abs(v).max():.2f}x voice peak')
 mix = v + m + s
+pk = np.abs(mix).max()
+if pk > 0.95: mix *= 0.95 / pk  # headroom: one linear gain, ratios unchanged
 with wave.open('out/mix.wav', 'wb') as w:
     w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((np.clip(mix, -1, 1) * 32767).astype(np.int16).tobytes())
 print('peak', np.abs(mix).max())

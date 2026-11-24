@@ -52,7 +52,7 @@ def bell(freq, d=1.2):
 # ---------------- music ----------------
 music = np.zeros(N)
 BPM = 112; beat = 60 / BPM; bar = 4 * beat
-STOP = 2174 / 30
+STOP = 1631 / 30
 NOTE = lambda m: 440 * 2 ** ((m - 69) / 12)
 prog = [(48, [60, 64, 67]), (43, [59, 62, 67]), (45, [57, 60, 64]), (41, [57, 60, 65])]  # C G Am F
 mel = [72, 74, 76, 79, 76, 74, 72, 74,  71, 72, 74, 71, 67, 69, 71, 74,  72, 71, 69, 72, 76, 74, 72, 69,  69, 71, 72, 74, 72, 69, 65, 67]
@@ -126,42 +126,45 @@ def birds(d):
         i0 = int(rng.uniform(0, d - 0.2) * SR); out[i0:i0 + len(c)] += c
     return out
 F = lambda f: f / 30
-for at in (0.4, 1.6, 2.9, 4.0): put(sfx, clink(2900), at, 0.18)
-put(sfx, whoosh(0.6), F(100), 0.5)
-put(sfx, crash()[: int(0.6 * SR)], F(140), 0.35)
-for k in range(5): put(sfx, drip(), F(134 + 18 * k), 0.25)
-for a in [163, 674, 1594, 2168]: put(sfx, whoosh(0.45), F(a) - 0.2, 0.55)
-put(sfx, birds(2.4), F(170), 0.25)
-put(sfx, ting(1760), F(288), 0.45)
-put(sfx, crash(), F(362), 0.7)
-put(sfx, whoosh(0.4), F(330), 0.35)
-put(sfx, ting(2093), F(540), 0.4)
-for k in range(8): put(sfx, step(), F(600) + k * 0.2, 0.5)
-put(sfx, thunk(), F(656), 0.9)
-put(sfx, thunk(), F(681), 0.9)
-for k in range(7): put(sfx, step(), F(692) + k * 0.2, 0.5)
-put(sfx, whoosh(0.35), F(726), 0.4)
-put(sfx, boing(), F(804), 0.5)
-put(sfx, shimmer(2.2), F(865), 0.45)
-for a in (940, 955, 968): put(sfx, pop(), F(a), 0.6)
-put(sfx, pop(), F(1016), 0.6); put(sfx, ting(2349), F(1015), 0.5)
-put(sfx, squeak(F(1100) - F(1048)), F(1048), 0.35)
-put(sfx, boing(), F(1106), 0.55); put(sfx, thunk(), F(1106), 0.5)
-put(sfx, ting(1760), F(1212), 0.4)
-put(sfx, whoosh(0.3), F(1238), 0.3)
-put(sfx, drip(), F(1262), 0.7)
-for i in range(6): put(sfx, pop(), F(1268 + 9 * i), 0.6)
-for k in range(10): put(sfx, clink(3300), F(1392) + k * 0.11, 0.12)
-for k in range(11): put(sfx, tick(), F(1505) + k * 0.26, 0.6)
-put(sfx, ting(2637), F(1680), 0.4)
-for k in range(6): put(sfx, clank(), F(1715) + k * 0.5, 0.45)
-put(sfx, ting(1976), F(1838), 0.45)
-put(sfx, shimmer(3.0), F(1902), 0.4); put(sfx, ting(2637), F(1993), 0.45)
-put(sfx, boing(), F(2025), 0.4); put(sfx, ting(2093), F(2093), 0.5)
-put(sfx, applause(1.9), F(2114), 0.6)
-put(sfx, brass([NOTE(72), NOTE(76), NOTE(79)], 0.9), F(2116), 0.25)
+def sad_trombone():
+    out = np.zeros(int(1.6 * SR))
+    for k, (m, d) in enumerate([(58, 0.32), (57, 0.32), (56, 0.32), (55, 0.7)]):
+        b = brass([NOTE(m - 12) * (1 + (0.02 * np.sin(2 * np.pi * 6 * t_(d)) if k == 3 else 0))], d) if False else brass([NOTE(m - 12)], d); i0 = int(sum([0.32] * k) * SR); out[i0:i0 + len(b)] += b[: len(out) - i0]
+    return out
+def ring(d=1.0):
+    t = t_(d); x = (np.sin(2 * np.pi * 2200 * t) + 0.6 * np.sin(2 * np.pi * 2650 * t)) * (0.5 + 0.5 * np.sign(np.sin(2 * np.pi * 20 * t)))
+    return x * np.minimum(1, t / 0.01) * np.minimum(1, (d - t) / 0.05) * 0.4
+def engine(d):
+    t = t_(d); x = lpv(rng.standard_normal(len(t)), 220) * (1 + 0.6 * np.sin(2 * np.pi * 28 * t)) + 0.4 * np.sin(2 * np.pi * 55 * t) * (1 + 0.5 * np.sin(2 * np.pi * 28 * t))
+    return x / (np.abs(x).max() + 1e-9) * np.minimum(1, t / 0.2) * np.minimum(1, (d - t) / 0.3)
+def flap(): n = len(t_(0.12)); return lpv(rng.standard_normal(n), 1200) * np.sin(np.linspace(0, np.pi, n)) ** 2
+put(sfx, thunk(), F(54), 0.6); put(sfx, whoosh(0.3), F(50), 0.3)
+put(sfx, boing(), F(120), 0.35)
+put(sfx, sad_trombone(), F(152), 0.5)
+for a_ in [186, 1626]: put(sfx, whoosh(0.45), F(a_) - 0.2, 0.55)
+put(sfx, birds(1.6), F(191), 0.3)
+for k in range(24): put(sfx, step(), F(242) + k * 0.16, 0.35)
+for k in range(10): put(sfx, tick(), F(362) + k * 0.18, 0.5)
+put(sfx, ting(1760), F(396), 0.4)
+put(sfx, ring(1.0), F(422), 0.5); put(sfx, boing(), F(428), 0.3)
+put(sfx, whoosh(0.35), F(492), 0.4)
+put(sfx, thunk(), F(506), 0.5); put(sfx, whoosh(0.35), F(549), 0.4)
+for a_ in [578, 598]: put(sfx, clank(), F(a_), 0.6)
+for i in range(6): put(sfx, thunk(), F(645 + i * 5), 0.55)
+put(sfx, ting(2093), F(668), 0.4)
+put(sfx, boing(), F(726), 0.35)
+put(sfx, whoosh(0.5), F(806), 0.6)
+for k in range(30): put(sfx, step(), F(812) + k * 0.08, 0.4)
+put(sfx, clank(), F(937), 0.7); for_pops = [put(sfx, pop(), F(940) + k * 0.12, 0.5) for k in range(4)]; put(sfx, boing(), F(944), 0.4)
+put(sfx, engine(F(1079) - F(976)), F(976), 0.55)
+for k in range(5): put(sfx, pop(), F(1032) + k * 0.33, 0.45)
+put(sfx, pop(), F(1106), 0.5); put(sfx, clank(), F(1160), 0.5)
+put(sfx, engine(F(1278) - F(1212)), F(1212), 0.5); put(sfx, engine(F(1314) - F(1282)), F(1282), 0.5); put(sfx, boing(), F(1291), 0.35); put(sfx, engine(F(1362) - F(1320)), F(1320), 0.5)
+for k in range(6): put(sfx, clink(2800 + k * 120), F(1382) + k * 0.07, 0.3)
+put(sfx, ting(1976), F(1400), 0.35); put(sfx, ting(2349), F(1478), 0.45); put(sfx, applause(1.3), F(1478), 0.35)
 put(sfx, sting(), STOP, 0.9)
-put(sfx, ting(1568), F(2296), 0.5)
+for k in range(12): put(sfx, flap(), F(1640) + k * 0.1, 0.4)
+put(sfx, thunk(), F(1677), 0.8); put(sfx, ting(1568), F(1684), 0.45)
 
 def wr(name, x):
     x = x / (np.abs(x).max() + 1e-9) * 0.8

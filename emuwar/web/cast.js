@@ -50,11 +50,6 @@ const akubra = (col) => (p, h) => {
   p.band([[cx - 0.27 * W, y - 0.06 * HH], [cx + 0.27 * W, y - 0.06 * HH]], '#2e2418', 0.05 * HH, 1.2 * u);
   p.ell(cx, y + 1 * u, 0.56 * W, 0.06 * HH, col, 4 * u);
 };
-const glasses = (p, h) => {
-  const { cx, hc, u, facing } = h, fx = cx + 7 * u * facing;
-  for (const s of [-1, 1]) p.ell(fx + s * 13 * u, hc, 10 * u, 9 * u, null, 2.4 * u);
-  p.stroke([[fx - 3 * u, hc - 1 * u], [fx + 3 * u, hc - 1 * u]], 2.2 * u);
-};
 const tunic = (p, c) => { const { tcx, chin, HH, u } = c; p.stroke([[tcx - 13 * u, chin + 1 * u], [tcx, chin + 0.2 * HH], [tcx + 13 * u, chin + 1 * u]], 2.4 * u);
   for (const s of [-1, 1]) p.poly([[tcx + s * 10 * u, chin + 0.36 * HH], [tcx + s * 26 * u, chin + 0.36 * HH], [tcx + s * 26 * u, chin + 0.48 * HH], [tcx + s * 10 * u, chin + 0.48 * HH]], null, 2 * u);
   p.band([[tcx - 40 * u, chin + 0.78 * HH], [tcx + 40 * u, chin + 0.78 * HH]], '#6a4a2a', 0.07 * HH, 1.4 * u); };
