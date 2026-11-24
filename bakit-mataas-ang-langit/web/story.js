@@ -188,8 +188,7 @@ export const actorsAt = (f) => {
     }
     case 'thumb': {
       add(ch('tug', OUT.tugBare, 9000, T, { expr: 'shock', armL: gripArms(2.8, true), armR: gripArms(2.8), still: true, noBlink: true, look: 0.3 }));
-      A.push(fx('tglow', [0.03, SKY0 - 0.12, 0.2], 1.3, 'tg', (g) => { const s = g.canvas.width, gr = g.createRadialGradient(s / 2, s / 2, 0, s / 2, s / 2, s / 2); gr.addColorStop(0, 'rgba(255,240,180,0.9)'); gr.addColorStop(0.45, 'rgba(255,220,140,0.45)'); gr.addColorStop(1, 'rgba(255,220,140,0)'); g.fillStyle = gr; g.fillRect(0, 0, s, s); }, { order: 5 }));
-      A.push(fx('tburst', [0.03, SKY0 - 0.12, 0.18], 1.2, 'tb', (g) => { g.save(); g.scale(g.canvas.width / 500, g.canvas.width / 500); fxBurst(new Pen(g), 0.55, '#fff3b0', 12); g.restore(); }, { order: 4 }));
+      A.push(fx('tburst', [0.26, SKY0 - 0.06, 0.32], 0.7, 'tb', (g) => { g.save(); g.scale(g.canvas.width / 500, g.canvas.width / 500); fxBurst(new Pen(g), 0.6, '#fff3b0', 12); g.restore(); }, { order: 7 }));
       break;
     }
     case 'final': {
