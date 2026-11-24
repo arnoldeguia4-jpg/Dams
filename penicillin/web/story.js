@@ -75,6 +75,8 @@ export const SHOTS = [
   { id: 'nobel', a: 2114, b: 2173, light: 'stage', at: [SX, 2, -2], span: 10,
     cam: [{ f: 2114, pos: [SX + 0.5, 2.7, 7.6], look: [SX - 0.1, 2.0, -2.4], fov: 27 }, { f: 2173, pos: [SX + 0.3, 2.65, 6.8], look: [SX - 0.1, 2.05, -2.4], fov: 27 }],
     dof: () => ({ c: 4, pt: [SX, 2.2, -2.4] }) },
+  { id: 'thumb', a: 9000, b: 9000, light: 'lab', at: [0, 1, -1.8], span: 6,
+    cam: [{ f: 9000, pos: [-0.24, 1.48, 1.25], look: [-0.25, 1.36, -1.6], fov: 40 }], dof: () => ({ c: 9, pt: [-0.15, 1.55, -1.45] }) },
   { id: 'final', a: 2174, b: TOTAL - 1, light: 'night', at: [0.3, 1, -2], span: 5,
     cam: [{ f: 2174, pos: [0.35, 1.7, 0.9], look: [0.35, 1.0, -2.05], fov: 40 }, { f: 2290, pos: [0.36, 1.2, -1.55], look: [0.35, 0.98, -2.05], fov: 40, roll: 4 }, { f: TOTAL, pos: [0.36, 1.17, -1.62], look: [0.35, 0.98, -2.05], fov: 40, roll: 4.5 }],
     dof: () => ({ c: 12, pt: [0.35, 0.98, -2.05] }) },
@@ -254,6 +256,12 @@ export const actorsAt = (f) => {
       for (let i = 0; i < 6; i++) { const up = Math.sin(f * 0.5 + i * 1.3) > 0;
         add(ch('cr' + i, crowd(i), f, [SX - 1.6 + i * 0.62, 0, 1.6 + (i % 2) * 0.35], { expr: 'grin', armL: up ? ARM.cheer : ARM.wave, armR: up ? ARM.wave : ARM.cheer, still: false })); }
       A.push(fx('conf', [SX, 2.3, 0.5], 4, 'cf' + f, (g) => drawConfetti(g, (f - 2114) / 30, 3), { res: [512, 512] }));
+      break;
+    }
+    case 'thumb': {
+      add(ch('fl', F, 9000, [-0.36, 0, -1.45], { expr: 'shock', armR: [26, -4, 46, -24, true], propR: 'bigMould', armL: [20, 30, -2, -28, true], tilt: -2, headTilt: -4, still: true, noBlink: true }));
+      A.push(fx('tglow', [-0.05, 1.38, -1.52], 0.95, 'tg', (g) => { const s = g.canvas.width, gr = g.createRadialGradient(s / 2, s / 2, 0, s / 2, s / 2, s / 2); gr.addColorStop(0, 'rgba(200,255,210,0.9)'); gr.addColorStop(0.45, 'rgba(140,235,170,0.45)'); gr.addColorStop(1, 'rgba(120,220,160,0)'); g.fillStyle = gr; g.fillRect(0, 0, s, s); }, { order: 6 }));
+      A.push(fx('tburst', [-0.05, 1.38, -1.56], 1.0, 'tb', (g) => { g.save(); g.scale(g.canvas.width / 500, g.canvas.width / 500); fxBurst(new Pen(g), 0.55, '#fff3b0', 12); g.restore(); }, { order: 4 }));
       break;
     }
     case 'final': {
