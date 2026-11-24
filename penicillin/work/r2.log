@@ -1,0 +1,8 @@
+[page] [.WebGL-0x285c003b6800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+frame 1161 done (1/1161) 4.59 s/f
+[page] [.WebGL-0x285c003b6800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x285c003b6800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x285c003b6800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+frame 1170 done (10/1161) 3.41 s/f
+frame 1180 done (20/1161) 3.35 s/f
+frame 1190 done (30/1161) 3.28 s/f
