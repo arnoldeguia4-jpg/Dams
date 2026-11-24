@@ -9,6 +9,18 @@ PALDO is the workflow proven on **"The Messy Desk That Saved Millions"** (penici
 
 Everything needed is bundled in `kit/`, so no network or other repo is required. The kit includes the engine, the worked penicillin example, vendored three.js r160, and the toon character library (MIT, from mromidev/claude-animated-shorts).
 
+## One-command mode (`/paldo`): the default
+The user wants **one command to run the whole pipeline**. When PALDO is invoked as `/paldo`, `/paldo <topic>` or just "PALDO", run all stages, 1 → 9, back to back without waiting. Pause only where a choice is truly the user's. Use these defaults so nothing blocks:
+- **Starting point:** ideas + script, unless the user attached a voiceover or a script.
+- **Length:** 45–60 s, about 150 words for Nick.
+- **Topic:** if `/paldo <topic>` names one, verify it and go straight to the script. Otherwise post the 10 ideas, then **pick the strongest one yourself** and say which and why in one line. Only wait for a number if the user writes `/paldo pili`, "ako pipili", or similar.
+- **Voice:** Nick (Relatable & Engaging Friend), 2 takes. Use the take closest to the target length and send both.
+- **Credits:** if they aren't enough for the takes, stop and ask. That is the only hard stop.
+- **Sends during the run:** the script, the voice takes, the stills sheet, the MP4, the thumbnails, and finally the publishing pack.
+- **Re-arm the monitor** during the ~1 h render, and give a progress line every 250 frames.
+
+`/paldo` can also run one stage: `/paldo thumbnail`, `/paldo description`, `/paldo voice`, `/paldo ideas`. These act on the latest project folder in the repo.
+
 ## How to talk to the user
 - The user writes in **Tagalog/Taglish**, so reply in Tagalog. Keep code, file names and on-screen English text in English. The video itself is **English**.
 - Keep the user posted at each stage with a short line. Send previews with SendUserFile: the stills sheet before the long render, then the MP4, then the thumbnails.
