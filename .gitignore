@@ -1,2 +1,5 @@
 **/out/*.wav
 **/work/*.log
+**/stills/
+**/frames/
+**/node_modules/
