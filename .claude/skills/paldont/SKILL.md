@@ -1,22 +1,22 @@
 ---
 name: paldont
-description: PALDONT — the full "viral cartoon myth & legend short" pipeline, start to finish. Same machine as PALDO, but the story is an ALAMAT, myth or legend instead of true history. It offers 10 sourced myth/alamat ideas (Filipino alamat and world mythology), writes the narration, generates the voiceover with ElevenLabs using Nick's voice, animates it as a vertical 3D-cartoon MP4 with music and SFX, makes a thumbnail (Shorts + YouTube), and writes the title, description, tags and hashtags. Use this whenever the user says "PALDONT", "paldont", "alamat", "gawa tayo ng alamat", "myth short", "legend short", "mythology video", "alamat ng ...", "kwento ng diwata/diyos", or wants a thumbnail/description/tags for a myth short made this way, even if they only ask for one stage. For true-history shorts use PALDO instead.
+description: PALDONT — the full "viral cartoon myth & legend short" pipeline, start to finish. Same machine as PALDO, but the story is an ALAMAT, myth or legend instead of true history. It offers 10 sourced myth/alamat ideas (Filipino alamat and world mythology), writes the narration, generates a Tagalog voiceover with ElevenLabs using the Filipino narrator voice "Padre Veles – Tagakuwento ng mga Alamat", animates it as a vertical 3D-cartoon MP4 with music and SFX, makes a thumbnail (Shorts + YouTube), and writes the title, description, tags and hashtags. Use this whenever the user says "PALDONT", "paldont", "alamat", "gawa tayo ng alamat", "myth short", "legend short", "mythology video", "alamat ng ...", "kwento ng diwata/diyos", or wants a thumbnail/description/tags for a myth short made this way, even if they only ask for one stage. For true-history shorts use PALDO instead.
 ---
 
-# PALDONT: alamat/myth → script → Nick voiceover → animated short → thumbnail → title, description, tags
+# PALDONT: alamat/myth → script → Tagalog voiceover (Padre Veles) → animated short → thumbnail → title, description, tags
 
 PALDONT is PALDO's sister skill. The engine, voice, render, mix, thumbnail and publishing steps are **identical** to PALDO (proven on "The Messy Desk That Saved Millions", penicillin, 77 s). The only difference is the **topic**: every PALDONT video tells an **alamat, myth or legend**, such as how something came to be, a god's trick, a monster's origin or a cursed love story, instead of a true historical event.
 
-The output is a 1080×1920, 30 fps vertical MP4: flat 2D bean-head cartoon cards in a toon-shaded 3D world with black ink outlines, depth of field and gliding cameras. It comes with a voiceover in ElevenLabs' **Nick** voice, a synthesized score (lean mystical/folk rather than march) and SFX at 50 % of the voice level, two thumbnails, and a copy-paste publishing pack.
+The output is a 1080×1920, 30 fps vertical MP4: flat 2D bean-head cartoon cards in a toon-shaded 3D world with black ink outlines, depth of field and gliding cameras. It comes with a **Tagalog** voiceover in ElevenLabs' Filipino narrator voice **Padre Veles – Tagakuwento ng mga Alamat** (deep, mysterious, made for alamat and kuwentong-bayan), a synthesized score (lean mystical/folk rather than march) and SFX at 50 % of the voice level, two thumbnails, and a copy-paste publishing pack.
 
 Everything needed is bundled in `kit/`, so no network or other repo is required. The kit includes the engine, the worked penicillin example (as a template for structure), vendored three.js r160, and the toon character library (MIT, from mromidev/claude-animated-shorts).
 
 ## One-command mode (`/paldont`): the default
 The user wants **one command to run the whole pipeline**. When PALDONT is invoked as `/paldont`, `/paldont <myth>` or just "PALDONT", run all stages, 1 → 9, back to back without waiting. Pause only where a choice is truly the user's. Use these defaults so nothing blocks:
 - **Starting point:** ideas + script, unless the user attached a voiceover or a script.
-- **Length:** 45–60 s, about 150 words for Nick.
+- **Length:** 45–60 s, about 120–130 Tagalog words.
 - **Topic:** if `/paldont <myth>` names one (e.g. `/paldont alamat ng pinya`), check its sources and go straight to the script. Otherwise post the 10 ideas, then **pick the strongest one yourself** and say which and why in one line. Only wait for a number if the user writes `/paldont pili`, "ako pipili", or similar.
-- **Voice:** Nick (Relatable & Engaging Friend), 2 takes. Use the take closest to the target length and send both.
+- **Voice:** Padre Veles (Filipino alamat narrator), 2 takes. Use the take closest to the target length and send both.
 - **Credits:** if they aren't enough for the takes, stop and ask. That is the only hard stop.
 - **Sends during the run:** the script, the voice takes, the stills sheet, the MP4, the thumbnails, and finally the publishing pack.
 - **Re-arm the monitor** during the ~1 h render, and give a progress line every 250 frames.
@@ -24,7 +24,7 @@ The user wants **one command to run the whole pipeline**. When PALDONT is invoke
 `/paldont` can also run one stage: `/paldont thumbnail`, `/paldont description`, `/paldont voice`, `/paldont ideas`. These act on the latest PALDONT project folder in the repo.
 
 ## How to talk to the user
-- The user writes in **Tagalog/Taglish**, so reply in Tagalog. Keep code, file names and on-screen English text in English. The video itself is **English** (Filipino names and words like *alamat*, *diwata*, *Bathala* stay as they are).
+- The user writes in **Tagalog/Taglish**, so reply in Tagalog. Keep code and file names in English. The video narration is in **Tagalog** (natural, storyteller Filipino, not deep/archaic; common English loanwords are fine). On-screen text and thumbnail text are Tagalog too. World myths keep their proper names (Zeus, Thor, Amaterasu).
 - Keep the user posted at each stage with a short line. Send previews with SendUserFile: the stills sheet before the long render, then the MP4, then the thumbnails.
 - Use AskUserQuestion for real choices, such as starting point, length, idea number, voice and take. Don't ask about things that have a sensible default.
 - When the user asks "tapos na ba?", check the real frame count and give the number. Don't guess.
@@ -66,21 +66,22 @@ Good myth ideas have:
 - sets you can build from boxes, cylinders and cones: hut, forest, mountain, sea, sky palace, village
 
 ## Stage 3: Script
-Formula: hook (the strange claim, no setup) → setting ("Long ago, in a village at the foot of Mayon…", with one concrete detail) → 2–4 escalating beats with one exaggeration joke → pivot ("But…" / "You see,") → twist as the last words (often the origin payoff: "…and that's why the pineapple has a hundred eyes."). Use plain spoken English, contractions, and numbers written as words. Keep a storyteller voice: "legend says", "the elders say".
+Write it in **Tagalog**. Formula: hook (the strange claim, no setup) → setting ("Noong unang panahon, sa isang nayon sa paanan ng Mayon…", with one concrete detail) → 2–4 escalating beats with one exaggeration joke → pivot ("But…" / "You see,") → twist as the last words (often the origin payoff: "…kaya pala ang pinya ay may sandaang mata."). Use plain spoken Tagalog, numbers written as words. Keep a storyteller voice: "ayon sa alamat", "sabi ng matatanda".
 
-**Word budget for Nick:** he reads at about **2.6 words/s including pauses**. Aim for:
-- **≈ 145 words for 55 s**
-- **≈ 155 words for 60 s**
+**Word budget for Padre Veles (Tagalog):** Tagalog words are longer and he narrates slowly and dramatically, so start from about **2.2 words/s including pauses**:
+- **≈ 120 words for 55 s**
+- **≈ 130 words for 60 s**
+After the first real take, replace this rate with the measured one (words ÷ seconds) in this file.
 
 Reply with the script in a code block, the word count and estimated length, a one-paragraph visual plan, and source notes (which version, from where). Keep the final text in `script.txt` (one paragraph per line). It drives the timing.
 
-## Stage 4: Voiceover with ElevenLabs (Nick)
+## Stage 4: Voiceover with ElevenLabs (Padre Veles, Tagalog)
 Use the **ElevenLabs connector** (`mcp__ElevenLabs__*`; load the tools with ToolSearch). If the connector is missing, offer `request_credential` for `api.elevenlabs.io` with header `xi-api-key`.
 
 1. `account_get_usage` shows the credits. The free tier has 10k credits a month, and one ~200-word take costs ~1,130. Check that the takes fit before generating.
-2. Find the voice with `creative_list_voices` (search "Nick", languages ["en"]). The user's pick is **"Nick – Relatable & Engaging Friend"**, `voice_id 7jynqzOvnVP89nA7TB0m`. Re-confirm the ID from the list; it should only come from the tool.
-3. Run `creative_create_flow` first. Then `creative_generate_speech` with model `eleven_v4`, run with `estimate_only` first, then for real with the default 2 takes. Poll `creative_get_flow_run_status`.
-4. Filipino names (Magayon, Bakunawa, Makiling) may be mispronounced. If so, spell them phonetically in the speech text only (e.g. "Ma-GAI-yon") and keep `script.txt` timing in step with the same words.
+2. Find the voice with `creative_list_voices` (search "Padre Veles", languages ["fil"], use_cases ["narrative_story"]). The pick is **"Padre Veles – Tagakuwento ng mga Alamat"**, `voice_id NHa18FgjMx6FymEV1Vcl`: a deep, mysterious Filipino male storyteller made for alamat, kuwentong-bayan and kababalaghan. Re-confirm the ID from the list; it should only come from the tool. Backups if it's gone or the user wants another: **Nessy Storyteller** (female, folk legends) `ZvRtav8q9fOfg1kBt4Ez`, **Noel Urbano** (older male) `xk0YQH4VnJhJ44RGrzas`.
+3. Run `creative_create_flow` first. Then `creative_generate_speech` with model `eleven_v4` and language Filipino (`fil`), run with `estimate_only` first, then for real with the default 2 takes. Poll `creative_get_flow_run_status`.
+4. Foreign names in world myths (Zeus, Amaterasu, Quetzalcoatl) may be mispronounced. If so, spell them phonetically in the speech text only (e.g. "Ket-sal-KO-wat") and keep `script.txt` in step with the same words.
 5. To download the takes, `elevenlabsusercontent.com` must be an allowed host. If curl gets a 403 from the proxy, call `get_environment` and then `update_environment` with `add_allowed_hosts`.
 6. Measure each take with ffprobe and silencedetect, send both takes, and let the user choose. Report the length honestly. If a take is over the target, offer three options: keep it, shorten the script (~900 credits), or use another voice.
 7. Remind the user once that **free-plan audio may not be used commercially** (monetized channels need Starter+), and that the attribution "Voiceover generated with ElevenLabs" goes in the description.
@@ -104,7 +105,7 @@ Edit the cue table at the bottom of `audio.py`, which uses frames/30. Favour a f
 ## Stage 8: Thumbnail
 1. Add a `thumb` shot at frame 9000 to `story.js`. Make it an MCU of the hero (or the creature/god) with a shocked or awed face, next to the story's key magical object or transformation (scaled-up prop), with a glow and burst fx behind it. Make sure nothing is clipped by the card edge: keep the hand within about 50u of the shoulder.
 2. Render it with `node render.mjs stills/thumb "9000"`, then run `python3 thumb.py`. This writes `out/thumbnail_vertical.jpg` (1080×1920) and `out/thumbnail_youtube.jpg` (1280×720).
-3. Edit the two text lines in `thumb.py` to fit the story. The first is white (the setup, e.g. "SHE WOULDN'T LOOK…") and the second is yellow (the payoff, e.g. "NOW SHE HAS 100 EYES"), set in Inter Black with a dark stroke and drop shadow. A red arrow points at the key object.
+3. Edit the two text lines in `thumb.py` to fit the story. The first is white (the setup, e.g. "AYAW NIYANG HUMANAP…") and the second is yellow (the payoff, e.g. "KAYA MAY 100 MATA!"), set in Inter Black with a dark stroke and drop shadow. A red arrow points at the key object.
 4. Check the composite and send both. Keep the text off the face, and keep it inside the margins with font ≤ 112 px for long lines.
 
 ## Stage 9: Title, description, tags (see `references/publish.md`)
