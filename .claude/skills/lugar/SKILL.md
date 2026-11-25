@@ -61,16 +61,21 @@ Reply with the script in a code block (one phrase per line), word count, estimat
 ## Stage 3: Voiceover (ElevenLabs)
 `creative_create_flow` → `creative_generate_speech` (model `eleven_v4`, the chosen Filipino voice, `estimate_only` first, then 2 takes) → poll `creative_get_flow_run_status` → curl the takes into `takes/`. Measure with ffprobe + silencedetect, send both, use the closer one as `voice.mp3`.
 
-## Stage 4: Timing + captions
-- `mkdir -p work out && python3 timing.py voice.mp3 script.txt --out work` → `work/phrases.json`; frames = round(duration × 30).
-- `python3 captions.py work/phrases.json out/captions.ass` → word-by-word ASS. For exact word timing, transcribe the voice with `creative_transcribe_audio` (word timestamps) and save `work/words.json` as `[{word,start,end},…]`, then pass `--words work/words.json`. Check a few words against silencedetect gaps.
+## Stage 4: Timing + captions (word timestamps are REQUIRED)
+`timing.py` phrase guesses drifted by up to 2 s on the first LUGAR video, which put both captions and scenes out of sync. So:
+1. Pin the chosen take on its flow: `creative_add_flow_asset_node` (modality "audio", `generation_id` of the take, same `flow_id`).
+2. `creative_transcribe_audio` (model `eleven_scribe_v1`, `connect_from` that node, same flow) → poll → download `words_download_url` → save `work/words.json` as `[{word,start,end},…]` (keep only `type == "word"`). Cost was 0 credits.
+3. Print each phrase's real start/end frame from words.json (group words until , . ? " …) and use **those** frames for the SHOT table and every cue in `story.js` and `audio.py`.
+4. `python3 captions.py work/phrases.json out/captions.ass --words work/words.json` (still run `timing.py` first; it is only the fallback).
+5. Pad the voice end with ~1.6 s of silence for the outro (`apad`) — word times stay valid because padding is at the end.
 
 ## Stage 5: Build the animation (see `references/lugar-api.md`)
 1. `cp -r .claude/skills/lugar/kit/* <slug>/` (includes `fonts/Nunito-Black.ttf`, also copied into `web/` for signs and pills).
 2. Rewrite `web/story.js`: `setup()` builds the sets (props.js) and the rigs (`makeBlocky(spec)`), `frameAt(f, H, R)` poses every rig with `pose(rig, f, {pos, yaw, pose, t, expr, look, lean, armL, armR})`, hides the ones not in the shot, moves props, and returns fx cards (pills, shouts, bursts, money rain). SHOTS hold the cameras; sets for other places go far away on x.
 3. **Opening shot** for "Dito sa lugar namin": a wide establishing shot of the place (street, stalls, people going about the rule), slow push-in, ending on the narrator waving. **Closing shot** for "Anong meron sa lugar n'yo?": see Stage 2 step 8.
 4. Camera language from the reference: mostly eye-level medium shots and close-ups on faces (the face is the joke), quick cuts every 1–3 s, a push-in on each reaction, white flash on place/time jumps, pills popping above heads on the key word.
-5. Stills: `node render.mjs stills/a "<mid-frame of every shot>"` → `python3 sheet.py stills/a stills/sheet_a.jpg`; fix framing (faces not cut, pills inside the frame, captions zone y 1350–1550 kept clear of important action), re-render, then send the sheet.
+5. **Labels:** `pill()`/`shout()` draw on top of everything (overlay) and are auto-clamped inside the frame, so they never get cut or hidden behind props; still check that they don't cover a face or the caption band.
+6. Stills: `node render.mjs stills/a "<mid-frame of every shot>"` → `python3 sheet.py stills/a stills/sheet_a.jpg`; fix framing (faces not cut, pills inside the frame, captions zone y 1350–1550 kept clear of important action), re-render, then send the sheet.
 
 ## Stage 6: Sound
 `audio.py` (playful score + SFX cue table at frames/30): set `STOP` at the twist reveal, add cues for every pill pop (pop), money (coins/ting), falls (thud/boing), phone notifications (ting), crowd (applause). Run it, then `mix.py`.
