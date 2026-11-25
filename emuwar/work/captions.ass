@@ -1,0 +1,56 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Cap,Inter,74,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,-1,0,0,0,100,100,0,0,1,2.2,3.5,2,90,90,560,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.81,Cap,,0,0,0,,In nineteen thirty-two,
+Dialogue: 0,0:00:01.81,0:00:03.66,Cap,,0,0,0,,Australia declared war
+Dialogue: 0,0:00:03.66,0:00:04.97,Cap,,0,0,0,,on a bird.
+Dialogue: 0,0:00:04.97,0:00:06.38,Cap,,0,0,0,,And lost.
+Dialogue: 0,0:00:06.38,0:00:07.99,Cap,,0,0,0,,Western Australia.
+Dialogue: 0,0:00:07.99,0:00:09.71,Cap,,0,0,0,,Twenty thousand emus marched
+Dialogue: 0,0:00:09.71,0:00:10.79,Cap,,0,0,0,,into the wheat fields
+Dialogue: 0,0:00:10.79,0:00:11.87,Cap,,0,0,0,,and treated the crops
+Dialogue: 0,0:00:11.87,0:00:14.07,Cap,,0,0,0,,like an all-you-can-eat buffet.
+Dialogue: 0,0:00:14.07,0:00:14.94,Cap,,0,0,0,,So the farmers
+Dialogue: 0,0:00:14.94,0:00:16.46,Cap,,0,0,0,,called the army.
+Dialogue: 0,0:00:16.46,0:00:17.31,Cap,,0,0,0,,And the army
+Dialogue: 0,0:00:17.31,0:00:18.36,Cap,,0,0,0,,sent one major,
+Dialogue: 0,0:00:18.36,0:00:19.26,Cap,,0,0,0,,two soldiers,
+Dialogue: 0,0:00:19.26,0:00:20.47,Cap,,0,0,0,,two machine guns
+Dialogue: 0,0:00:20.47,0:00:22.81,Cap,,0,0,0,,and ten thousand bullets.
+Dialogue: 0,0:00:22.81,0:00:23.86,Cap,,0,0,0,,The emus didn't
+Dialogue: 0,0:00:23.86,0:00:25.29,Cap,,0,0,0,,follow the plan.
+Dialogue: 0,0:00:25.29,0:00:26.05,Cap,,0,0,0,,Every time
+Dialogue: 0,0:00:26.05,0:00:26.99,Cap,,0,0,0,,the soldiers got close,
+Dialogue: 0,0:00:26.99,0:00:27.94,Cap,,0,0,0,,the flock scattered
+Dialogue: 0,0:00:27.94,0:00:29.71,Cap,,0,0,0,,in every direction.
+Dialogue: 0,0:00:29.71,0:00:30.31,Cap,,0,0,0,,They set up
+Dialogue: 0,0:00:30.31,0:00:31.20,Cap,,0,0,0,,an ambush.
+Dialogue: 0,0:00:31.20,0:00:32.52,Cap,,0,0,0,,The gun jammed.
+Dialogue: 0,0:00:32.52,0:00:33.25,Cap,,0,0,0,,They chased them
+Dialogue: 0,0:00:33.25,0:00:34.12,Cap,,0,0,0,,with a truck.
+Dialogue: 0,0:00:34.12,0:00:36.00,Cap,,0,0,0,,The emus were faster.
+Dialogue: 0,0:00:36.00,0:00:36.97,Cap,,0,0,0,,The major said
+Dialogue: 0,0:00:36.97,0:00:38.42,Cap,,0,0,0,,the birds could face machine
+Dialogue: 0,0:00:38.42,0:00:39.59,Cap,,0,0,0,,guns like tanks.
+Dialogue: 0,0:00:39.59,0:00:40.41,Cap,,0,0,0,,After a week,
+Dialogue: 0,0:00:40.41,0:00:41.64,Cap,,0,0,0,,the army packed up
+Dialogue: 0,0:00:41.64,0:00:42.73,Cap,,0,0,0,,and went home.
+Dialogue: 0,0:00:42.73,0:00:44.01,Cap,,0,0,0,,Then came back.
+Dialogue: 0,0:00:44.01,0:00:45.58,Cap,,0,0,0,,Then went home again.
+Dialogue: 0,0:00:45.58,0:00:46.21,Cap,,0,0,0,,In the end,
+Dialogue: 0,0:00:46.21,0:00:47.04,Cap,,0,0,0,,farmers got paid
+Dialogue: 0,0:00:47.04,0:00:49.19,Cap,,0,0,0,,a bounty for every emu,
+Dialogue: 0,0:00:49.19,0:00:51.22,Cap,,0,0,0,,and that finally worked.
+Dialogue: 0,0:00:51.22,0:00:53.05,Cap,,0,0,0,,So the mighty army
+Dialogue: 0,0:00:53.05,0:00:54.37,Cap,,0,0,0,,lost the war.
+Dialogue: 0,0:00:54.37,0:00:55.16,Cap,,0,0,0,,To a bird
+Dialogue: 0,0:00:55.16,0:00:56.46,Cap,,0,0,0,,that can't even fly.

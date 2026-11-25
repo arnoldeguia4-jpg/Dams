@@ -1,0 +1,58 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Cap,Inter,74,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,-1,0,0,0,100,100,0,0,1,2.2,3.5,2,90,90,560,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.76,Cap,,0,0,0,,Sweden built
+Dialogue: 0,0:00:00.76,0:00:02.52,Cap,,0,0,0,,the most powerful warship
+Dialogue: 0,0:00:02.52,0:00:03.73,Cap,,0,0,0,,in the world.
+Dialogue: 0,0:00:03.73,0:00:05.78,Cap,,0,0,0,,It lasted twenty minutes.
+Dialogue: 0,0:00:05.78,0:00:06.68,Cap,,0,0,0,,Stockholm,
+Dialogue: 0,0:00:06.68,0:00:08.38,Cap,,0,0,0,,sixteen twenty-eight.
+Dialogue: 0,0:00:08.38,0:00:09.38,Cap,,0,0,0,,The Vasa had
+Dialogue: 0,0:00:09.38,0:00:10.88,Cap,,0,0,0,,sixty-four bronze cannons,
+Dialogue: 0,0:00:10.88,0:00:12.64,Cap,,0,0,0,,hundreds of carved statues,
+Dialogue: 0,0:00:12.64,0:00:13.89,Cap,,0,0,0,,and enough gold paint
+Dialogue: 0,0:00:13.89,0:00:15.39,Cap,,0,0,0,,to blind the enemy.
+Dialogue: 0,0:00:16.09,0:00:16.81,Cap,,0,0,0,,There was just
+Dialogue: 0,0:00:16.81,0:00:18.43,Cap,,0,0,0,,one tiny problem.
+Dialogue: 0,0:00:18.43,0:00:19.36,Cap,,0,0,0,,It was way too
+Dialogue: 0,0:00:19.36,0:00:20.29,Cap,,0,0,0,,heavy on top.
+Dialogue: 0,0:00:20.93,0:00:21.69,Cap,,0,0,0,,Before the launch,
+Dialogue: 0,0:00:21.69,0:00:23.40,Cap,,0,0,0,,the admiral ordered thirty
+Dialogue: 0,0:00:23.40,0:00:24.16,Cap,,0,0,0,,sailors to run
+Dialogue: 0,0:00:24.16,0:00:24.73,Cap,,0,0,0,,from one side
+Dialogue: 0,0:00:24.73,0:00:26.55,Cap,,0,0,0,,of the deck to the other.
+Dialogue: 0,0:00:26.55,0:00:27.61,Cap,,0,0,0,,The ship rocked
+Dialogue: 0,0:00:27.61,0:00:28.14,Cap,,0,0,0,,so hard,
+Dialogue: 0,0:00:28.14,0:00:29.19,Cap,,0,0,0,,he made them stop.
+Dialogue: 0,0:00:29.82,0:00:31.75,Cap,,0,0,0,,After three runs.
+Dialogue: 0,0:00:31.75,0:00:32.49,Cap,,0,0,0,,And then… they
+Dialogue: 0,0:00:32.49,0:00:34.53,Cap,,0,0,0,,launched it anyway.
+Dialogue: 0,0:00:34.53,0:00:35.39,Cap,,0,0,0,,Crowds cheered
+Dialogue: 0,0:00:35.39,0:00:36.52,Cap,,0,0,0,,from the shore.
+Dialogue: 0,0:00:36.52,0:00:37.44,Cap,,0,0,0,,The cannons fired
+Dialogue: 0,0:00:37.44,0:00:38.51,Cap,,0,0,0,,a salute.
+Dialogue: 0,0:00:38.51,0:00:39.74,Cap,,0,0,0,,Then a little gust
+Dialogue: 0,0:00:39.74,0:00:41.13,Cap,,0,0,0,,of wind blew.
+Dialogue: 0,0:00:41.13,0:00:42.75,Cap,,0,0,0,,The Vasa leaned.
+Dialogue: 0,0:00:42.75,0:00:44.03,Cap,,0,0,0,,Water poured in through
+Dialogue: 0,0:00:44.03,0:00:45.60,Cap,,0,0,0,,the open gunports.
+Dialogue: 0,0:00:45.60,0:00:46.50,Cap,,0,0,0,,It sank right there
+Dialogue: 0,0:00:46.50,0:00:47.72,Cap,,0,0,0,,in the harbor,
+Dialogue: 0,0:00:47.72,0:00:48.93,Cap,,0,0,0,,in front of everyone.
+Dialogue: 0,0:00:49.54,0:00:50.18,Cap,,0,0,0,,Three hundred
+Dialogue: 0,0:00:50.18,0:00:51.45,Cap,,0,0,0,,and thirty-three years later,
+Dialogue: 0,0:00:51.45,0:00:52.72,Cap,,0,0,0,,Sweden pulled it out
+Dialogue: 0,0:00:52.72,0:00:53.82,Cap,,0,0,0,,of the mud.
+Dialogue: 0,0:00:53.82,0:00:54.70,Cap,,0,0,0,,Today it's one
+Dialogue: 0,0:00:54.70,0:00:55.58,Cap,,0,0,0,,of the country's
+Dialogue: 0,0:00:55.58,0:00:56.90,Cap,,0,0,0,,most famous ships.
+Dialogue: 0,0:00:56.90,0:00:58.12,Cap,,0,0,0,,Because it sank.
