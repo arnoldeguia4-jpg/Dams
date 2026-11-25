@@ -190,7 +190,8 @@ const inkMat = new THREE.ShaderMaterial({
         vec4 N = texture2D(tN, vUv+o);
         if (N.a < 0.) continue;
         float dN = N.a == 0. ? 1e4 : N.a;
-        if (dN - dC > max(0.03, 0.03*dC)) ink = 1.;
+        bool flatS = N.a > 0. && dot(nC, N.rgb*2.-1.) > 0.985; // same flat surface seen at a grazing angle: not an edge
+        if (dN - dC > max(0.03, (flatS ? 0.3 : 0.03)*dC)) ink = 1.;
         else if (N.a > 0. && abs(dN-dC) < 0.08*dC) { vec3 nN = N.rgb*2.-1.; if (dot(nC,nN) < 0.8) ink = max(ink, 0.85); }
       }
       ink *= 1. - smoothstep(min(140., inkFar*0.45), inkFar, dC);
