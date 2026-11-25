@@ -4,123 +4,123 @@
  "phrases": [
   {
    "text": "Why is the Statue of Liberty green?",
-   "start": 0.0,
-   "end": 2.141
+   "start": 0.12,
+   "end": 2.08
   },
   {
    "text": "Because she wasn't always.",
-   "start": 2.658,
-   "end": 3.991
+   "start": 2.66,
+   "end": 3.94
   },
   {
    "text": "In eighteen eighty-six,",
-   "start": 4.623,
-   "end": 5.612
+   "start": 4.66,
+   "end": 5.88
   },
   {
    "text": "France gave America a giant gift: a lady made of shiny copper.",
-   "start": 5.612,
-   "end": 8.578
+   "start": 6.2,
+   "end": 10.98
   },
   {
    "text": "She glowed like a brand-new penny.",
-   "start": 9.053,
-   "end": 11.043
+   "start": 11.56,
+   "end": 13.66
   },
   {
    "text": "But copper has a secret.",
-   "start": 11.494,
-   "end": 13.707
+   "start": 14.26,
+   "end": 16.0
   },
   {
    "text": "When it meets rain,",
-   "start": 14.256,
-   "end": 16.018
+   "start": 16.5,
+   "end": 17.46
   },
   {
    "text": "wind and salty sea air,",
-   "start": 16.491,
-   "end": 18.133
+   "start": 17.76,
+   "end": 19.42
   },
   {
    "text": "it slowly changes.",
-   "start": 18.133,
-   "end": 19.501
+   "start": 19.76,
+   "end": 21.14
   },
   {
    "text": "Within about twenty years,",
-   "start": 19.725,
-   "end": 21.169
+   "start": 21.66,
+   "end": 23.04
   },
   {
    "text": "Lady Liberty went from penny brown to minty green.",
-   "start": 21.647,
-   "end": 25.505
+   "start": 23.3,
+   "end": 26.58
   },
   {
    "text": "People panicked.",
-   "start": 25.505,
-   "end": 26.607
+   "start": 27.16,
+   "end": 28.26
   },
   {
    "text": "In nineteen-oh-six,",
-   "start": 27.11,
-   "end": 28.287
+   "start": 28.78,
+   "end": 29.8
   },
   {
    "text": "Congress set aside money to paint her back to copper.",
-   "start": 28.759,
-   "end": 32.853
+   "start": 30.06,
+   "end": 32.8
   },
   {
    "text": "New Yorkers were furious.",
-   "start": 33.278,
-   "end": 35.077
+   "start": 33.3,
+   "end": 35.04
   },
   {
    "text": "Some called it sacrilege.",
-   "start": 35.395,
-   "end": 36.98
+   "start": 35.5,
+   "end": 36.94
   },
   {
    "text": "So engineers took a closer look,",
-   "start": 37.41,
-   "end": 39.569
+   "start": 37.5,
+   "end": 39.5
   },
   {
    "text": "and found something surprising.",
-   "start": 39.765,
-   "end": 41.285
+   "start": 39.76,
+   "end": 41.28
   },
   {
    "text": "That green coat wasn't damage.",
-   "start": 41.744,
-   "end": 43.758
+   "start": 41.78,
+   "end": 43.7
   },
   {
    "text": "It was armor.",
-   "start": 44.082,
-   "end": 44.989
+   "start": 44.12,
+   "end": 44.96
   },
   {
    "text": "A thin skin called patina that protects the metal underneath.",
-   "start": 45.389,
-   "end": 48.939
+   "start": 45.44,
+   "end": 48.92
   },
   {
    "text": "So the paint was never used.",
-   "start": 49.353,
-   "end": 51.166
+   "start": 49.44,
+   "end": 51.16
   },
   {
    "text": "That's why the Statue of Liberty is green.",
-   "start": 51.604,
-   "end": 53.61
+   "start": 51.64,
+   "end": 53.58
   },
   {
    "text": "Her \"rust\" is what protects her.",
-   "start": 54.009,
-   "end": 56.451
+   "start": 54.04,
+   "end": 56.22
   }
  ]
 }
