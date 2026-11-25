@@ -20,7 +20,7 @@ export const SHOTS = [
   { id: 'thumb', a: 9000, b: 9000, light: 'lugar', at: [0, 1, 0], span: 8,
     cam: [{ f: 9000, pos: [0.4, 1.5, 2.6], look: [0.05, 1.45, 0], fov: 40 }], dof: () => ({ c: 4, pt: [0, 1.5, 0] }) },
 ];
-export const shotAt = (f) => SHOTS.find((s) => f >= s.a && f <= s.b) || SHOTS[SHOTS.length - 1];
+export const shotAt = (f) => SHOTS.find((s) => f >= s.a && f < s.b + 1) || SHOTS[SHOTS.length - 1]; // "< b + 1" so fractional (warped) frames never fall between shots
 
 // ---------------- cast specs ----------------
 const SPEC = {

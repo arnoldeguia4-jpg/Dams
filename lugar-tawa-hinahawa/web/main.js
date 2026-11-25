@@ -1,10 +1,13 @@
 import { THREE, camera, applyLight, look, renderAll, setCam, camFromKeys, kick, beginCards, endCards, putCard } from './engine.js';
-import { setup, shotAt, frameAt, lookAt, TOTAL } from './story.js';
+import { setup, shotAt, frameAt, lookAt } from './story.js';
+import { warp, WARP } from './warp.js';
+const TOTAL = Math.round(WARP[WARP.length - 1][0]);
 
 // wait for the caption/sign font before building any canvas textures
 try { await document.fonts.load('900 64px "Nunito Black"'); } catch (e) {}
 const { H, R } = setup();
-window.renderFrame = (f) => {
+window.renderFrame = (fNew) => {
+  const f = fNew >= 9000 ? fNew : warp(fNew); // new voice take -> story timeline
   const S = shotAt(f);
   const st = camFromKeys(S.cam, f);
   let sh = [0, 0]; for (const [at, amp] of S.kicks || []) { const k = kick(f, at, amp); sh = [sh[0] + k * 0.6, sh[1] + k]; }

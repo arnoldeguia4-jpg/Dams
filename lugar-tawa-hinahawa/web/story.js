@@ -1,4 +1,6 @@
 // LUGAR: "Hinahawa ang Tawa" — Dito sa lugar namin, masaya ang mahihirap, malungkot ang mayayaman.
+// Cast: Dams (narrator, R.ako / R.akoRich), Don Francis (R.don), Nanay Kimberly (R.lola), Mang Jhano (R.berto), Wangbu (the dog),
+// neighbours Aling Cora (n1), Totoy (n2), Mang Rolly (n3), Ising (n4), Kuya Jun (n5). Frames here are on the v1 voice timeline; web/warp.js maps the current voice onto it.
 import { THREE, scene, ss, easeOut, easeIn, back, win, clamp, lerp } from './engine.js';
 import { makeBlocky, pose, hold, roundedBox, soft } from './blocky.js';
 import { ground, road, street, house, store, tree, lamp, room, table, rb, sign } from './props.js';
@@ -35,7 +37,7 @@ export const SHOTS = [
   { id: 'closer', a: 2495, b: TOTAL - 1, light: 'lugar', at: [-22, 1, 1], span: 10, cam: [k(2495, [-21.6, 1.8, 6.0], [-21.8, 1.6, 2.2], 40), k(TOTAL, [-21.65, 1.8, 5.5], [-21.8, 1.65, 2.2], 40)], dof: () => ({ c: 6, pt: [-21.8, 1.7, 2.2] }) },
   { id: 'thumb', a: 9000, b: 9000, light: 'lugar', at: [0, 1, 0], span: 10, cam: [k(9000, [8.6, 1.85, -1.6], [8.2, 1.7, -5.2], 42)], dof: () => ({ c: 4, pt: [8, 1.7, -5.2] }) },
 ];
-export const shotAt = (f) => SHOTS.find((s) => f >= s.a && f <= s.b) || SHOTS[SHOTS.length - 1];
+export const shotAt = (f) => SHOTS.find((s) => f >= s.a && f < s.b + 1) || SHOTS[SHOTS.length - 1]; // "< b + 1" so fractional (warped) frames never fall between shots
 
 // ---------------- cast ----------------
 const SPEC = {
@@ -98,7 +100,7 @@ export const setup = () => {
   for (const s of [-1, 1]) { const piv = new THREE.Group(); piv.position.set(GATE + s * 1.6, 0, -11); scene.add(piv); const leaf = new THREE.Group(); leaf.position.x = -s * 0.8; piv.add(leaf);
     for (let i = 0; i < 6; i++) { const b = new THREE.Mesh(new THREE.BoxGeometry(0.07, 3.0, 0.07), soft('#2a2a34')); b.position.set(-0.7 + i * 0.28, 1.5, 0); leaf.add(b); } rb(1.6, 0.1, 0.1, '#d9b440', { y: 2.9, parent: leaf }); rb(1.6, 0.1, 0.1, '#2a2a34', { y: 0.4, parent: leaf });
     H['gate' + (s < 0 ? 'L' : 'R')] = piv; }
-  H.cars = [car(-33.5, -8.3, '#22222a', Math.PI / 2), car(-30.4, -8.3, '#e9e9ee', Math.PI / 2), car(-22.2, -8.3, '#c2453c', -Math.PI / 2)];
+  H.cars = [car(-33.5, -8.3, '#22222a', Math.PI / 2), car(-30.4, -8.3, '#e9e9ee', Math.PI / 2), car(-36.6, -8.3, '#c2453c', Math.PI / 2)];
   // narrator's new red car on the street
   H.newCar = car(14, 1.4, '#e2453c', Math.PI / 2);
   // street feast table (boodle fight) in front of the gate
@@ -147,17 +149,17 @@ export const frameAt = (f, H, R) => {
       break; }
     case 'berto': {
       P(R.berto, f, { pos: CART, yaw: 10, pose: f > 295 ? 'cheer' : 'idle', expr: f > 290 ? 'laugh' : 'grin', lean: f > 295 ? -10 * Math.abs(Math.sin(f * 0.3)) : 0 });
-      add(pill('p20', f, 240, 339, [CART[0], 2.55, CART[2]], '₱20 LANG!', 'yellow'));
+      add(pill('pjh', f, 208, 240, [CART[0], 2.55, CART[2]], 'MANG JHANO', 'white')); add(pill('p20', f, 241, 339, [CART[0], 2.55, CART[2]], '₱20 LANG!', 'yellow'));
       add(burst('hb', f, 296, [CART[0] + 0.5, 2.0, CART[2] + 0.3], 0.6)); add(shout('ha', f, 300, 339, [CART[0] - 0.7, 2.1, CART[2] + 0.2], 'HAHAHA!', '#ffe066', 0.38));
       break; }
     case 'don': {
       P(R.don, f, { pos: [-27, 0, -7], pose: f > 436 ? 'facepalm' : 'idle', expr: f > 436 ? 'cry' : 'sad' });
-      add(pill('p3k', f, 395, 478, [-27, 2.6, -7], '3 KOTSE', 'yellow')); add(pill('pmn', f, 375, 478, [-27, 9.0, -13], 'MANSYON', 'white', 0.6));
+      add(pill('pdf', f, 341, 394, [-27, 2.6, -7], 'DON FRANCIS', 'white')); add(pill('p3k', f, 395, 478, [-27, 2.6, -7], '3 KOTSE', 'yellow')); add(pill('pmn', f, 375, 478, [-27, 9.0, -13], 'MANSYON', 'white', 0.6));
       break; }
     case 'ako': {
       const laugh = f >= 572;
       P(R.ako, f, { pos: [8, 0, -5.2], pose: laugh ? 'cheer' : f > 500 ? 'shrug' : 'idle', expr: laugh ? 'laugh' : f > 500 ? 'smile' : 'smug' });
-      add(pill('pa', f, 480, 520, [8, 2.55, -5.2], 'AKO', 'white')); add(pill('p0', f, 504, 572, [8, 2.55, -5.2], '₱0', 'red'));
+      add(pill('pa', f, 480, 520, [8, 2.55, -5.2], 'DAMS', 'white')); add(pill('p0', f, 504, 572, [8, 2.55, -5.2], '₱0', 'red'));
       add(pill('pn', f, 574, 616, [8, 2.55, -5.2], 'NAKAKAHAWA!', 'green')); add(burst('lb', f, 574, [8.4, 2.0, -4.8], 0.6));
       break; }
     case 'kalye': {
@@ -165,13 +167,13 @@ export const frameAt = (f, H, R) => {
       crowdLaugh([['n1', [4.2, 0, -4.0], 15], ['n3', [7.8, 0, -4.2], -15], ['n2', [3.0, 0, -2.6], 10], ['n4', [9.0, 0, -2.6], -12], ['n5', [5.2, 0, -1.6], 0]], 650, 9);
       P(R.berto, f, { pos: CART, yaw: 25, pose: f > 690 ? 'cheer' : 'idle', expr: f > 690 ? 'laugh' : 'smile' });
       dogAt([4.2, 0, -2.4], 0.3, f > 712);
-      add(pill('pd', f, 714, 749, [4.2, 1.5, -2.4], 'PATI ANG ASO!', 'yellow', 0.3));
+      add(pill('pd', f, 714, 749, [4.2, 1.5, -2.4], 'WANGBU!', 'yellow', 0.3));
       add(shout('hah', f, 660, 712, [6, 2.9, -4.2], 'HAHAHA!', '#ffe066', 0.5));
       break; }
     case 'lola': {
       P(R.lola, f, { pos: [BENCH[0] + 0.4, 0, BENCH[2]], pose: f > 788 && f < 860 ? 'point' : 'sit', yaw: -15, expr: 'smile' });
       P(R.ako, f, { pos: [BENCH[0] - 0.55, 0, BENCH[2] + 0.1], pose: 'sit', yaw: 15, expr: f > 860 ? 'happy' : 'smile', look: [-20, 0] });
-      add(pill('pl', f, 755, 892, [BENCH[0] + 0.4, 2.0, BENCH[2]], 'LOLA', 'white', 0.26));
+      add(pill('pl', f, 755, 892, [BENCH[0] + 0.4, 2.0, BENCH[2]], 'NANAY KIMBERLY', 'white', 0.26));
       add(pill('ph', f, 862, 892, [BENCH[0], 2.55, BENCH[2]], 'HINAHAWA ANG TAWA', 'green', 0.3));
       break; }
     case 'knock': {

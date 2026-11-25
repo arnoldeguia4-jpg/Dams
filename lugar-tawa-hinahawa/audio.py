@@ -52,7 +52,15 @@ def bell(freq, d=1.2):
 # ---------------- music ----------------
 music = np.zeros(N)
 BPM = 112; beat = 60 / BPM; bar = 4 * beat
-STOP = 2174 / 30
+import json as _json
+_W = _json.load(open('work/warp.json'))
+def WARPF(fo):  # old story frame -> new voice frame
+    for i in range(1, len(_W)):
+        if fo <= _W[i][1]:
+            (n0, o0), (n1, o1) = _W[i - 1], _W[i]; return n0 + (n1 - n0) * (fo - o0) / (o1 - o0)
+    return _W[-1][0] + (fo - _W[-1][1])
+STOP = WARPF(2536) / 30  # music ends on the closer
+QA, QB = WARPF(1134) / 30, WARPF(1880) / 30  # thin + sad while rich and alone
 NOTE = lambda m: 440 * 2 ** ((m - 69) / 12)
 prog = [(48, [60, 64, 67]), (43, [59, 62, 67]), (45, [57, 60, 64]), (41, [57, 60, 65])]  # C G Am F
 mel = [72, 74, 76, 79, 76, 74, 72, 74,  71, 72, 74, 71, 67, 69, 71, 74,  72, 71, 69, 72, 76, 74, 72, 69,  69, 71, 72, 74, 72, 69, 65, 67]
@@ -60,7 +68,7 @@ start = 0.15
 nbars = int((STOP - start) / bar) + 1
 for b in range(nbars):
     t0 = start + b * bar; root, ch = prog[b % 4]
-    quiet = 0.55 if (52 < t0 < 62.5) or (62.8 < t0 < 67) else 1.0  # thinner under the wait + the explanation
+    quiet = 0.3 if (QA < t0 < QB) else 1.0
     for k in range(4):
         tb = t0 + k * beat
         if tb >= STOP: break
@@ -125,7 +133,7 @@ def birds(d):
         t = t_(0.12); f = 3000 + 1500 * np.sin(2 * np.pi * 18 * t); c = np.sin(2 * np.pi * np.cumsum(f) / SR) * env(len(t), 0.005, 0.04)
         i0 = int(rng.uniform(0, d - 0.2) * SR); out[i0:i0 + len(c)] += c
     return out
-F = lambda f: f / 30
+F = lambda f: WARPF(f) / 30
 def stampS(): x = np.zeros(int(0.4 * SR)); th = thunk(); x[:len(th)] += th; return x
 def knock(): x = np.zeros(int(0.5 * SR)); th = thunk(); x[:len(th)] += th; x[int(0.18 * SR):int(0.18 * SR) + len(th)] += th; return x
 def coins(d=1.2):
