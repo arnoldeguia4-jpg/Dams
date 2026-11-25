@@ -18,7 +18,7 @@ Everything needed is bundled in `kit/` (engine with the ink-fog fix and the `low
 ## One-command mode (`/wangbu`): the default
 When WANGBU is invoked as `/wangbu`, `/wangbu <why question>` or just "WANGBU", run all stages, 1 → 9, back to back without waiting. Pause only where a choice is truly the user's. Defaults:
 - **Starting point:** ideas + script, unless the user attached a voiceover or a script.
-- **Length:** 45–60 s, about 145–155 words for Nick.
+- **Length:** 45–60 s, about 135–145 words for Nick.
 - **Topic:** if `/wangbu <question>` names one (e.g. `/wangbu why are stop signs red`), verify it and go straight to the script. Otherwise post the 10 ideas, then **pick the strongest one yourself** and say which and why in one line. Only wait for a number if the user writes `/wangbu pili`, "ako pipili", or similar.
 - **Voice:** Nick (Relatable & Engaging Friend), 2 takes. Use the take closest to the target length and send both.
 - **Credits:** if they aren't enough for the takes, stop and ask. That is the only hard stop.
@@ -74,9 +74,9 @@ Good why-ideas have:
 
 Plain spoken English, contractions, numbers written as words.
 
-**Word budget for Nick:** about **2.6 words/s including pauses** (198 words came out at 77 s on the penicillin short):
-- **≈ 145 words for 55 s**
-- **≈ 155 words for 60 s**
+**Word budget for Nick:** about **2.45 words/s including pauses** (148 words came out at 60.7 s on the marathon short; 198 words at 77 s on penicillin). Numbers spelled out ("nineteen-oh-eight") read slowly:
+- **≈ 135 words for 55 s**
+- **≈ 145 words for 60 s**
 
 Reply with the script in a code block, the word count and estimated length, a one-paragraph visual plan, and fact notes. Keep the final text in `script.txt` (one paragraph per line). It drives the timing.
 
