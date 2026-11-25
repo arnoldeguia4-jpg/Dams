@@ -31,3 +31,10 @@ Signs and pills use the bundled **Nunito Black** (loaded in `index.html`; `main.
 - A glow card in front of a character washes it out: put glow cards behind (smaller z) or skip them.
 - Vehicles and characters overlap: move props by frame and check stills.
 - Houses from `street()` sit at z ±9 with 5 m depth; keep the camera on the road side.
+
+## More traps (from "Hinahawa ang Tawa")
+- Camera keys that glide past a balcony rail or a character pass *through* them for a few frames; add a mid key or cut instead of gliding.
+- Street rows from `street()` stand at z ±9 with 5 m depth: a camera at z > 6 is inside the houses.
+- A character placed inside a building block (e.g. behind a mansion facade) renders hidden or cut; check `pos` against the building's footprint.
+- Seated rigs (`pose:'sit'`) push their white shoes toward the camera; frame them from the side or a bit higher.
+- Night shots: `lugarNight` is tuned bright enough for faces; don't darken it further.

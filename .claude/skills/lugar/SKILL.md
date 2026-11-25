@@ -21,7 +21,7 @@ LUGAR is the fourth sister of PALDO / PALDONT / WANGBU, but with its own look:
 
 ## One-command mode (`/lugar <topic>`)
 Run stages 1 → 9 back to back. Defaults:
-- **Length:** 60–90 s (about 130–190 Tagalog words). The reference ran 3 min; go longer only if the user asks.
+- **Length:** 60–90 s (about 140–210 Tagalog words). The reference ran 3 min; go longer only if the user asks.
 - **Voice (fixed narrator, picked for the user: Filipino, 20–30, the most jolly/masayang pakinggan):** ElevenLabs **"Ro Raza"** (young male, "Friendly, Warm, Honest"), `voice_id 3BDtQgJQtkDnbDR0xPpK`. Chosen from an audition of 5 Filipino voices on the same line ("Dito sa lugar namin… Anong meron sa lugar n'yo?"): brightest pitch (≈ 193 Hz), widest pitch movement (≈ 22.7 semitones), most loudness variation and fastest delivery, i.e. the liveliest, while still sounding like a 20–30-year-old (Kuya Totoy was livelier but sounds like a child). Use him for **every** LUGAR video. Re-confirm the ID with `creative_list_voices` (languages ["fil"], age "young"). If unavailable: **Rey Mark – Tagalog Narration** `PU0XItgzyyu0BQV8GHRX` (young male storyteller) and tell the user. For extra energy, start lines with a v4 audio tag like `[excited]` or `[laughs]` in the speech text only (not in `script.txt`). 2 takes; use the one closest to the target.
 - **Credits:** check `account_get_usage`; stop and ask only if the takes don't fit.
 - **Sends:** script, voice takes, stills sheet, MP4, thumbnails, publishing pack.
@@ -55,7 +55,7 @@ Shape (first person, Tagalog):
 7. **Button:** one last line or a final pill/shout that lands the joke (≤ 6 words).
 8. **Closer:** "Anong meron sa lugar n'yo?" — the narrator faces the camera (medium close-up, `wave` or `point` at the lens), the music hits its last chord, and a big `shout()` / white pill **"ANONG MERON SA LUGAR N'YO?"** pops above him while the caption shows the words.
 Plant at least two details early that the twist pays off. Keep sentences short (captions are one word at a time).
-**Word budget:** start at ~2.2 words/s for Tagalog (measure after the first take and update this file): ≈ 130 words → 60 s, ≈ 190 words → 90 s.
+**Word budget (Ro Raza, measured):** ≈ **2.35 words/s** including pauses (198 words → 84.4 s on "Hinahawa ang Tawa"): ≈ 140 words → 60 s, ≈ 170 words → 72 s, ≈ 210 words → 90 s. Pad the voice with ~1.6 s of silence at the end (`ffmpeg -af apad=pad_dur=1.6`) so the closer has room for the outro; that is not re-timing.
 Reply with the script in a code block (one phrase per line), word count, estimated length, the twist in one line, the planted details, and a shot plan. Save it as `script.txt`.
 
 ## Stage 3: Voiceover (ElevenLabs)
