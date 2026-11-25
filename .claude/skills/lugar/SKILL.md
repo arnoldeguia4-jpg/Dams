@@ -12,7 +12,7 @@ LUGAR is the fourth sister of PALDO / PALDONT / WANGBU, but with its own look:
 - **Pill labels:** rounded pills in 3D space above people/things (`pill()` in `cast.js`): yellow ("10 TASA!"), red ("MALING JEEP!"), green ("✓ TAMA!"), white name tags ("KAPITAN!"), plus big `shout()` text, money rain, confetti, bursts, dizzy stars.
 - **Language:** Tagalog / Taglish narration, first person ("ako"), playful and fast. Captions, pills and signs in the same language.
 - **Signature lines:** every video opens with **"Dito sa lugar namin…"** and closes with **"Anong meron sa lugar n'yo?"**.
-- **Narrator:** always **Rey Mark – Tagalog Narration** (ElevenLabs, young Filipino male).
+- **Narrator:** always **Ro Raza** (ElevenLabs, young Filipino male, jolly and lively).
 
 ## Who does what
 - **The user gives the topic** (a premise, a "what if", a funny situation: e.g. "isang barangay kung saan binabayaran ang pagkakamali").
@@ -22,7 +22,7 @@ LUGAR is the fourth sister of PALDO / PALDONT / WANGBU, but with its own look:
 ## One-command mode (`/lugar <topic>`)
 Run stages 1 → 9 back to back. Defaults:
 - **Length:** 60–90 s (about 130–190 Tagalog words). The reference ran 3 min; go longer only if the user asks.
-- **Voice (fixed narrator, chosen by the user's request: Filipino, 20–30 years old):** ElevenLabs **"Rey Mark – Tagalog Narration"**, `voice_id PU0XItgzyyu0BQV8GHRX` (labelled *young male*, Tagalog, made for storytelling/commentary). Use him for **every** LUGAR video so the channel has one recognisable narrator. Re-confirm the ID with `creative_list_voices` (languages ["fil"], age "young"). Only if he is unavailable, fall back to **Ro Raza** `3BDtQgJQtkDnbDR0xPpK` (young male, friendly) or **Pio** `StymX0JUYNoafvGtCcXl` (young male, calm) and tell the user. 2 takes; use the one closest to the target.
+- **Voice (fixed narrator, picked for the user: Filipino, 20–30, the most jolly/masayang pakinggan):** ElevenLabs **"Ro Raza"** (young male, "Friendly, Warm, Honest"), `voice_id 3BDtQgJQtkDnbDR0xPpK`. Chosen from an audition of 5 Filipino voices on the same line ("Dito sa lugar namin… Anong meron sa lugar n'yo?"): brightest pitch (≈ 193 Hz), widest pitch movement (≈ 22.7 semitones), most loudness variation and fastest delivery, i.e. the liveliest, while still sounding like a 20–30-year-old (Kuya Totoy was livelier but sounds like a child). Use him for **every** LUGAR video. Re-confirm the ID with `creative_list_voices` (languages ["fil"], age "young"). If unavailable: **Rey Mark – Tagalog Narration** `PU0XItgzyyu0BQV8GHRX` (young male storyteller) and tell the user. For extra energy, start lines with a v4 audio tag like `[excited]` or `[laughs]` in the speech text only (not in `script.txt`). 2 takes; use the one closest to the target.
 - **Credits:** check `account_get_usage`; stop and ask only if the takes don't fit.
 - **Sends:** script, voice takes, stills sheet, MP4, thumbnails, publishing pack.
 - **Render:** two workers, monitor every 250 frames, re-arm after 30 min.
