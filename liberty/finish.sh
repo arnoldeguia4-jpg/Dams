@@ -6,7 +6,7 @@ I=$(ffmpeg -hide_banner -i out/mix.wav -af ebur128 -f null - 2>&1 | grep -E "^\s
 G=$(python3 -c "print(-14 - ($I))")
 echo "mix loudness $I LUFS -> gain $G dB"
 ffmpeg -y -v error -i out/mix.wav -af "volume=${G}dB,alimiter=limit=0.708:level=false:attack=2:release=60,aresample=192000,alimiter=limit=0.75:level=false:attack=1,aresample=48000" -ar 48000 out/final_audio.wav
-[ -f work/phrases.json ] && [ "${CAPTIONS:-1}" = "1" ] && python3 captions.py && VF=(-vf "ass=work/captions.ass:fontsdir=/usr/share/fonts/opentype/inter") || VF=()
+[ -f work/phrases.json ] && [ "${CAPTIONS:-1}" = "1" ] && python3 captions.py && VF=(-vf "ass=work/captions.ass:fontsdir=fonts") || VF=()
 ffmpeg -y -v error -framerate 30 -i frames/f%04d.jpg -i out/final_audio.wav -map 0:v:0 -map 1:a:0 "${VF[@]}" -c:v libx264 -preset slow -crf 17 -pix_fmt yuv420p \
   -c:a aac -b:a 192k -shortest -metadata title="$TITLE" -movflags +faststart "out/$(echo "$TITLE" | tr ' ' '_').mp4"
 OUT="out/$(echo "$TITLE" | tr ' ' '_').mp4"
