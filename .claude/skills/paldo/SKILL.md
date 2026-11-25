@@ -30,7 +30,7 @@ The user wants **one command to run the whole pipeline**. When PALDO is invoked 
 
 ## Rules
 - Stories, characters and shots are original. Never recreate another creator's video, and never use real living people as jokes, brand mascots or logos.
-- No captions unless asked. Diegetic text such as signs, labels or a calendar is fine, but it must read correctly and never be mirrored.
+- **Always burn in captions** (the user's standing request): simple white bold text (Inter Bold 74 px) with a thin black outline and a soft black drop shadow, not a thick stroke, lower-middle of the frame, max 4 words per caption, no dangling "a/the/of" at a chunk end. `finish.sh` does this automatically from `work/phrases.json` via `captions.py` (`CAPTIONS=0` to skip). Diegetic text such as signs, labels or a calendar is also fine, but it must read correctly and never be mirrored.
 - Never edit or re-time the voice, not even with atempo. The picture is timed to the voice.
 - Mix with `kit/mix.py`. Music goes at exactly −6 dB vs the voice's gated RMS. SFX go at or below −6 dB, with peaks ≤ 0.7× the voice peak. Use one linear gain plus a limiter at the end.
 - Verify every fact with WebSearch before offering it. Label each story **True / Disputed / Legend**, and use "legend says" or "probably" where the evidence is thin. Credit sources in the reply.
@@ -87,7 +87,7 @@ Edit the cue table at the bottom of `audio.py`, which uses frames/30. Run `pytho
 ## Stage 7: Render, finish, deliver
 - **Render:** start two workers in parallel with `RESUME=1 nohup node render.mjs frames "0-<N/2>"` and `"<N/2+1>-<N-1>"`, writing logs to `work/r1.log` and `work/r2.log`. That is ≈ 3.3 s/frame each, so about 1 h for 77 s on 4 cores.
 - **Monitor:** watch it with a Monitor loop that reports every 250 frames and exits on DONE ×2, an error, or the processes exiting. Re-arm it after 30 minutes.
-- **Finish:** run `bash finish.sh "Title"`. It applies a linear gain to about −14 LUFS and a two-stage limiter, so the true peak stays under −1 dBFS. It encodes H.264 CRF 17 with AAC 192k, runs the freeze, black and loudness QA, and writes `out/qa_sheet.jpg`.
+- **Finish:** run `bash finish.sh "Title"` (it also burns in the captions). It applies a linear gain to about −14 LUFS and a two-stage limiter, so the true peak stays under −1 dBFS. It encodes H.264 CRF 17 with AAC 192k, runs the freeze, black and loudness QA, and writes `out/qa_sheet.jpg`.
 - **Deliver:** read the QA sheet, then send the MP4 with SendUserFile. Give a short Tagalog summary: the QA numbers and one line per shot. Commit and push.
 
 ## Stage 8: Thumbnail
