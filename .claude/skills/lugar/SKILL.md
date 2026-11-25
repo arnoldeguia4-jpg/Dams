@@ -14,6 +14,9 @@ LUGAR is the fourth sister of PALDO / PALDONT / WANGBU, but with its own look:
 - **Signature lines:** every video opens with **"Dito sa lugar namin…"** and closes with **"Anong meron sa lugar n'yo?"**.
 - **Narrator:** always **Ro Raza** (ElevenLabs, young Filipino male, jolly and lively).
 
+## Recurring cast (see `references/cast.md`, specs in `kit/web/castSpecs.js`)
+Dams (narrator), Don Francis, Nanay Kimberly, Mang Jhano, the neighbours Aling Ninya, Biboy, Mang Torres, Jenny, Kuya Steban, and Wangbu the dog. Reuse them (same names, same looks) in every video, casting them into roles that fit the new premise; name them in narration and with white name pills the first time each appears.
+
 ## Who does what
 - **The user gives the topic** (a premise, a "what if", a funny situation: e.g. "isang barangay kung saan binabayaran ang pagkakamali").
 - **You write the story and the ending.** Your job is the hook, the escalation and the **twist** that makes people stay to the last second. Don't change the user's premise; build on it.
