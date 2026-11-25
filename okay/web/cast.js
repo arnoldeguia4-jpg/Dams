@@ -233,3 +233,44 @@ export const drawLayers = (g) => {
   for (let k = 0; k < 5; k++) { const x = 70 + k * 90; p.poly([[x, 20], [x + 20, 20], [x + 20, 80], [x + 34, 80], [x + 10, 130], [x - 14, 80], [x, 80]], '#9fd4ff', 5); }
   g.restore();
 };
+
+// ---------------- "Why Do We Say OK?" additions ----------------
+const sideburns = (p, h) => { const { cx, hc, W, HH, u } = h; for (const s of [-1, 1]) { p.ell(cx + s * 0.46 * W, hc + 0.02 * HH, 0.14 * W, 0.2 * HH, '#e6dccb', 3 * u); p.ell(cx + s * 0.4 * W, hc - 0.22 * HH, 0.12 * W, 0.08 * HH, '#e6dccb', 3 * u); } };
+const visor = (p, h) => { const { cx, crown, HH, W, u } = h, y = crown + 0.3 * HH; p.poly([[cx - 0.36 * W, y], [cx + 0.36 * W, y], [cx + 0.28 * W, y + 0.1 * HH], [cx - 0.28 * W, y + 0.1 * HH]], 'rgba(60,170,110,0.85)', 3 * u); };
+const vest = (col) => (p, c) => { const { tcx, chin, HH, u } = c; p.poly([[tcx - 24 * u, chin + 4 * u], [tcx, chin + 0.34 * HH], [tcx + 24 * u, chin + 4 * u], [tcx + 24 * u, chin + 0.6 * HH], [tcx - 24 * u, chin + 0.6 * HH]], col, 2.4 * u); p.poly([[tcx - 9 * u, chin], [tcx, chin + 0.3 * HH], [tcx + 9 * u, chin]], '#ffffff', 2 * u); p.ell(tcx, chin + 5 * u, 7 * u, 4 * u, '#2a2030', 1.6 * u); for (let i = 0; i < 3; i++) p.dot(tcx, chin + (0.38 + i * 0.07) * HH, 2.4 * u, '#d9b45a'); };
+const hoodie = (p, c) => { const { tcx, chin, HH, u } = c; p.ell(tcx, chin + 2 * u, 26 * u, 8 * u, '#3a6fb0', 2.4 * u); for (const s of [-1, 1]) p.stroke([[tcx + s * 6 * u, chin + 6 * u], [tcx + s * 7 * u, chin + 0.26 * HH]], 2 * u, '#f2efe6'); p.poly([[tcx - 20 * u, chin + 0.5 * HH], [tcx + 20 * u, chin + 0.5 * HH], [tcx + 16 * u, chin + 0.64 * HH], [tcx - 16 * u, chin + 0.64 * HH]], '#3a6fb0', 2 * u); };
+Object.assign(OUT, {
+  texter: { o: { jacket: '#4a86c8', pants: '#2f3a52', boots: '#e8e2d2', hat: 'hair', hair: '#2a1d16', skin: SKINS[2] }, extra: hoodie, seed: 33 },
+  ed1: { o: { jacket: '#f2efe6', pants: '#3b3f52', boots: '#2a2220', hat: 'hair', hair: '#6a4026', skin: SKINS[0], moustache: '#6a4026', buttons: '#f2efe6' }, extra: vest('#7a2a2a'), head: visor, seed: 37 },
+  ed2: { o: { jacket: '#f2efe6', pants: '#4a4038', boots: '#2a2220', hat: 'hair', hair: '#c9a46a', skin: SKINS[1], buttons: '#f2efe6' }, extra: vest('#2b4c6a'), head: glasses, seed: 41 },
+  vanburen: { o: { jacket: '#2a2a3a', pants: '#2a2a34', boots: '#1d1a1a', hat: 'none', skin: SKINS[0], buttons: '#8a8a96', build: 'stout' }, extra: suit('#f2efe6'), head: sideburns, seed: 45 },
+});
+const txt = (p, s, x, y, size, col = '#2a2030', font = 'Georgia, serif') => { const g = p.g; g.save(); g.fillStyle = col; g.font = `900 ${size}px ${font}`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(s, x, y); g.restore(); };
+Object.assign(PROP, {
+  phone: (p, x, y, u) => { p.poly([[x - 9 * u, y - 30 * u], [x + 9 * u, y - 30 * u], [x + 9 * u, y + 4 * u], [x - 9 * u, y + 4 * u]], '#22222a', 2.2 * u); p.poly([[x - 6.5 * u, y - 26 * u], [x + 6.5 * u, y - 26 * u], [x + 6.5 * u, y - 1 * u], [x - 6.5 * u, y - 1 * u]], '#9fd4ff', 0); p.dot(x, y, 5.5 * u); },
+  paper: (p, x, y, u) => { p.poly([[x - 30 * u, y - 52 * u], [x + 30 * u, y - 52 * u], [x + 30 * u, y + 8 * u], [x - 30 * u, y + 8 * u]], '#f4ecd2', 2.4 * u); txt(p, 'POST', x, y - 42 * u, 10 * u); p.stroke([[x - 26 * u, y - 35 * u], [x + 26 * u, y - 35 * u]], 1.4 * u); txt(p, 'O.K.', x, y - 18 * u, 22 * u, '#c0353a'); for (let i = 0; i < 3; i++) p.stroke([[x - 24 * u, y - 4 * u + i * 4 * u], [x + 24 * u, y - 4 * u + i * 4 * u]], 1 * u, '#8a8070'); p.dot(x, y, 5.5 * u); },
+  okSign: (p, x, y, u) => { p.band([[x, y + 30 * u], [x, y - 60 * u]], '#8a5a34', 3.5 * u, 1.2 * u, 'round'); p.poly([[x - 30 * u, y - 104 * u], [x + 30 * u, y - 104 * u], [x + 30 * u, y - 56 * u], [x - 30 * u, y - 56 * u]], '#f6ecd2', 2.4 * u); txt(p, 'O.K.', x, y - 80 * u, 24 * u, '#c0353a'); p.dot(x, y, 5.5 * u); },
+  chalk: (p, x, y, u) => { p.band([[x, y], [x + 6 * u, y - 12 * u]], '#f4f4ee', 3 * u, 1 * u, 'round'); p.dot(x, y, 5.5 * u); },
+  hat: (p, x, y, u) => { p.poly([[x - 14 * u, y - 4 * u], [x - 14 * u, y - 34 * u], [x + 14 * u, y - 34 * u], [x + 14 * u, y - 4 * u]], '#24222a', 2.4 * u); p.ell(x, y - 3 * u, 22 * u, 4 * u, '#24222a', 2.4 * u); p.dot(x, y, 5.5 * u); },
+});
+// speech bubble with text
+export const drawBubble = (g, s, col = '#ffffff', fg = '#2a2030') => { const w = g.canvas.width, h = g.canvas.height; const p = new Pen(g); g.save(); g.scale(w / 512, h / 512);
+  p.ell(256, 220, 220, 160, col, 10); p.poly([[180, 350], [130, 470], [260, 370]], col, 0); g.strokeStyle = INK; g.lineWidth = 10; g.beginPath(); g.moveTo(180, 362); g.lineTo(130, 470); g.lineTo(250, 374); g.stroke();
+  g.fillStyle = fg; g.font = `900 ${s.length > 3 ? 120 : 170}px Georgia, serif`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(s, 256, 226); g.restore(); };
+// chalkboard: [[big, small], ...] lines; reveal 0..n
+export const drawBoard = (g, rows) => { const w = g.canvas.width, h = g.canvas.height; g.save(); g.scale(w / 1024, h / 640);
+  g.fillStyle = '#6a4a2e'; g.fillRect(0, 0, 1024, 640); g.fillStyle = '#2f4a3a'; g.fillRect(28, 28, 968, 584);
+  g.fillStyle = 'rgba(255,255,255,0.06)'; for (let i = 0; i < 40; i++) g.fillRect((i * 173) % 960 + 30, (i * 97) % 560 + 30, 80, 6);
+  g.textAlign = 'center'; g.textBaseline = 'middle';
+  rows.forEach(([a, b, col], i) => { const y = 150 + i * 200; g.fillStyle = '#f4f4ee'; g.font = '900 74px Georgia, serif'; g.fillText(a, 300, y); if (b) { g.fillText('→', 560, y); g.fillStyle = col || '#ffe066'; g.font = '900 110px Georgia, serif'; g.fillText(b, 780, y); } });
+  g.restore(); };
+// big newspaper front page
+export const drawFront = (g, t = 1) => { const w = g.canvas.width, h = g.canvas.height; g.save(); g.scale(w / 640, h / 800);
+  g.fillStyle = '#f4ecd2'; g.fillRect(0, 0, 640, 800); g.strokeStyle = INK; g.lineWidth = 12; g.strokeRect(6, 6, 628, 788);
+  g.fillStyle = '#2a2030'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.font = '900 62px Georgia, serif'; g.fillText('BOSTON', 320, 70); g.fillText('MORNING POST', 320, 140);
+  g.font = 'italic 30px Georgia, serif'; g.fillText('March 23, 1839', 320, 195); g.fillRect(40, 220, 560, 6);
+  g.fillStyle = '#c0353a'; g.font = '900 230px Georgia, serif'; g.fillText('O.K.', 320, 380);
+  g.fillStyle = '#2a2030'; g.font = 'italic 900 54px Georgia, serif'; g.fillText('"oll korrect"', 320, 530);
+  if (t > 0) { g.globalAlpha = Math.min(1, t); g.font = '900 44px Georgia, serif'; g.fillText('(all correct)', 320, 610); g.strokeStyle = '#c0353a'; g.lineWidth = 10; g.beginPath(); g.ellipse(320, 530, 250, 60, 0, 0, Math.PI * 2); g.stroke(); }
+  g.globalAlpha = 1; g.fillStyle = '#8a8070'; for (let i = 0; i < 5; i++) g.fillRect(60, 660 + i * 24, 520, 8);
+  g.restore(); };
