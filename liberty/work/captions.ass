@@ -10,44 +10,44 @@ Style: Cap,Inter,74,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,-1,0,0,0,100,100
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 0,0:00:00.00,0:00:00.95,Cap,,0,0,0,,Why is the Statue
-Dialogue: 0,0:00:00.95,0:00:02.66,Cap,,0,0,0,,of Liberty green?
-Dialogue: 0,0:00:02.66,0:00:03.99,Cap,,0,0,0,,Because she wasn't always.
-Dialogue: 0,0:00:04.62,0:00:05.61,Cap,,0,0,0,,In eighteen eighty-six,
-Dialogue: 0,0:00:05.61,0:00:06.60,Cap,,0,0,0,,France gave America
-Dialogue: 0,0:00:06.60,0:00:07.59,Cap,,0,0,0,,a giant gift: a lady
-Dialogue: 0,0:00:07.59,0:00:09.05,Cap,,0,0,0,,made of shiny copper.
-Dialogue: 0,0:00:09.05,0:00:09.94,Cap,,0,0,0,,She glowed like
-Dialogue: 0,0:00:09.94,0:00:11.49,Cap,,0,0,0,,a brand-new penny.
-Dialogue: 0,0:00:11.49,0:00:12.76,Cap,,0,0,0,,But copper has
-Dialogue: 0,0:00:12.76,0:00:14.26,Cap,,0,0,0,,a secret.
-Dialogue: 0,0:00:14.26,0:00:16.49,Cap,,0,0,0,,When it meets rain,
-Dialogue: 0,0:00:16.49,0:00:17.59,Cap,,0,0,0,,wind and salty
-Dialogue: 0,0:00:17.59,0:00:18.13,Cap,,0,0,0,,sea air,
-Dialogue: 0,0:00:18.13,0:00:19.73,Cap,,0,0,0,,it slowly changes.
-Dialogue: 0,0:00:19.73,0:00:21.65,Cap,,0,0,0,,Within about twenty years,
-Dialogue: 0,0:00:21.65,0:00:23.30,Cap,,0,0,0,,Lady Liberty went
-Dialogue: 0,0:00:23.30,0:00:24.40,Cap,,0,0,0,,from penny brown
-Dialogue: 0,0:00:24.40,0:00:25.50,Cap,,0,0,0,,to minty green.
-Dialogue: 0,0:00:25.50,0:00:27.11,Cap,,0,0,0,,People panicked.
-Dialogue: 0,0:00:27.11,0:00:28.76,Cap,,0,0,0,,In nineteen-oh-six,
-Dialogue: 0,0:00:28.76,0:00:30.81,Cap,,0,0,0,,Congress set aside money
-Dialogue: 0,0:00:30.81,0:00:31.98,Cap,,0,0,0,,to paint her back
-Dialogue: 0,0:00:31.98,0:00:33.28,Cap,,0,0,0,,to copper.
-Dialogue: 0,0:00:33.28,0:00:35.40,Cap,,0,0,0,,New Yorkers were furious.
-Dialogue: 0,0:00:35.40,0:00:37.41,Cap,,0,0,0,,Some called it sacrilege.
-Dialogue: 0,0:00:37.41,0:00:38.61,Cap,,0,0,0,,So engineers took
-Dialogue: 0,0:00:38.61,0:00:39.77,Cap,,0,0,0,,a closer look,
-Dialogue: 0,0:00:39.77,0:00:41.74,Cap,,0,0,0,,and found something surprising.
-Dialogue: 0,0:00:41.74,0:00:42.75,Cap,,0,0,0,,That green coat
-Dialogue: 0,0:00:42.75,0:00:44.08,Cap,,0,0,0,,wasn't damage.
-Dialogue: 0,0:00:44.08,0:00:45.39,Cap,,0,0,0,,It was armor.
-Dialogue: 0,0:00:45.39,0:00:46.43,Cap,,0,0,0,,A thin skin called
-Dialogue: 0,0:00:46.43,0:00:47.69,Cap,,0,0,0,,patina that protects
-Dialogue: 0,0:00:47.69,0:00:49.35,Cap,,0,0,0,,the metal underneath.
-Dialogue: 0,0:00:49.35,0:00:50.03,Cap,,0,0,0,,So the paint
-Dialogue: 0,0:00:50.03,0:00:51.60,Cap,,0,0,0,,was never used.
-Dialogue: 0,0:00:51.60,0:00:52.41,Cap,,0,0,0,,That's why the Statue
-Dialogue: 0,0:00:52.41,0:00:54.01,Cap,,0,0,0,,of Liberty is green.
-Dialogue: 0,0:00:54.01,0:00:55.06,Cap,,0,0,0,,Her "rust" is
-Dialogue: 0,0:00:55.06,0:00:56.45,Cap,,0,0,0,,what protects her.
+Dialogue: 0,0:00:00.12,0:00:00.99,Cap,,0,0,0,,Why is the Statue
+Dialogue: 0,0:00:00.99,0:00:02.66,Cap,,0,0,0,,of Liberty green?
+Dialogue: 0,0:00:02.66,0:00:03.94,Cap,,0,0,0,,Because she wasn't always.
+Dialogue: 0,0:00:04.66,0:00:06.20,Cap,,0,0,0,,In eighteen eighty-six,
+Dialogue: 0,0:00:06.20,0:00:07.79,Cap,,0,0,0,,France gave America
+Dialogue: 0,0:00:07.79,0:00:09.39,Cap,,0,0,0,,a giant gift: a lady
+Dialogue: 0,0:00:09.39,0:00:11.56,Cap,,0,0,0,,made of shiny copper.
+Dialogue: 0,0:00:11.56,0:00:12.49,Cap,,0,0,0,,She glowed like
+Dialogue: 0,0:00:12.49,0:00:14.26,Cap,,0,0,0,,a brand-new penny.
+Dialogue: 0,0:00:14.26,0:00:15.25,Cap,,0,0,0,,But copper has
+Dialogue: 0,0:00:15.25,0:00:16.50,Cap,,0,0,0,,a secret.
+Dialogue: 0,0:00:16.50,0:00:17.76,Cap,,0,0,0,,When it meets rain,
+Dialogue: 0,0:00:17.76,0:00:18.87,Cap,,0,0,0,,wind and salty
+Dialogue: 0,0:00:18.87,0:00:19.76,Cap,,0,0,0,,sea air,
+Dialogue: 0,0:00:19.76,0:00:21.66,Cap,,0,0,0,,it slowly changes.
+Dialogue: 0,0:00:21.66,0:00:23.30,Cap,,0,0,0,,Within about twenty years,
+Dialogue: 0,0:00:23.30,0:00:24.71,Cap,,0,0,0,,Lady Liberty went
+Dialogue: 0,0:00:24.71,0:00:25.64,Cap,,0,0,0,,from penny brown
+Dialogue: 0,0:00:25.64,0:00:27.16,Cap,,0,0,0,,to minty green.
+Dialogue: 0,0:00:27.16,0:00:28.78,Cap,,0,0,0,,People panicked.
+Dialogue: 0,0:00:28.78,0:00:30.06,Cap,,0,0,0,,In nineteen-oh-six,
+Dialogue: 0,0:00:30.06,0:00:31.43,Cap,,0,0,0,,Congress set aside money
+Dialogue: 0,0:00:31.43,0:00:32.21,Cap,,0,0,0,,to paint her back
+Dialogue: 0,0:00:32.21,0:00:33.30,Cap,,0,0,0,,to copper.
+Dialogue: 0,0:00:33.30,0:00:35.50,Cap,,0,0,0,,New Yorkers were furious.
+Dialogue: 0,0:00:35.50,0:00:37.50,Cap,,0,0,0,,Some called it sacrilege.
+Dialogue: 0,0:00:37.50,0:00:38.61,Cap,,0,0,0,,So engineers took
+Dialogue: 0,0:00:38.61,0:00:39.76,Cap,,0,0,0,,a closer look,
+Dialogue: 0,0:00:39.76,0:00:41.78,Cap,,0,0,0,,and found something surprising.
+Dialogue: 0,0:00:41.78,0:00:42.74,Cap,,0,0,0,,That green coat
+Dialogue: 0,0:00:42.74,0:00:44.12,Cap,,0,0,0,,wasn't damage.
+Dialogue: 0,0:00:44.12,0:00:45.44,Cap,,0,0,0,,It was armor.
+Dialogue: 0,0:00:45.44,0:00:46.46,Cap,,0,0,0,,A thin skin called
+Dialogue: 0,0:00:46.46,0:00:47.69,Cap,,0,0,0,,patina that protects
+Dialogue: 0,0:00:47.69,0:00:49.44,Cap,,0,0,0,,the metal underneath.
+Dialogue: 0,0:00:49.44,0:00:50.08,Cap,,0,0,0,,So the paint
+Dialogue: 0,0:00:50.08,0:00:51.64,Cap,,0,0,0,,was never used.
+Dialogue: 0,0:00:51.64,0:00:52.42,Cap,,0,0,0,,That's why the Statue
+Dialogue: 0,0:00:52.42,0:00:54.04,Cap,,0,0,0,,of Liberty is green.
+Dialogue: 0,0:00:54.04,0:00:54.97,Cap,,0,0,0,,Her "rust" is
+Dialogue: 0,0:00:54.97,0:00:56.22,Cap,,0,0,0,,what protects her.
