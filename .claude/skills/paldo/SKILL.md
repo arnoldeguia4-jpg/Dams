@@ -39,6 +39,15 @@ The user wants **one command to run the whole pipeline**. When PALDO is invoked 
 ## Stage 1: Intake
 Ask one AskUserQuestion: **"Where are you starting from?"** The options are: need ideas + script / have a script / voiceover ready. Also ask the length: 20–30 s or 45–60 s. This user chose **45–60 s**.
 
+## Story format: "WHY …? → THAT'S WHY …" (the user's standing choice, 2026-11-25)
+Every story answers a **"Why …?"** question about something people see or say every day, and its cause is a **true, documented event in history**.
+- **Title** is the question: "Why Is the Statue of Liberty Green?", "Why Do We Say OK?".
+- **First line** of the narration asks the question. The second line teases the surprise.
+- **Last line** starts with **"That's why …"** and lands the twist in the same sentence: "That's why the Statue of Liberty is green. Her 'rust' is what protects her."
+- Prefer origins you can show: an object, a word, a sound, a colour or a rule, with one clear moment in history that caused it.
+- Skip "why" questions whose popular answer is a myth (clinking glasses, pirate eye patches), unless the twist is that the myth is wrong. Label each idea True / Disputed / Legend as before.
+- Don't repeat topics already on the user's channel (stickArts1998), such as the marathon distance, the Great Stink or the Pig War.
+
 ## Stage 2: 10 ideas
 Give exactly 10 ideas, numbered, mixed across eras and themes: ancient, medieval, 1800s, modern, science, animals, inventions, disasters, weird laws, lucky accidents. For each idea give:
 - the **Title** (5–8 words)
@@ -56,7 +65,7 @@ Good ideas have:
 - a set built from boxes and cylinders, such as a lab, town, ship or stage
 
 ## Stage 3: Script
-Formula: hook (the absurd fact, with no setup) → setting (year, place, a concrete detail) → 2–4 escalating beats with one exaggeration joke → pivot ("But…" / "You see,") → twist as the last words. Use plain spoken English, contractions, and numbers written as words.
+Formula: hook = the "Why …?" question (then a one-line tease) → setting (year, place, a concrete detail) → 2–4 escalating beats with one exaggeration joke → pivot ("But…" / "You see,") → final line "That's why …" with the twist. Older formula for reference: hook (the absurd fact, with no setup) → setting (year, place, a concrete detail) → 2–4 escalating beats with one exaggeration joke → pivot ("But…" / "You see,") → twist as the last words. Use plain spoken English, contractions, and numbers written as words.
 
 **Word budget for Nick:** he reads at about **2.6 words/s including pauses**, not the usual 3.7. A 198-word script came out at 77 s. So aim for:
 - **≈ 145 words for 55 s**
