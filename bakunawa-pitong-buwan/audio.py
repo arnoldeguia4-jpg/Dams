@@ -1,4 +1,4 @@
-# Synthesized stems for the penicillin short: music.wav (march loop, stops at the twist, then a drone) and sfx.wav.
+# Synthesized stems for the Bakunawa short: kulintang-style score (stops at the twist, then a drone + bells) and sfx.wav.
 import numpy as np, wave, subprocess, sys
 SR = 48000
 dur = float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', 'voice.mp3']))
@@ -49,36 +49,39 @@ def brass(freqs, d):
 def bell(freq, d=1.2):
     t = t_(d); return (np.sin(2 * np.pi * freq * t) + 0.5 * np.sin(2 * np.pi * freq * 2.76 * t) + 0.25 * np.sin(2 * np.pi * freq * 5.4 * t)) * env(len(t), 0.002, 0.35)
 
-# ---------------- music ----------------
+# ---------------- music: kulintang-style gong melody, agung pulse, soft drone; stops at the twist ----------------
 music = np.zeros(N)
-BPM = 112; beat = 60 / BPM; bar = 4 * beat
-STOP = 2174 / 30
 NOTE = lambda m: 440 * 2 ** ((m - 69) / 12)
-prog = [(48, [60, 64, 67]), (43, [59, 62, 67]), (45, [57, 60, 64]), (41, [57, 60, 65])]  # C G Am F
-mel = [72, 74, 76, 79, 76, 74, 72, 74,  71, 72, 74, 71, 67, 69, 71, 74,  72, 71, 69, 72, 76, 74, 72, 69,  69, 71, 72, 74, 72, 69, 65, 67]
-start = 0.15
-nbars = int((STOP - start) / bar) + 1
+STOP = 1442 / 30
+BPM = 96; beat = 60 / BPM; bar = 4 * beat
+def gong(freq, d=0.9):  # small bossed gong: inharmonic partials, quick decay, slight pitch dip
+    t = t_(d); fr = freq * (1 + 0.01 * np.exp(-t * 30))
+    ph = 2 * np.pi * np.cumsum(fr) / SR
+    return (np.sin(ph) + 0.45 * np.sin(2.02 * ph) + 0.18 * np.sin(3.1 * ph)) * env(len(t), 0.002, 0.3)
+def agung(d=1.6):  # big low gong with a hum
+    t = t_(d); ph = 2 * np.pi * np.cumsum(62 * (1 + 0.03 * np.exp(-t * 8))) / SR
+    return (np.sin(ph) + 0.3 * np.sin(2.4 * ph)) * env(len(t), 0.004, 0.6)
+def drum():
+    t = t_(0.25); return np.sin(2 * np.pi * np.cumsum(140 + 80 * np.exp(-t * 40)) / SR) * env(len(t), 0.001, 0.07) + hpv(rng.standard_normal(len(t)), 900) * env(len(t), 0.001, 0.02) * 0.3
+PENT = [62, 64, 67, 69, 71, 74, 76, 79]  # D pentatonic-ish
+mel = [4, 5, 6, 5, 4, 2, 3, 4,  6, 7, 6, 4, 5, 4, 2, 1,  2, 3, 4, 2, 1, 0, 1, 2,  4, 5, 4, 3, 2, 1, 2, 0]
+start = 0.2; nbars = int((STOP - start) / bar) + 1
+td0 = t_(STOP); pad = (np.sin(2 * np.pi * NOTE(50) * td0) + 0.5 * np.sin(2 * np.pi * NOTE(57) * td0 * (1 + 0.001 * np.sin(td0)))) * 0.25
+music[:len(pad)] += pad * np.minimum(1, td0 / 2)
 for b in range(nbars):
-    t0 = start + b * bar; root, ch = prog[b % 4]
-    quiet = 0.55 if (52 < t0 < 62.5) or (62.8 < t0 < 67) else 1.0  # thinner under the wait + the explanation
-    for k in range(4):
-        tb = t0 + k * beat
+    t0 = start + b * bar
+    lvl = 0.6 if b < 4 else 1.0  # mysterious opening, fuller once the Bakunawa rises
+    put(music, agung(), t0, 0.7 * lvl)
+    for k in range(8):
+        tb = t0 + k * beat / 2
         if tb >= STOP: break
-        put(music, kick(), tb, 0.9 * quiet)
-        if k % 2: put(music, snare(), tb, 0.55 * quiet)
-        put(music, hat(), tb + beat / 2, 0.5 * quiet)
-        put(music, pluck(NOTE(root - 12 + (7 if k % 2 else 0))), tb, 0.55)
-    if t0 + bar <= STOP: put(music, brass([NOTE(m) for m in ch], bar * 0.95), t0, 0.22)
-    if b % 8 >= 4:  # melody on every other 4-bar phrase
-        for i in range(8):
-            tn = t0 + i * beat / 2
-            if tn < STOP - 0.1: put(music, pluck(NOTE(mel[(b % 4) * 8 + i]), 0.25), tn, 0.32 * quiet)
-# hard stop at the twist + low drone to the end
-i = int(STOP * SR); music[i:] = 0
-fade = np.minimum(1, np.arange(int(0.03 * SR)) / (0.03 * SR)); music[i - len(fade):i] *= fade[::-1]
-td = t_(dur - STOP + 0.2); drone = (np.sin(2 * np.pi * 55 * td) + 0.5 * np.sin(2 * np.pi * 82.4 * td) + 0.3 * np.sin(2 * np.pi * 110 * td * (1 + 0.002 * np.sin(td))))
-drone *= np.minimum(1, td / 0.6) * np.minimum(1, (td[-1] - td) / 0.8 + 0.0)
-put(music, drone, STOP, 0.35)
+        if b >= 4 and k % 2 == 1: put(music, drum(), tb, 0.35)
+        if b >= 2: put(music, gong(NOTE(PENT[mel[(b % 4) * 8 + k]]), 0.7), tb, 0.38 * lvl)
+i = int(STOP * SR); fade = np.minimum(1, np.arange(int(0.05 * SR)) / (0.05 * SR)); music[i - len(fade):i] *= fade[::-1]; music[i:] = 0
+td = t_(dur - STOP + 0.2); drone = (np.sin(2 * np.pi * NOTE(38) * td) + 0.6 * np.sin(2 * np.pi * NOTE(45) * td) + 0.4 * np.sin(2 * np.pi * NOTE(50) * td * (1 + 0.002 * np.sin(td))))
+drone *= np.minimum(1, td / 0.8) * np.minimum(1, (td[-1] - td) / 1.0)
+put(music, drone, STOP, 0.4)
+for k, m in enumerate([74, 79, 81, 86]): put(music, bell(NOTE(m), 2.5), STOP + 1.0 + k * 0.9, 0.25)
 
 # ---------------- sfx ----------------
 sfx = np.zeros(N)
@@ -126,42 +129,55 @@ def birds(d):
         i0 = int(rng.uniform(0, d - 0.2) * SR); out[i0:i0 + len(c)] += c
     return out
 F = lambda f: f / 30
-for at in (0.4, 1.6, 2.9, 4.0): put(sfx, clink(2900), at, 0.18)
-put(sfx, whoosh(0.6), F(100), 0.5)
-put(sfx, crash()[: int(0.6 * SR)], F(140), 0.35)
-for k in range(5): put(sfx, drip(), F(134 + 18 * k), 0.25)
-for a in [163, 674, 1594, 2168]: put(sfx, whoosh(0.45), F(a) - 0.2, 0.55)
-put(sfx, birds(2.4), F(170), 0.25)
-put(sfx, ting(1760), F(288), 0.45)
-put(sfx, crash(), F(362), 0.7)
-put(sfx, whoosh(0.4), F(330), 0.35)
-put(sfx, ting(2093), F(540), 0.4)
-for k in range(8): put(sfx, step(), F(600) + k * 0.2, 0.5)
-put(sfx, thunk(), F(656), 0.9)
-put(sfx, thunk(), F(681), 0.9)
-for k in range(7): put(sfx, step(), F(692) + k * 0.2, 0.5)
-put(sfx, whoosh(0.35), F(726), 0.4)
-put(sfx, boing(), F(804), 0.5)
-put(sfx, shimmer(2.2), F(865), 0.45)
-for a in (940, 955, 968): put(sfx, pop(), F(a), 0.6)
-put(sfx, pop(), F(1016), 0.6); put(sfx, ting(2349), F(1015), 0.5)
-put(sfx, squeak(F(1100) - F(1048)), F(1048), 0.35)
-put(sfx, boing(), F(1106), 0.55); put(sfx, thunk(), F(1106), 0.5)
-put(sfx, ting(1760), F(1212), 0.4)
-put(sfx, whoosh(0.3), F(1238), 0.3)
-put(sfx, drip(), F(1262), 0.7)
-for i in range(6): put(sfx, pop(), F(1268 + 9 * i), 0.6)
-for k in range(10): put(sfx, clink(3300), F(1392) + k * 0.11, 0.12)
-for k in range(11): put(sfx, tick(), F(1505) + k * 0.26, 0.6)
-put(sfx, ting(2637), F(1680), 0.4)
-for k in range(6): put(sfx, clank(), F(1715) + k * 0.5, 0.45)
-put(sfx, ting(1976), F(1838), 0.45)
-put(sfx, shimmer(3.0), F(1902), 0.4); put(sfx, ting(2637), F(1993), 0.45)
-put(sfx, boing(), F(2025), 0.4); put(sfx, ting(2093), F(2093), 0.5)
-put(sfx, applause(1.9), F(2114), 0.6)
-put(sfx, brass([NOTE(72), NOTE(76), NOTE(79)], 0.9), F(2116), 0.25)
-put(sfx, sting(), STOP, 0.9)
-put(sfx, ting(1568), F(2296), 0.5)
+def tok(): x = np.zeros(int(0.4 * SR)); th = thunk(); x[:len(th)] += th; c = bell(820, 0.3) * 0.25; x[:len(c)] += c; return x
+def crickets(d):
+    out = np.zeros(len(t_(d)))
+    for k in range(int(d * 3)):
+        t = t_(0.18); c = np.sin(2 * np.pi * 4300 * t) * (0.5 + 0.5 * np.sign(np.sin(2 * np.pi * 45 * t))) * env(len(t), 0.01, 0.1)
+        i0 = int((k / 3) * SR); out[i0:i0 + len(c)] += c[: len(out) - i0]
+    return out
+def rumble(d):
+    n = len(t_(d)); x = lpv(rng.standard_normal(n), 120) * np.minimum(1, np.linspace(0, 4, n)) * np.minimum(1, np.linspace(3, 0, n)); return x / (np.abs(x).max() + 1e-9)
+def growl():
+    t = t_(0.9); f = 70 + 25 * np.sin(2 * np.pi * 3 * t); x = np.sign(np.sin(2 * np.pi * np.cumsum(f) / SR)) * 0.4 + lpv(rng.standard_normal(len(t)), 250)
+    return lpv(x, 400) * np.sin(np.pi * np.linspace(0, 1, len(t))) ** 2
+def thud(): t = t_(0.25); return np.sin(2 * np.pi * (80 + 40 * np.exp(-t * 30)) * t) * env(len(t), 0.001, 0.06) + lpv(rng.standard_normal(len(t)), 500) * env(len(t), 0.001, 0.03) * 0.5
+def dig():
+    n = len(t_(0.3)); x = lpv(rng.standard_normal(n), 1400) * env(n, 0.003, 0.08); th = thud(); x[:len(th)] += th * 0.5; return x
+def splash(d=1.2):
+    n = len(t_(d)); x = lpv(rng.standard_normal(n), 2200) * env(n, 0.01, 0.35); x += rumble(d) * 0.5 * env(n, 0.01, 0.5); return x
+def roar():
+    t = t_(1.4); f = 85 + 40 * np.sin(2 * np.pi * 2 * t) * np.exp(-t); x = np.sign(np.sin(2 * np.pi * np.cumsum(f) / SR)) * 0.4 + lpv(rng.standard_normal(len(t)), 500) * 0.8
+    return lpv(x, 700) * np.minimum(1, t / 0.08) * np.exp(-t / 0.7)
+def gulp():
+    t = t_(0.35); f = 260 * np.exp(-t * 6); return np.sin(2 * np.pi * np.cumsum(f) / SR) * env(len(t), 0.003, 0.12)
+def thunder(d=1.8):
+    n = len(t_(d)); x = lpv(rng.standard_normal(n), 300) * env(n, 0.002, 0.6) + hpv(rng.standard_normal(n), 1500) * env(n, 0.001, 0.08) * 0.6; return x / (np.abs(x).max() + 1e-9)
+def burp():
+    t = t_(0.6); f = 95 + 15 * np.sin(2 * np.pi * 7 * t); return lpv(np.sign(np.sin(2 * np.pi * np.cumsum(f) / SR)) * 0.5, 500) * np.sin(np.pi * np.linspace(0, 1, len(t))) ** 1.5
+def pot():
+    x = np.zeros(int(0.5 * SR)); b = bell(rng.uniform(520, 700), 0.5); x[:len(b)] += b * 0.6; c = clink(rng.uniform(2200, 3200)); x[:len(c)] += c * 0.5; th = thud(); x[:len(th)] += th * 0.3; return x
+# night ambience
+put(sfx, crickets(5.0), F(170), 0.12); put(sfx, crickets(4.0), F(1305), 0.12)
+put(sfx, rumble(3.0), F(78), 0.45); put(sfx, splash(1.4), F(82), 0.35); put(sfx, roar(), F(130), 0.45)
+for at in (276, 994, 1141): put(sfx, whoosh(0.5), F(at) - 0.15, 0.45)
+for k in range(7): put(sfx, ting(NOTE([74, 76, 79, 81, 83, 86, 88][k])), F(292 + 8 * k), 0.35)
+put(sfx, shimmer(1.8), F(292), 0.3)
+put(sfx, rumble(3.5), F(380), 0.4); put(sfx, splash(1.0), F(380), 0.25); put(sfx, splash(1.0), F(430), 0.25)
+put(sfx, roar(), F(500), 0.55)
+put(sfx, shimmer(2.2), F(545), 0.25)
+put(sfx, rumble(2.5), F(620), 0.5); put(sfx, splash(1.6), F(622), 0.45)
+for mi, b in [(0, 740), (1, 783), (2, 824), (6, 858), (5, 884), (4, 908)]:
+    put(sfx, whoosh(0.35), F(b) - 0.4, 0.3); put(sfx, gulp(), F(b), 0.55); put(sfx, ting(2093), F(b), 0.18)
+put(sfx, burp(), F(930), 0.55)
+put(sfx, shimmer(1.4), F(950), 0.2)
+put(sfx, thunder(1.6), F(1000), 0.6); put(sfx, thunder(1.4), F(1026), 0.5)
+put(sfx, shimmer(2.0), F(1080), 0.4); put(sfx, ting(1568), F(1112), 0.35)
+put(sfx, rumble(3.0), F(1186), 0.45); put(sfx, splash(1.4), F(1188), 0.35); put(sfx, roar(), F(1238), 0.4)
+put(sfx, growl(), F(1272), 0.5)
+for k in range(26): put(sfx, pot(), F(1306) + k * 0.2 + rng.uniform(-0.03, 0.03), 0.35)
+put(sfx, roar(), F(1396), 0.35); put(sfx, shimmer(1.6), F(1420), 0.4); put(sfx, ting(2637), F(1424), 0.4)
+put(sfx, shimmer(2.6), F(1492), 0.35); put(sfx, ting(1760), F(1556), 0.35)
 
 def wr(name, x):
     x = x / (np.abs(x).max() + 1e-9) * 0.8
