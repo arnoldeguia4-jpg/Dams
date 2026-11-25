@@ -144,19 +144,19 @@ def crickets(d):
         t = t_(0.18); c = np.sin(2 * np.pi * 4300 * t) * (0.5 + 0.5 * np.sign(np.sin(2 * np.pi * 45 * t))) * env(len(t), 0.01, 0.1)
         i0 = int((k / 3) * SR); out[i0:i0 + len(c)] += c[: len(out) - i0]
     return out
-PILLS = [86, 165, 240, 375, 395, 480, 504, 574, 714, 755, 862, 978, 1036, 1080, 1146, 1244, 1440, 1880, 2070, 2116, 2185, 2402, 2497]
+PILLS = [86, 165, 240, 375, 395, 480, 504, 574, 714, 755, 862, 1030, 1102, 1150, 1196, 1290, 1488, 1880, 2070, 2116, 2185, 2402, 2497]
 for a in PILLS: put(sfx, pop(), F(a), 0.4)
-for a in (115, 1532, 2169): put(sfx, whoosh(0.5), F(a) - 0.15, 0.45)
+for a in (115, 1569, 2172): put(sfx, whoosh(0.5), F(a) - 0.15, 0.45)
 put(sfx, laughs(2.5, 14), F(20), 0.25); put(sfx, birds(3.0), F(10), 0.2)
 put(sfx, laughs(1.5, 8), F(296), 0.35); put(sfx, ting(1760), F(296), 0.3)
 put(sfx, laughs(2.2, 14), F(650), 0.4); put(sfx, boing(), F(714), 0.35)
-put(sfx, knock(), F(910), 0.7)
-put(sfx, ting(2093), F(978), 0.4); put(sfx, squeak(0.6), F(1012), 0.12)
-put(sfx, puffS := whoosh(0.4), F(1028), 0.35); put(sfx, coins(1.2), F(1034), 0.4)
-put(sfx, ting(2637), F(1146), 0.3)
-for k in range(10): put(sfx, tick(), F(1250) + k * 0.12, 0.5)
-put(sfx, laughs(2.5, 10), F(1395), 0.3)
-put(sfx, crickets(3.5), F(1545), 0.2)
+put(sfx, knock(), F(935), 0.7)
+put(sfx, ting(2093), F(1030), 0.4); put(sfx, squeak(0.6), F(1075), 0.12)
+put(sfx, whoosh(0.4), F(1096), 0.35); put(sfx, coins(1.2), F(1100), 0.4)
+put(sfx, ting(2637), F(1196), 0.3)
+for k in range(10): put(sfx, tick(), F(1290) + k * 0.12, 0.5)
+put(sfx, laughs(2.5, 10), F(1427), 0.3)
+put(sfx, crickets(3.5), F(1580), 0.2)
 put(sfx, laughs(2.4, 16), F(1700), 0.3)
 put(sfx, ting(2349), F(1843), 0.45); put(sfx, shimmer(1.2), F(1843), 0.3)
 put(sfx, clank(), F(2182), 0.5); put(sfx, applause(2.5), F(2215), 0.45)

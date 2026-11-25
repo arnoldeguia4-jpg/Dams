@@ -13,7 +13,8 @@ window.renderFrame = (f) => {
   const cards = frameAt(f, H, R);
   beginCards(); for (const a of cards) putCard(a); endCards();
   const d = S.dof(f), Lk = lookAt(f);
-  look.cInf = d.c; look.focus = d.pt ? camera.position.distanceTo(new THREE.Vector3(...d.pt)) : 10;
+  look.cInf = Math.min(d.c, 1.5); // keep it crisp like the reference: only a hint of depth of field
+  look.focus = d.pt ? camera.position.distanceTo(new THREE.Vector3(...d.pt)) : 10;
   look.flash = Lk.flash; look.fade = 0; look.inkR = 0;
   renderAll();
   return true;

@@ -135,7 +135,7 @@ const cards = new Map();
 const mkCard = (id, cw, ch, opts) => {
   const c = document.createElement('canvas'); c.width = cw; c.height = ch;
   const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 4;
-  const mat = new THREE.MeshBasicMaterial({ map: tex, alphaTest: opts.soft ? 0.02 : 0.5, transparent: !!opts.soft, depthWrite: !opts.soft, side: THREE.DoubleSide, fog: false });
+  const mat = new THREE.MeshBasicMaterial({ map: tex, alphaTest: opts.soft ? 0.02 : 0.5, transparent: !!opts.soft, depthWrite: !opts.soft, depthTest: !opts.overlay, side: THREE.DoubleSide, fog: false });
   const mesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), mat);
   mesh.userData.nd = opts.soft ? null : ndCardMat(tex); if (opts.soft) mesh.userData.noND = true;
   mesh.castShadow = !opts.soft && !opts.noShadow;
@@ -167,7 +167,18 @@ export const putCard = (a) => {
   if (a.roll) m.rotateZ(a.roll);
   m.material.color.setRGB(...(a.unlit ? [1, 1, 1] : look.card));
   m.material.opacity = a.opacity ?? 1;
-  m.renderOrder = a.order ?? 0;
+  m.renderOrder = a.overlay ? 50 + (a.order ?? 0) : (a.order ?? 0);
+  if (a.clamp) { // keep labels fully inside the frame (and shrink them if wider than the frame)
+    m.updateMatrixWorld(); camera.updateMatrixWorld(); const v = m.position.clone().project(camera);
+    if (v.z < 1) {
+      const d = camera.position.distanceTo(m.position), th = Math.tan(camera.fov * Math.PI / 360), halfH = d * th, halfW = halfH * camera.aspect;
+      let hw = (w / 2) / halfW, hh = (h / 2) / halfH; const lim = 0.92;
+      if (2 * hw > 2 * lim) { const k = lim / hw; m.scale.multiplyScalar(k); hw *= k; hh *= k; }
+      let sx = 0, sy = 0; if (v.x + hw > lim) sx = lim - (v.x + hw); if (v.x - hw < -lim) sx = -lim - (v.x - hw); if (v.y + hh > lim) sy = lim - (v.y + hh);
+      const right = new THREE.Vector3(1, 0, 0).applyQuaternion(camera.quaternion), up = new THREE.Vector3(0, 1, 0).applyQuaternion(camera.quaternion);
+      m.position.addScaledVector(right, sx * halfW).addScaledVector(up, sy * halfH);
+    }
+  }
   const b = card.blob; b.visible = a.kind === 'char' && a.blob !== false;
   if (b.visible) { const bw = (a.blobW ?? 0.8) * h / 2.25; b.scale.set(bw, bw * 0.55, 1); b.position.set(x, a.pos[1] + 0.006, z); }
   return card;

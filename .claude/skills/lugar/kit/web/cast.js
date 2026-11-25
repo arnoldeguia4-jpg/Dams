@@ -42,10 +42,10 @@ export const drawConfetti = (g, t, seed = 3, n = 70) => {
 };
 
 // ---------- fx card factories (used by story.js) ----------
-export const fx = (id, pos, h, key, draw, o = {}) => ({ id, kind: 'fx', pos, h, key, draw, yaw: o.yaw ?? 'full', soft: o.soft ?? true, res: o.res || [512, 512], unlit: true, order: o.order ?? 5, opacity: o.opacity });
+export const fx = (id, pos, h, key, draw, o = {}) => ({ id, kind: 'fx', pos, h, key, draw, yaw: o.yaw ?? 'full', soft: o.soft ?? true, res: o.res || [512, 512], unlit: true, order: o.order ?? 5, opacity: o.opacity, overlay: o.overlay, clamp: o.clamp });
 /** pill label that pops in at frame a and stays to b */
-export const pill = (id, f, a, b, pos, text, kind = 'yellow', h = 0.32) => { if (f < a || f > b) return null; const s = back(win(f, a, a + 6), 2.2); return fx(id, pos, h * Math.max(0.05, s), 'pl' + text + kind, (g) => drawPill(g, text, kind), { res: [1024, 256], order: 8 }); };
-export const shout = (id, f, a, b, pos, text, col = '#ffffff', h = 0.5) => { if (f < a || f > b) return null; const s = back(win(f, a, a + 6), 2.2); return fx(id, pos, h * Math.max(0.05, s), 'sh' + text + col, (g) => drawShout(g, text, col), { res: [1024, 256], order: 8 }); };
+export const pill = (id, f, a, b, pos, text, kind = 'yellow', h = 0.32) => { if (f < a || f > b) return null; const s = back(win(f, a, a + 6), 2.2); return fx(id, pos, h * Math.max(0.05, s), 'pl' + text + kind, (g) => drawPill(g, text, kind), { res: [2048, 512], order: 8, overlay: true, clamp: true }); };
+export const shout = (id, f, a, b, pos, text, col = '#ffffff', h = 0.5) => { if (f < a || f > b) return null; const s = back(win(f, a, a + 6), 2.2); return fx(id, pos, h * Math.max(0.05, s), 'sh' + text + col, (g) => drawShout(g, text, col), { res: [2048, 512], order: 8, overlay: true, clamp: true }); };
 export const burst = (id, f, at, pos, h = 0.6, col = '#fff3b0', n = 14) => { const t = (f - at) / n; if (t < 0 || t > 1) return null; return fx(id, pos, h, 'b' + q(t, 0.04) + col, (g) => { g.save(); g.scale(g.canvas.width / 500, g.canvas.width / 500); fxBurst(new Pen(g), t, col); g.restore(); }, { order: 7 }); };
 export const puff = (id, f, at, pos, h = 0.5, n = 16) => { const t = (f - at) / n; if (t < 0 || t > 1) return null; return fx(id, pos, h, 'p' + q(t, 0.05), (g) => { g.save(); g.scale(g.canvas.width / 300, g.canvas.width / 300); fxPuff(new Pen(g), t); g.restore(); }, { order: 6 }); };
 export const dizzy = (id, f, a, b, pos, h = 0.5) => (f < a || f > b ? null : fx(id, pos, h, 'dz' + q((f - a) / 24 % 1, 0.04), (g) => { g.save(); g.scale(g.canvas.width / 420, g.canvas.width / 420); g.translate(0, 105); fxStars(new Pen(g), (f - a) / 24 % 1); g.restore(); }, { order: 7 }));

@@ -5,7 +5,7 @@ import { ground, road, street, house, store, tree, lamp, room, table, rb, sign }
 import { pill, shout, burst, puff, dizzy, moneyRain, confetti, glowCard, fx, FONT } from './cast.js';
 
 export const TOTAL = 2581;
-export const FLASHES = [[115, 123], [1532, 1540], [2169, 2177]];
+export const FLASHES = [[115, 123], [1569, 1577], [2172, 2180]];
 const TVX = 120, HALL = 160;
 const MANSION = { x: -27, z: -17 }, BALC = [-27, 4.35, -12.9], GATE = -27, COURT = { x: -8, z: -7.2 };
 const NHOUSE = { x: 8, z: -8.4 }, CART = [2.2, 0, -5.4], BENCH = [11.2, 0, -5.6];
@@ -19,18 +19,18 @@ export const SHOTS = [
   { id: 'don', a: 340, b: 478, light: 'lugar', at: [-27, 1, -14], span: 14, cam: [k(340, [-24.5, 2.4, 0.5], [-27, 2.0, -8], 48), k(420, [-26.2, 1.7, -2.6], [-27, 1.5, -7], 42), k(478, [-26.5, 1.75, -3.6], [-27, 1.6, -7], 40)], dof: () => ({ c: 4, pt: [-27, 1.6, -14] }) },
   { id: 'ako', a: 479, b: 616, light: 'lugar', at: [8, 1, -5], span: 10, cam: [k(479, [8.3, 1.75, -1.6], [8, 1.65, -5.2], 40), k(616, [8.3, 1.72, -2.0], [8, 1.6, -5.2], 40)], kicks: [[574, 0.03]], dof: () => ({ c: 5, pt: [8, 1.7, -5.2] }) },
   { id: 'kalye', a: 617, b: 749, light: 'lugar', at: [6, 1, -3], span: 14, cam: [k(617, [6.5, 1.6, 4.4], [6, 1.2, -4.5], 44), k(700, [5.5, 1.5, 3.6], [5, 1.0, -3.8], 46), k(749, [4.4, 0.8, 0.2], [4.2, 0.5, -2.6], 42)], dof: () => ({ c: 2, pt: [5, 1, -4] }) },
-  { id: 'lola', a: 750, b: 892, light: 'lugar', at: [11, 1, -5], span: 10, cam: [k(750, [10.8, 1.5, -0.4], [11, 1.15, -5.6], 42), k(892, [11.0, 1.45, -1.0], [11, 1.15, -5.6], 40)], dof: () => ({ c: 4, pt: [11, 1.2, -5.6] }) },
-  { id: 'knock', a: 893, b: 1000, light: 'lugar', at: [8, 1, -6], span: 10, cam: [k(893, [8.6, 1.9, 0.4], [8.5, 1.25, -6.3], 46), k(1000, [8.5, 1.85, -0.2], [8.5, 1.3, -6.3], 44)], dof: () => ({ c: 3, pt: [8.4, 1.5, -6.2] }) },
-  { id: 'sign', a: 1001, b: 1063, light: 'lugar', at: [8, 1, -5], span: 10, cam: [k(1001, [8.4, 1.9, -1.6], [8.1, 1.15, -5.0], 40), k(1063, [8.4, 1.85, -1.4], [8.1, 1.35, -5.0], 40)], dof: () => ({ c: 4, pt: [8.1, 1.1, -5] }) },
-  { id: 'nolaugh', a: 1064, b: 1139, light: 'lugar', at: [8, 1, -5], span: 10, cam: [k(1064, [8.25, 1.8, -1.8], [8, 1.75, -5.2], 40), k(1139, [8.2, 1.78, -2.2], [8, 1.72, -5.2], 40)], dof: () => ({ c: 6, pt: [8, 1.7, -5.2] }) },
-  { id: 'car', a: 1140, b: 1239, light: 'lugar', at: [14, 1, 1], span: 10, cam: [k(1140, [19.8, 1.7, 6.6], [14, 1.2, 1.4], 42), k(1239, [18.6, 1.7, 5.6], [14, 1.25, 1.4], 40)], dof: () => ({ c: 3, pt: [14, 1.1, 1.4] }) },
-  { id: 'tvs', a: 1240, b: 1332, light: 'lugarNight', at: [TVX, 1, 0], span: 10, cam: [k(1240, [TVX + 3.0, 1.9, 3.8], [TVX - 0.4, 1.0, -0.4], 50), k(1332, [TVX + 2.6, 1.8, 3.4], [TVX - 0.4, 1.0, -0.4], 48)], dof: () => ({ c: 2, pt: [TVX, 1.3, 0] }) },
-  { id: 'hall', a: 1333, b: 1531, light: 'lugar', at: [HALL, 1, 0], span: 12, cam: [k(1333, [HALL + 0.3, 1.7, 2.6], [HALL, 1.6, -0.6], 40), k(1440, [HALL + 0.4, 1.8, 4.0], [HALL, 1.5, -0.6], 42), k(1500, [HALL + 1.0, 4.4, 9.0], [HALL, 1.2, -1.2], 50, { ease: ss }), k(1531, [HALL + 1.0, 4.5, 9.4], [HALL, 1.2, -1.2], 50)], dof: () => ({ c: 0 }) },
-  { id: 'balcony', a: 1532, b: 1771, light: 'lugarNight', at: [-27, 4, -13], span: 18,
-    cam: [k(1532, [-24.5, 4.9, -9.2], [-27, 5.0, -12.9], 42), k(1650, [-24.8, 5.1, -9.6], [-27, 5.1, -12.9], 40), k(1690, [-25.4, 5.6, -11.8], [-9, 1.0, -6], 48, { ease: ss }), k(1771, [-25.3, 5.6, -11.7], [-8.5, 1.0, -6.6], 44)], dof: () => ({ c: 0 }) },
-  { id: 'smile', a: 1772, b: 1946, light: 'lugarNight', at: [-27, 4, -13], span: 10, cam: [k(1772, [-26.7, 5.7, -9.7], [-27, 5.6, -12.9], 40), k(1946, [-26.75, 5.68, -10.0], [-27, 5.55, -12.9], 40)], kicks: [[1843, 0.03]], dof: () => ({ c: 6, pt: [-27, 5.6, -12.9] }) },
+  { id: 'lola', a: 750, b: 906, light: 'lugar', at: [11, 1, -5], span: 10, cam: [k(750, [10.8, 1.5, -0.4], [11, 1.15, -5.6], 42), k(906, [11.0, 1.45, -1.0], [11, 1.15, -5.6], 40)], dof: () => ({ c: 4, pt: [11, 1.2, -5.6] }) },
+  { id: 'knock', a: 907, b: 1065, light: 'lugar', at: [8, 1, -6], span: 10, cam: [k(907, [8.6, 1.9, 0.4], [8.5, 1.25, -6.3], 46), k(1065, [8.5, 1.85, -0.2], [8.5, 1.3, -6.3], 44)], dof: () => ({ c: 3, pt: [8.4, 1.5, -6.2] }) },
+  { id: 'sign', a: 1066, b: 1138, light: 'lugar', at: [8, 1, -5], span: 10, cam: [k(1066, [8.4, 1.9, -1.6], [8.1, 1.15, -5.0], 40), k(1138, [8.4, 1.85, -1.4], [8.1, 1.35, -5.0], 40)], dof: () => ({ c: 4, pt: [8.1, 1.1, -5] }) },
+  { id: 'nolaugh', a: 1139, b: 1193, light: 'lugar', at: [8, 1, -5], span: 10, cam: [k(1139, [8.25, 1.8, -1.8], [8, 1.75, -5.2], 40), k(1193, [8.2, 1.78, -2.2], [8, 1.72, -5.2], 40)], dof: () => ({ c: 6, pt: [8, 1.7, -5.2] }) },
+  { id: 'car', a: 1194, b: 1275, light: 'lugar', at: [14, 1, 1], span: 10, cam: [k(1194, [19.8, 1.7, 6.6], [14, 1.2, 1.4], 42), k(1275, [18.6, 1.7, 5.6], [14, 1.25, 1.4], 40)], dof: () => ({ c: 3, pt: [14, 1.1, 1.4] }) },
+  { id: 'tvs', a: 1276, b: 1392, light: 'lugarNight', at: [TVX, 1, 0], span: 10, cam: [k(1276, [TVX + 3.0, 1.9, 3.8], [TVX - 0.4, 1.0, -0.4], 50), k(1392, [TVX + 2.6, 1.8, 3.4], [TVX - 0.4, 1.0, -0.4], 48)], dof: () => ({ c: 2, pt: [TVX, 1.3, 0] }) },
+  { id: 'hall', a: 1393, b: 1572, light: 'lugar', at: [HALL, 1, 0], span: 12, cam: [k(1393, [HALL + 0.3, 1.8, 3.4], [HALL, 1.6, -0.6], 40), k(1488, [HALL + 0.4, 1.8, 4.2], [HALL, 1.5, -0.6], 42), k(1540, [HALL + 1.0, 4.4, 9.0], [HALL, 1.2, -1.2], 50, { ease: ss }), k(1572, [HALL + 1.0, 4.5, 9.4], [HALL, 1.2, -1.2], 50)], dof: () => ({ c: 0 }) },
+  { id: 'balcony', a: 1573, b: 1773, light: 'lugarNight', at: [-27, 4, -13], span: 18,
+    cam: [k(1573, [-24.5, 4.9, -9.2], [-27, 5.0, -12.9], 42), k(1678, [-24.8, 5.1, -9.6], [-27, 5.1, -12.9], 40), k(1679, [-25.4, 5.6, -11.8], [-9, 1.0, -6], 48), k(1773, [-25.3, 5.6, -11.7], [-8.5, 1.0, -6.6], 44)], dof: () => ({ c: 0 }) },
+  { id: 'smile', a: 1774, b: 1946, light: 'lugarNight', at: [-27, 4, -13], span: 10, cam: [k(1774, [-26.7, 5.7, -9.7], [-27, 5.6, -12.9], 40), k(1946, [-26.75, 5.68, -10.0], [-27, 5.55, -12.9], 40)], kicks: [[1843, 0.03]], dof: () => ({ c: 6, pt: [-27, 5.6, -12.9] }) },
   { id: 'wall', a: 1947, b: 2168, light: 'lugarNight', at: [-27, 1, -12], span: 18, cam: [k(1947, [-20, 2.0, -3.5], [-27, 2.4, -12], 44), k(2064, [-21, 2.2, -4.5], [-27, 2.6, -12], 42), k(2065, [HALL + 1.0, 4.4, 9.0], [HALL, 1.2, -1.2], 50), k(2168, [HALL + 0.8, 3.6, 7.6], [HALL, 1.2, -1.0], 48)], dof: () => ({ c: 0 }) },
-  { id: 'gate', a: 2169, b: 2307, light: 'lugar', at: [-27, 1, -8], span: 14, cam: [k(2169, [-25, 1.7, -2.6], [-27, 1.6, -11], 44), k(2230, [-24, 1.8, -1.4], [-27, 1.4, -9], 46), k(2307, [-20.5, 2.0, 3.6], [-22, 1.1, 0.8], 46)], dof: () => ({ c: 0 }) },
+  { id: 'gate', a: 2169, b: 2307, light: 'lugar', at: [-27, 1, -8], span: 14, cam: [k(2169, [-25, 1.7, -2.6], [-27, 1.6, -11], 44), k(2230, [-24, 1.8, -1.4], [-27, 1.4, -9], 46), k(2307, [-22.0, 2.6, 7.0], [-22.6, 1.2, 0.2], 46)], dof: () => ({ c: 0 }) },
   { id: 'feast', a: 2308, b: 2494, light: 'lugar', at: [-22, 1, 1], span: 14, cam: [k(2308, [-17, 3.2, 6.8], [-22, 1.0, 1], 46), k(2400, [-19, 2.4, 5.4], [-22, 1.2, 1], 44), k(2494, [-20.6, 1.9, 4.2], [-22, 1.3, 1], 42)], dof: () => ({ c: 0 }) },
   { id: 'closer', a: 2495, b: TOTAL - 1, light: 'lugar', at: [-22, 1, 1], span: 10, cam: [k(2495, [-21.6, 1.8, 6.0], [-21.8, 1.6, 2.2], 40), k(TOTAL, [-21.65, 1.8, 5.5], [-21.8, 1.65, 2.2], 40)], dof: () => ({ c: 6, pt: [-21.8, 1.7, 2.2] }) },
   { id: 'thumb', a: 9000, b: 9000, light: 'lugar', at: [0, 1, 0], span: 10, cam: [k(9000, [8.6, 1.85, -1.6], [8.2, 1.7, -5.2], 42)], dof: () => ({ c: 4, pt: [8, 1.7, -5.2] }) },
@@ -175,35 +175,35 @@ export const frameAt = (f, H, R) => {
       add(pill('ph', f, 862, 892, [BENCH[0], 2.55, BENCH[2]], 'HINAHAWA ANG TAWA', 'green', 0.3));
       break; }
     case 'knock': {
-      const walk = win(f, 893, 925), dx = lerp(12.5, 9.4, ss(walk));
-      P(R.don, f, { pos: [dx, 0, -6.2], yaw: -60, pose: walk < 1 ? 'walk' : f > 940 ? 'point' : 'idle', t: f / 26, expr: f > 940 ? 'smug' : 'neutral' }); H.case.visible = true;
-      P(R.ako, f, { pos: [7.6, 0, -6.4], yaw: 50, pose: 'idle', expr: f > 975 ? 'shock' : 'neutral' });
-      add(shout('tok', f, 908, 932, [8.0, 2.4, -6.0], 'TOK TOK!', '#ffffff', 0.4));
-      add(pill('pmil', f, 978, 1000, [9.0, 2.55, -6.2], '₱1,000,000', 'yellow', 0.34));
+      const walk = win(f, 907, 940), dx = lerp(12.5, 9.4, ss(walk));
+      P(R.don, f, { pos: [dx, 0, -6.2], yaw: -60, pose: walk < 1 ? 'walk' : f > 980 ? 'point' : 'idle', t: f / 26, expr: f > 980 ? 'smug' : 'neutral' }); H.case.visible = true;
+      P(R.ako, f, { pos: [7.6, 0, -6.4], yaw: 50, pose: 'idle', expr: f > 1030 ? 'shock' : 'neutral' });
+      add(shout('tok', f, 935, 962, [8.0, 2.4, -6.0], 'TOK TOK!', '#ffffff', 0.4));
+      add(pill('pmil', f, 1030, 1065, [9.0, 2.55, -6.2], '₱1,000,000', 'yellow', 0.34));
       break; }
     case 'sign': {
-      P(R[f < 1032 ? 'ako' : 'akoRich'], f, { pos: [8, 0, -5.4], pose: f < 1032 ? 'hold' : 'cheer', expr: f < 1032 ? 'neutral' : 'grin' });
-      add(fx('contract', [8.05, 1.05, -4.9], 0.55, 'ct' + (f > 1015 ? 's' : ''), (g) => { const s = g.canvas.width; g.fillStyle = '#f4ecd2'; g.fillRect(s * 0.15, s * 0.05, s * 0.7, s * 0.9); g.fillStyle = '#241a16'; g.font = `900 ${s * 0.08}px ${FONT}`; g.textAlign = 'center'; g.fillText('KONTRATA', s / 2, s * 0.2); g.font = `900 ${s * 0.06}px ${FONT}`; g.fillText('TAWA = ₱1M', s / 2, s * 0.38); g.strokeStyle = '#241a16'; g.lineWidth = 4; g.beginPath(); g.moveTo(s * 0.25, s * 0.75); g.lineTo(s * 0.75, s * 0.75); g.stroke(); if (f > 1015) { g.strokeStyle = '#2b4c9a'; g.lineWidth = 7; g.beginPath(); g.moveTo(s * 0.3, s * 0.72); g.bezierCurveTo(s * 0.4, s * 0.6, s * 0.5, s * 0.8, s * 0.7, s * 0.68); g.stroke(); } }, { order: 6 }));
-      add(puff('swap', f, 1030, [8, 1.3, -5.0], 1.4, 14)); add(moneyRain('mr', f, 1034, 1063, [8, 1.9, -4.6], 3.2));
-      add(pill('pyam', f, 1036, 1063, [8, 2.6, -5.4], 'MAYAMAN NA!', 'yellow'));
+      P(R[f < 1100 ? 'ako' : 'akoRich'], f, { pos: [8, 0, -5.4], pose: f < 1100 ? 'hold' : 'cheer', expr: f < 1100 ? 'neutral' : 'grin' });
+      add(fx('contract', [8.05, 1.05, -4.9], 0.55, 'ct' + (f > 1080 ? 's' : ''), (g) => { const s = g.canvas.width; g.fillStyle = '#f4ecd2'; g.fillRect(s * 0.15, s * 0.05, s * 0.7, s * 0.9); g.fillStyle = '#241a16'; g.font = `900 ${s * 0.08}px ${FONT}`; g.textAlign = 'center'; g.fillText('KONTRATA', s / 2, s * 0.2); g.font = `900 ${s * 0.06}px ${FONT}`; g.fillText('TAWA = ₱1M', s / 2, s * 0.38); g.strokeStyle = '#241a16'; g.lineWidth = 4; g.beginPath(); g.moveTo(s * 0.25, s * 0.75); g.lineTo(s * 0.75, s * 0.75); g.stroke(); if (f > 1080) { g.strokeStyle = '#2b4c9a'; g.lineWidth = 7; g.beginPath(); g.moveTo(s * 0.3, s * 0.72); g.bezierCurveTo(s * 0.4, s * 0.6, s * 0.5, s * 0.8, s * 0.7, s * 0.68); g.stroke(); } }, { order: 6 }));
+      add(puff('swap', f, 1098, [8, 1.3, -5.0], 1.4, 14)); add(moneyRain('mr', f, 1100, 1138, [8, 1.9, -4.6], 3.2));
+      add(pill('pyam', f, 1102, 1138, [8, 2.6, -5.4], 'MAYAMAN NA!', 'yellow'));
       break; }
     case 'nolaugh': {
-      P(R.akoRich, f, { pos: [8, 0, -5.4], pose: 'idle', expr: f < 1090 ? 'neutral' : 'sad', look: [0, 10 * Math.sin(f * 0.1)] });
-      add(pill('pwt', f, 1080, 1139, [8, 2.55, -5.4], 'WALA NANG TAWA', 'red', 0.3));
+      P(R.akoRich, f, { pos: [8, 0, -5.4], pose: 'idle', expr: f < 1160 ? 'neutral' : 'sad', look: [0, 10 * Math.sin(f * 0.1)] });
+      add(pill('pwt', f, 1150, 1193, [8, 2.55, -5.4], 'WALA NANG TAWA', 'red', 0.3));
       break; }
     case 'car': {
       P(R.akoRich, f, { pos: [14, 0.35, 1.9], yaw: 90, pose: 'sit', expr: 'sad' });
-      add(pill('pk', f, 1146, 1239, [14, 2.7, 1.4], 'BAGONG KOTSE', 'yellow'));
+      add(pill('pk', f, 1196, 1275, [14, 2.7, 1.4], 'BAGONG KOTSE', 'yellow'));
       break; }
     case 'tvs': {
       P(R.akoRich, f, { pos: [TVX, 0.1, 1.3], yaw: 145, pose: 'sit', expr: 'sad' });
-      add(pill('ptv', f, 1244, 1332, [TVX, 3.3, -2.6], '10 TV', 'yellow')); add(shout('x10', f, 1290, 1332, [TVX, 2.6, -1.0], '×10 LUNGKOT', '#9fd4ff', 0.4));
+      add(pill('ptv', f, 1290, 1392, [TVX, 3.3, -2.6], '10 TV', 'yellow')); add(shout('x10', f, 1334, 1392, [TVX, 2.6, -1.0], '×10 LUNGKOT', '#9fd4ff', 0.4));
       break; }
     case 'hall': {
-      const sad = f >= 1488;
+      const sad = f >= 1538;
       P(R.don, f, { pos: [HALL, 0, -0.6], pose: sad ? 'idle' : 'cheer', expr: sad ? 'sad' : 'laugh', lean: sad ? 10 : -8 });
-      if (!sad) add(shout('hd', f, 1395, 1475, [HALL, 2.9, -0.4], 'HAHAHA… haha… ha', '#ffe066', 0.32));
-      add(pill('pmi', f, 1440, 1531, [HALL, 2.6, -0.6], 'MAG-ISA', 'blue'));
+      if (!sad) add(shout('hd', f, 1427, 1530, [HALL, 2.9, -0.4], 'HAHAHA… haha… ha', '#ffe066', 0.32));
+      add(pill('pmi', f, 1488, 1572, [HALL, 2.6, -0.6], 'MAG-ISA', 'blue'));
       break; }
     case 'balcony': {
       P(R.akoRich, f, { pos: [BALC[0], BALC[1], BALC[2]], pose: 'idle', expr: 'sad', yaw: f > 1680 ? 35 : 0, lean: 8 });
@@ -223,8 +223,8 @@ export const frameAt = (f, H, R) => {
     case 'gate': {
       P(R.akoRich, f, { pos: [GATE - 0.4, 0, -10.2], pose: f < 2215 ? 'point' : 'wave', expr: 'grin' });
       P(R.don, f, { pos: [lerp(-27.6, -23.2, ss(win(f, 2222, 2290))), 0, lerp(-13, 0.2, ss(win(f, 2222, 2290)))], yaw: 30, pose: f > 2222 && f < 2290 ? 'walk' : 'idle', t: f / 26, expr: 'happy' });
-      ['n1', 'n3', 'n5'].forEach((key, i) => P(R[key], f, { pos: [-24 + i * 1.2, 0, 1.8], yaw: 180, pose: 'cheer', expr: 'laugh' }));
-      add(burst('gb', f, 2212, [GATE, 2.4, -10.6], 1.2)); add(pill('pgo', f, 2185, 2307, [GATE, 3.8, -10.6], 'BUKAS NA ANG GATE!', 'green'));
+      ['n1', 'n3', 'n5'].forEach((key, i) => P(R[key], f, { pos: [-31 + i * 1.1, 0, -8.4], yaw: 15, pose: 'cheer', expr: 'laugh' }));
+      add(burst('gb', f, 2212, [GATE, 2.4, -10.6], 1.2)); add(pill('pgo', f, 2185, 2307, [GATE, 3.8, -10.6], 'BUKAS NA ANG GATE!', 'green', 0.75));
       break; }
     case 'feast': {
       const seats = [['akoRich', -25.5], ['don', -23.8], ['berto', -22.2], ['lola', -20.6], ['n1', -19.0]];

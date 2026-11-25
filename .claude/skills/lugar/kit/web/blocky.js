@@ -27,7 +27,7 @@ const piv = (parent, x = 0, y = 0, z = 0) => { const g = new THREE.Group(); g.po
 export const EXPR = ['smile', 'happy', 'grin', 'laugh', 'shock', 'wow', 'sad', 'cry', 'angry', 'smug', 'worried', 'neutral', 'blink', 'sleepy', 'dizzy', 'love'];
 const faceCache = new Map();
 const drawFace = (expr, o) => {
-  const c = document.createElement('canvas'); c.width = c.height = 256; const g = c.getContext('2d');
+  const c = document.createElement('canvas'); c.width = c.height = 512; const g = c.getContext('2d'); g.scale(2, 2); // 2x for crisp close-ups
   const ink = '#2a1d1a', W = '#ffffff';
   g.lineCap = 'round'; g.lineJoin = 'round';
   const ex = 62, ey = 120, er = 15;
