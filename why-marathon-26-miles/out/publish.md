@@ -28,7 +28,7 @@ Why is a marathon 26.2 miles? Blame the royals 👑🏃 #marathon #funfacts #did
 
 **YouTube tags**
 ```
-why is a marathon 26.2 miles, why marathon 26.2, marathon distance history, 26.2 miles explained, 42.195 km why, 1908 London Olympics, 1908 Olympic marathon, Windsor Castle marathon, royal box marathon, Dorando Pietri, Johnny Hayes, marathon history, running history, Olympic history, why explained, that's why, fun facts, did you know, explained in 60 seconds, animated explainer, educational animation, cartoon facts, history facts, sports facts, running facts, shorts
+why is a marathon 26.2 miles, marathon 26.2 explained, why marathon 26.2, marathon distance history, 42.195 km, 1908 London Olympics, 1908 Olympic marathon, Windsor Castle, royal box, Dorando Pietri, Johnny Hayes, marathon history, Olympic history, running facts, sports facts, history facts, why explained, that's why, fun facts, did you know, animated explainer, educational animation, cartoon facts, shorts
 ```
 
 **Hashtags (TikTok / Reels)**
