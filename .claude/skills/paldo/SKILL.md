@@ -107,3 +107,6 @@ Edit the cue table at the bottom of `audio.py`, which uses frames/30. Run `pytho
 
 ## Stage 9: Title, description, tags (see `references/publish.md`)
 Give copy-paste code blocks: the title, the long YouTube description (story recap, facts with dates, a sources line, an "original animation" note, and the ElevenLabs credit), a short Shorts/TikTok caption, the YouTube tags (comma-separated) and 10–15 hashtags. Add the upload tips: "Not made for kids" unless sure, and the "Altered or synthetic content" toggle for the AI voice.
+
+## Stage 10: Upload + schedule (only when the user asks)
+Proven 2026-11-26 on "Why Are School Buses Yellow?". Push the MP4, then call Zapier `youtube_upload_video` (YouTube app, channel stickArts1998) with `video` = the raw.githubusercontent URL **pinned to the commit hash**, `privacy_status: private`, `publish_at` in UTC (9:00 AM Manila = 01:00Z; this channel accepts it despite the "Partner only" note), the catchy title (+ `#shorts`), description, **12 distinct tags**, `category_id: "27"`, `made_for_kids: false`, `default_language`/`default_audio_language: "en"`. Confirm `publishAt` in the result. If YouTube returns 429, retry once later, never in a loop; Zapier throttles repeated attempts. If the user says they uploaded it themselves, cancel any scheduled upload task.
