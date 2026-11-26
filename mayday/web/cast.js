@@ -256,7 +256,7 @@ Object.assign(PROP, {
 // speech bubble with text
 export const drawBubble = (g, s, col = '#ffffff', fg = '#2a2030') => { const w = g.canvas.width, h = g.canvas.height; const p = new Pen(g); g.save(); g.scale(w / 512, h / 512);
   p.ell(256, 220, 220, 160, col, 10); p.poly([[180, 350], [130, 470], [260, 370]], col, 0); g.strokeStyle = INK; g.lineWidth = 10; g.beginPath(); g.moveTo(180, 362); g.lineTo(130, 470); g.lineTo(250, 374); g.stroke();
-  g.fillStyle = fg; g.font = `900 ${s.length > 3 ? 120 : 170}px Georgia, serif`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(s, 256, 226); g.restore(); };
+  g.fillStyle = fg; g.font = `900 ${Math.min(170, Math.round(760 / Math.max(2, s.length)))}px Georgia, serif`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(s, 256, 226); g.restore(); };
 // chalkboard: [[big, small], ...] lines; reveal 0..n
 export const drawBoard = (g, rows) => { const w = g.canvas.width, h = g.canvas.height; g.save(); g.scale(w / 1024, h / 640);
   g.fillStyle = '#6a4a2e'; g.fillRect(0, 0, 1024, 640); g.fillStyle = '#2f4a3a'; g.fillRect(28, 28, 968, 584);
@@ -286,3 +286,18 @@ Object.assign(OUT, {
 Object.assign(PROP, {
   swatch: (p, x, y, u) => { p.poly([[x - 9 * u, y - 60 * u], [x + 9 * u, y - 60 * u], [x + 9 * u, y + 4 * u], [x - 9 * u, y + 4 * u]], '#f2b21c', 2.4 * u); p.dot(x, y, 5.5 * u); },
 });
+
+// ---------------- "Why Do Pilots Yell Mayday?" additions ----------------
+const headset = (p, h) => { const { cx, hc, crown, W, HH, u } = h; p.ell(cx, crown + 0.12 * HH, 0.5 * W, 0.3 * HH, null, 6 * u, 180, 360); for (const s of [-1, 1]) p.ell(cx + s * 0.5 * W, hc, 0.1 * W, 0.16 * HH, '#2a2a30', 3 * u); };
+const flycap = (p, h) => { const { cx, crown, HH, W, u } = h; p.ell(cx, crown + 0.22 * HH, 0.52 * W, 0.3 * HH, '#7a4a2a', 4 * u, 180, 360); for (const s of [-1, 1]) p.ell(cx + s * 0.22 * W, crown + 0.14 * HH, 0.14 * W, 0.09 * HH, '#9fd4ff', 3 * u); };
+Object.assign(OUT, {
+  mock: { o: { jacket: '#3a4a3a', pants: '#2c2c36', boots: '#1d1a1a', hat: 'hair', hair: '#5a3b2a', skin: SKINS[0], moustache: '#5a3b2a', buttons: '#c9a040' }, extra: suit('#7a2a2a'), head: headset, seed: 71 },
+  pilot: { o: { jacket: '#7a5a3a', pants: '#4a4038', boots: '#2a2220', hat: 'none', skin: SKINS[1] }, head: flycap, seed: 73 },
+});
+Object.assign(PROP, {
+  mic: (p, x, y, u) => { p.band([[x, y + 4 * u], [x, y - 24 * u]], '#3a3a44', 3 * u, 1 * u); p.ell(x, y - 32 * u, 9 * u, 11 * u, '#2a2a30', 2 * u); for (let i = -1; i <= 1; i++) p.stroke([[x - 6 * u, y - 32 * u + i * 4 * u], [x + 6 * u, y - 32 * u + i * 4 * u]], 1 * u, '#8a8a96'); p.dot(x, y, 5.5 * u); },
+});
+// radio static zigzags
+export const drawStatic = (g, t) => { const w = g.canvas.width; g.save(); g.scale(w / 512, w / 512); g.lineWidth = 7; g.lineJoin = 'miter';
+  for (let k = 0; k < 4; k++) { g.strokeStyle = k % 2 ? '#ffe066' : '#ffffff'; g.beginPath(); let x = 20, y = 120 + k * 90 + 20 * Math.sin(t * 3 + k); g.moveTo(x, y); while (x < 492) { x += 24; y = 120 + k * 90 + ((x / 24 + Math.floor(t * 12) + k) % 2 ? -26 : 26) * (0.6 + 0.4 * Math.sin(t * 5 + x)); g.lineTo(x, y); } g.stroke(); }
+  g.restore(); };
