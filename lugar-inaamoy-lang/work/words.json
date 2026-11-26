@@ -1,0 +1,942 @@
+[
+{
+"word": "Dito",
+"start": 0.08,
+"end": 0.32
+},
+{
+"word": "sa",
+"start": 0.36,
+"end": 0.4
+},
+{
+"word": "lugar",
+"start": 0.44,
+"end": 0.72
+},
+{
+"word": "namin,",
+"start": 0.76,
+"end": 1.28
+},
+{
+"word": "ang",
+"start": 1.44,
+"end": 1.6
+},
+{
+"word": "alak",
+"start": 1.68,
+"end": 2.0
+},
+{
+"word": "hindi",
+"start": 2.04,
+"end": 2.32
+},
+{
+"word": "iniinom…",
+"start": 2.44,
+"end": 3.12
+},
+{
+"word": "inaamoy",
+"start": 3.28,
+"end": 3.84
+},
+{
+"word": "lang.",
+"start": 4.04,
+"end": 4.48
+},
+{
+"word": "Bawal",
+"start": 4.72,
+"end": 4.96
+},
+{
+"word": "kasi",
+"start": 5.04,
+"end": 5.2
+},
+{
+"word": "malasing",
+"start": 5.28,
+"end": 5.6
+},
+{
+"word": "dito.",
+"start": 5.64,
+"end": 6.28
+},
+{
+"word": "Ang",
+"start": 6.48,
+"end": 6.64
+},
+{
+"word": "problema,",
+"start": 6.72,
+"end": 7.4
+},
+{
+"word": "ang",
+"start": 7.6,
+"end": 7.76
+},
+{
+"word": "bilis",
+"start": 7.84,
+"end": 8.08
+},
+{
+"word": "naming",
+"start": 8.12,
+"end": 8.4
+},
+{
+"word": "malasing.",
+"start": 8.48,
+"end": 9.2
+},
+{
+"word": "Si",
+"start": 9.44,
+"end": 9.52
+},
+{
+"word": "Mang",
+"start": 9.573,
+"end": 9.68
+},
+{
+"word": "Jhano,",
+"start": 9.76,
+"end": 10.24
+},
+{
+"word": "isang",
+"start": 10.4,
+"end": 10.64
+},
+{
+"word": "amoy",
+"start": 10.72,
+"end": 10.88
+},
+{
+"word": "lang",
+"start": 10.96,
+"end": 11.04
+},
+{
+"word": "ng",
+"start": 11.12,
+"end": 11.28
+},
+{
+"word": "beer,",
+"start": 11.4,
+"end": 11.64
+},
+{
+"word": "lasing",
+"start": 11.76,
+"end": 12.08
+},
+{
+"word": "na.",
+"start": 12.4,
+"end": 12.76
+},
+{
+"word": "Si",
+"start": 12.8,
+"end": 12.88
+},
+{
+"word": "Caputo,",
+"start": 13.0,
+"end": 13.68
+},
+{
+"word": "isang",
+"start": 13.76,
+"end": 14.0
+},
+{
+"word": "baso",
+"start": 14.12,
+"end": 14.32
+},
+{
+"word": "lang,",
+"start": 14.44,
+"end": 14.72
+},
+{
+"word": "tulog",
+"start": 14.773,
+"end": 15.04
+},
+{
+"word": "agad.",
+"start": 15.12,
+"end": 15.84
+},
+{
+"word": "Ako",
+"start": 15.88,
+"end": 16.0
+},
+{
+"word": "si",
+"start": 16.08,
+"end": 16.16
+},
+{
+"word": "Dams,",
+"start": 16.2,
+"end": 16.88
+},
+{
+"word": "taga-amoy",
+"start": 16.96,
+"end": 17.36
+},
+{
+"word": "lang…",
+"start": 17.52,
+"end": 18.08
+},
+{
+"word": "pero",
+"start": 18.2,
+"end": 18.373
+},
+{
+"word": "ako",
+"start": 18.427,
+"end": 18.48
+},
+{
+"word": "pa",
+"start": 18.56,
+"end": 18.64
+},
+{
+"word": "ang",
+"start": 18.68,
+"end": 18.72
+},
+{
+"word": "nagsuka.",
+"start": 18.76,
+"end": 19.76
+},
+{
+"word": "Kaya",
+"start": 19.8,
+"end": 20.0
+},
+{
+"word": "ngayon,",
+"start": 20.04,
+"end": 20.64
+},
+{
+"word": "ang",
+"start": 20.72,
+"end": 20.8
+},
+{
+"word": "inuman",
+"start": 20.88,
+"end": 21.2
+},
+{
+"word": "namin,",
+"start": 21.307,
+"end": 21.84
+},
+{
+"word": "paamuyan",
+"start": 21.92,
+"end": 22.4
+},
+{
+"word": "na",
+"start": 22.44,
+"end": 22.48
+},
+{
+"word": "lang",
+"start": 22.56,
+"end": 22.64
+},
+{
+"word": "ng",
+"start": 22.72,
+"end": 22.8
+},
+{
+"word": "takip.",
+"start": 22.853,
+"end": 23.68
+},
+{
+"word": "Si",
+"start": 23.76,
+"end": 23.84
+},
+{
+"word": "Kuya",
+"start": 23.92,
+"end": 24.08
+},
+{
+"word": "Steban",
+"start": 24.12,
+"end": 24.48
+},
+{
+"word": "ang",
+"start": 24.52,
+"end": 24.56
+},
+{
+"word": "nagbebenta",
+"start": 24.613,
+"end": 25.12
+},
+{
+"word": "ng",
+"start": 25.2,
+"end": 25.28
+},
+{
+"word": "takip,",
+"start": 25.333,
+"end": 25.84
+},
+{
+"word": "limang",
+"start": 25.92,
+"end": 26.16
+},
+{
+"word": "piso",
+"start": 26.2,
+"end": 26.48
+},
+{
+"word": "isa.",
+"start": 26.64,
+"end": 27.2
+},
+{
+"word": "Si",
+"start": 27.24,
+"end": 27.28
+},
+{
+"word": "Mang",
+"start": 27.32,
+"end": 27.44
+},
+{
+"word": "Torres,",
+"start": 27.52,
+"end": 28.16
+},
+{
+"word": "tatlong",
+"start": 28.28,
+"end": 28.56
+},
+{
+"word": "takip,",
+"start": 28.6,
+"end": 29.12
+},
+{
+"word": "sumayaw",
+"start": 29.24,
+"end": 29.6
+},
+{
+"word": "sa",
+"start": 29.68,
+"end": 29.76
+},
+{
+"word": "gitna",
+"start": 29.84,
+"end": 30.0
+},
+{
+"word": "ng",
+"start": 30.08,
+"end": 30.16
+},
+{
+"word": "kalsada.",
+"start": 30.2,
+"end": 31.2
+},
+{
+"word": "Si",
+"start": 31.24,
+"end": 31.28
+},
+{
+"word": "Aling",
+"start": 31.36,
+"end": 31.6
+},
+{
+"word": "Ninya,",
+"start": 31.64,
+"end": 32.24
+},
+{
+"word": "isang",
+"start": 32.32,
+"end": 32.48
+},
+{
+"word": "takip,",
+"start": 32.56,
+"end": 33.12
+},
+{
+"word": "kinantahan",
+"start": 33.2,
+"end": 33.6
+},
+{
+"word": "ang",
+"start": 33.68,
+"end": 33.76
+},
+{
+"word": "poste.",
+"start": 33.92,
+"end": 34.72
+},
+{
+"word": "Si",
+"start": 34.76,
+"end": 34.8
+},
+{
+"word": "Don",
+"start": 34.92,
+"end": 35.04
+},
+{
+"word": "Francis,",
+"start": 35.2,
+"end": 35.84
+},
+{
+"word": "bumili",
+"start": 35.92,
+"end": 36.16
+},
+{
+"word": "ng",
+"start": 36.24,
+"end": 36.32
+},
+{
+"word": "gintong",
+"start": 36.36,
+"end": 36.72
+},
+{
+"word": "takip…",
+"start": 36.773,
+"end": 37.44
+},
+{
+"word": "nahimatay.",
+"start": 37.52,
+"end": 38.32
+},
+{
+"word": "Pero",
+"start": 38.56,
+"end": 38.8
+},
+{
+"word": "ako?",
+"start": 38.96,
+"end": 39.32
+},
+{
+"word": "Isang",
+"start": 39.52,
+"end": 39.76
+},
+{
+"word": "singhot",
+"start": 39.88,
+"end": 40.16
+},
+{
+"word": "lang,",
+"start": 40.28,
+"end": 40.64
+},
+{
+"word": "suka",
+"start": 40.68,
+"end": 40.96
+},
+{
+"word": "agad.",
+"start": 41.04,
+"end": 41.76
+},
+{
+"word": "Tatlong",
+"start": 41.84,
+"end": 42.16
+},
+{
+"word": "beses",
+"start": 42.24,
+"end": 42.56
+},
+{
+"word": "ngayong",
+"start": 42.6,
+"end": 42.8
+},
+{
+"word": "linggo.",
+"start": 42.88,
+"end": 43.76
+},
+{
+"word": "Sabi",
+"start": 43.8,
+"end": 44.0
+},
+{
+"word": "ni",
+"start": 44.04,
+"end": 44.08
+},
+{
+"word": "Nanay",
+"start": 44.12,
+"end": 44.4
+},
+{
+"word": "Kimberly,",
+"start": 44.48,
+"end": 45.28
+},
+{
+"word": "\"Anak,",
+"start": 45.32,
+"end": 46.08
+},
+{
+"word": "hindi",
+"start": 46.16,
+"end": 46.48
+},
+{
+"word": "alak",
+"start": 46.56,
+"end": 46.88
+},
+{
+"word": "ang",
+"start": 46.92,
+"end": 46.96
+},
+{
+"word": "problema",
+"start": 47.04,
+"end": 47.52
+},
+{
+"word": "mo.\"",
+"start": 47.68,
+"end": 48.16
+},
+{
+"word": "Isang",
+"start": 48.48,
+"end": 48.72
+},
+{
+"word": "gabi,",
+"start": 48.76,
+"end": 49.28
+},
+{
+"word": "si",
+"start": 49.36,
+"end": 49.44
+},
+{
+"word": "Wangbu,",
+"start": 49.48,
+"end": 50.16
+},
+{
+"word": "inamoy",
+"start": 50.24,
+"end": 50.48
+},
+{
+"word": "din",
+"start": 50.56,
+"end": 50.64
+},
+{
+"word": "ang",
+"start": 50.72,
+"end": 50.8
+},
+{
+"word": "takip…",
+"start": 50.853,
+"end": 51.52
+},
+{
+"word": "bumahing,",
+"start": 51.6,
+"end": 52.24
+},
+{
+"word": "tapos",
+"start": 52.32,
+"end": 52.56
+},
+{
+"word": "tumakbo.",
+"start": 52.613,
+"end": 53.44
+},
+{
+"word": "Sinundan",
+"start": 53.52,
+"end": 53.92
+},
+{
+"word": "siya",
+"start": 53.96,
+"end": 54.04
+},
+{
+"word": "nina",
+"start": 54.08,
+"end": 54.24
+},
+{
+"word": "Biboy",
+"start": 54.32,
+"end": 54.64
+},
+{
+"word": "at",
+"start": 54.72,
+"end": 54.8
+},
+{
+"word": "Jenny,",
+"start": 54.84,
+"end": 55.36
+},
+{
+"word": "hanggang",
+"start": 55.44,
+"end": 55.68
+},
+{
+"word": "sa",
+"start": 55.72,
+"end": 55.76
+},
+{
+"word": "tindahan",
+"start": 55.84,
+"end": 56.24
+},
+{
+"word": "ni",
+"start": 56.28,
+"end": 56.32
+},
+{
+"word": "Aling",
+"start": 56.4,
+"end": 56.64
+},
+{
+"word": "Ninya.",
+"start": 56.68,
+"end": 57.44
+},
+{
+"word": "At",
+"start": 57.52,
+"end": 57.6
+},
+{
+"word": "doon",
+"start": 57.68,
+"end": 57.84
+},
+{
+"word": "nila",
+"start": 57.92,
+"end": 58.04
+},
+{
+"word": "nakita,",
+"start": 58.08,
+"end": 58.8
+},
+{
+"word": "sa",
+"start": 58.88,
+"end": 58.96
+},
+{
+"word": "likod",
+"start": 59.04,
+"end": 59.2
+},
+{
+"word": "ng",
+"start": 59.28,
+"end": 59.36
+},
+{
+"word": "tindahan,",
+"start": 59.44,
+"end": 60.16
+},
+{
+"word": "isang",
+"start": 60.24,
+"end": 60.56
+},
+{
+"word": "sakong",
+"start": 60.64,
+"end": 60.96
+},
+{
+"word": "takip.",
+"start": 61.04,
+"end": 61.84
+},
+{
+"word": "Hindi",
+"start": 61.88,
+"end": 62.16
+},
+{
+"word": "pala",
+"start": 62.213,
+"end": 62.32
+},
+{
+"word": "galing",
+"start": 62.4,
+"end": 62.64
+},
+{
+"word": "sa",
+"start": 62.72,
+"end": 62.8
+},
+{
+"word": "bote",
+"start": 62.92,
+"end": 63.04
+},
+{
+"word": "ng",
+"start": 63.12,
+"end": 63.28
+},
+{
+"word": "beer…",
+"start": 63.44,
+"end": 64.0
+},
+{
+"word": "galing",
+"start": 64.04,
+"end": 64.32
+},
+{
+"word": "sa",
+"start": 64.4,
+"end": 64.48
+},
+{
+"word": "bote",
+"start": 64.56,
+"end": 64.8
+},
+{
+"word": "ng",
+"start": 64.88,
+"end": 65.04
+},
+{
+"word": "suka!",
+"start": 65.08,
+"end": 66.0
+},
+{
+"word": "Buong",
+"start": 66.08,
+"end": 66.24
+},
+{
+"word": "barangay",
+"start": 66.32,
+"end": 66.72
+},
+{
+"word": "pala,",
+"start": 66.76,
+"end": 67.12
+},
+{
+"word": "nalalasing",
+"start": 67.2,
+"end": 67.68
+},
+{
+"word": "sa",
+"start": 67.76,
+"end": 67.84
+},
+{
+"word": "suka.",
+"start": 67.973,
+"end": 68.56
+},
+{
+"word": "Kaya",
+"start": 69.024,
+"end": 69.2
+},
+{
+"word": "pala",
+"start": 69.28,
+"end": 69.44
+},
+{
+"word": "ako",
+"start": 69.52,
+"end": 69.6
+},
+{
+"word": "nagsusuka…",
+"start": 69.64,
+"end": 70.72
+},
+{
+"word": "suka",
+"start": 70.8,
+"end": 71.12
+},
+{
+"word": "pala",
+"start": 71.16,
+"end": 71.36
+},
+{
+"word": "ang",
+"start": 71.4,
+"end": 71.44
+},
+{
+"word": "inaamoy",
+"start": 71.56,
+"end": 72.0
+},
+{
+"word": "ko.",
+"start": 72.16,
+"end": 72.8
+},
+{
+"word": "Ngayon,",
+"start": 72.84,
+"end": 73.52
+},
+{
+"word": "bago",
+"start": 73.6,
+"end": 73.84
+},
+{
+"word": "kaming",
+"start": 73.92,
+"end": 74.08
+},
+{
+"word": "patakaran:",
+"start": 74.16,
+"end": 74.96
+},
+{
+"word": "bawal",
+"start": 75.0,
+"end": 75.36
+},
+{
+"word": "na",
+"start": 75.4,
+"end": 75.44
+},
+{
+"word": "ring",
+"start": 75.52,
+"end": 75.6
+},
+{
+"word": "sumawsaw.",
+"start": 75.68,
+"end": 76.72
+},
+{
+"word": "Anong",
+"start": 76.76,
+"end": 76.88
+},
+{
+"word": "meron",
+"start": 76.96,
+"end": 77.16
+},
+{
+"word": "sa",
+"start": 77.2,
+"end": 77.28
+},
+{
+"word": "lugar",
+"start": 77.36,
+"end": 77.52
+},
+{
+"word": "n'yo?",
+"start": 77.56,
+"end": 78.08
+}
+]
