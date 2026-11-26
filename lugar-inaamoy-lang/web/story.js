@@ -244,8 +244,9 @@ export const frameAt = (f, H, R) => {
       add(shout('cl', f, 2306, TOTAL, [0, 2.65, -3.6], "ANONG MERON SA LUGAR N'YO?", '#ffffff', 0.42));
       break; }
     case 'thumb': {
-      P(R.dams, 9000, { pos: SEAT.dams, pose: 'point', armR: [-150, 0, -30], expr: 'shock', blink: false });
-      H.damsCap.visible = true;
+      P(R.dams, 9000, { pos: SEAT.dams, pose: 'point', armR: [-115, 0, -30], expr: 'shock', blink: false });
+      H.damsCap.visible = true; H.damsCap.scale.setScalar(2.2);
+      add(pill('tp', 9000, 8990, 9010, [0.35, 2.05, -4.6], 'TAKIP', 'white', 0.22));
       break; }
   }
   return A;
