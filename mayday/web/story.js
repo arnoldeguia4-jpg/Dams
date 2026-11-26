@@ -129,7 +129,6 @@ export const actorsAt = (f) => {
       break;
     case 'thumb':
       add(ch('mk', OUT.mock, 9000, [RX - 0.6, 0.11, -0.6], { expr: 'shock', armR: ARM.holdHi, propR: 'mic', armL: ARM.up, still: true, noBlink: true }));
-      add(bubble('tb', 'MAYDAY!', 9000, 8990, 9010, [RX - 0.1, 2.85, -0.3], 0.85));
       break;
   }
   return A;
