@@ -36,6 +36,12 @@ The user wants **one command to run the whole pipeline**. When PALDO is invoked 
 - Verify every fact with WebSearch before offering it. Label each story **True / Disputed / Legend**, and use "legend says" or "probably" where the evidence is thin. Credit sources in the reply.
 - Commit and push the project to the session's branch after major steps. A stop hook expects a clean tree, so gitignore `frames/`, `stills/`, `node_modules/`, `work/*.log` and `out/*.wav`.
 
+## Script-first mode: the user's choice when credits are low (2026-11-26)
+When the user asks for it ("ibigay mo muna ang script"), stop after Stage 3: send the script in a code block, with the word count and estimated length. Then **wait** for the user to send the voiceover file. Do not call ElevenLabs. When the audio arrives, copy it to `<slug>/voice.mp3` and continue from Stage 5.
+- **Timing without credits:** run `timing.py voice.mp3 script.txt --out work`. Then spot-check every phrase start against silencedetect, since this method drifted 2.7 s on the Liberty short. Captions fall back to syllable-timed words from `work/phrases.json`.
+- **Exact text:** the voiceover must read the script exactly. If the user changed words, update `script.txt` to match before timing.
+- **Credits on the ElevenLabs website:** generating the voice there spends the same credits, so check that the user has enough first.
+
 ## Stage 1: Intake
 Ask one AskUserQuestion: **"Where are you starting from?"** The options are: need ideas + script / have a script / voiceover ready. Also ask the length: 20–30 s or 45–60 s. This user chose **45–60 s**.
 
