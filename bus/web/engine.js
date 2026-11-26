@@ -106,6 +106,7 @@ export const LIGHTS = {
   golden: { az: 20, el: 18, sun: '#ffcf96', si: 2.3, sky: '#c9a4c8', gnd: '#5a4a6a', hi: 0.95, top: '#ffc47c', hor: '#f3b2a0', fog: [40, 360], card: [1.06, 0.93, 0.8], sat: 1.1, gain: 1.0 },
   night: { az: -30, el: 40, sun: '#a9c0ff', si: 1.6, sky: '#8a9ed8', gnd: '#3a3c5c', hi: 1.35, top: '#141c3c', hor: '#33427a', fog: [30, 300], card: [0.62, 0.68, 0.95], sat: 0.95, gain: 1.0 },
   underwater: { az: 0, el: 70, sun: '#7fd0d8', si: 1.2, sky: '#3a8a9a', gnd: '#1a3a40', hi: 1.3, top: '#0f3a4a', hor: '#1f5f6a', fog: [3, 42], card: [0.62, 0.82, 0.88], sat: 0.95, gain: 1.0 },
+  fog: { az: 20, el: 14, sun: '#ffe0b8', si: 1.6, sky: '#d8d4cc', gnd: '#8a8478', hi: 1.2, top: '#c9c6c0', hor: '#e6e2da', fog: [2, 26], card: [0.95, 0.94, 0.92], sat: 0.95, gain: 1.0 },
   museum: { az: 20, el: 60, sun: '#ffe6c0', si: 1.8, sky: '#c9b8a0', gnd: '#3a3030', hi: 1.1, top: '#2a2a34', hor: '#4a4450', fog: [60, 400], card: [1.0, 0.95, 0.88], sat: 1.05, gain: 1.0 },
   stage: { az: 10, el: 40, sun: '#ffd9a0', si: 3.0, sky: '#8a6a7a', gnd: '#3a2430', hi: 0.7, top: '#2a1622', hor: '#5a2a38', fog: [40, 300], card: [1.08, 0.97, 0.86], sat: 1.12, gain: 1.0 },
 };

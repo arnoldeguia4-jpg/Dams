@@ -274,3 +274,15 @@ export const drawFront = (g, t = 1) => { const w = g.canvas.width, h = g.canvas.
   if (t > 0) { g.globalAlpha = Math.min(1, t); g.font = '900 44px Georgia, serif'; g.fillText('(all correct)', 320, 610); g.strokeStyle = '#c0353a'; g.lineWidth = 10; g.beginPath(); g.ellipse(320, 530, 250, 60, 0, 0, Math.PI * 2); g.stroke(); }
   g.globalAlpha = 1; g.fillStyle = '#8a8070'; for (let i = 0; i < 5; i++) g.fillRect(60, 660 + i * 24, 520, 8);
   g.restore(); };
+
+// ---------------- "Why Are School Buses Yellow?" additions ----------------
+Object.assign(OUT, {
+  cyr: { o: { jacket: '#4a4a5a', pants: '#33333e', boots: '#2a2220', hat: 'hair', hair: '#3a2a20', skin: SKINS[0], buttons: '#8a8a96' }, extra: suit('#c9a040'), head: glasses, seed: 51 },
+  kid1: { o: { ...KID, jacket: '#e2453c', cap: '#2b4c9a' }, seed: 61 },
+  kid2: { o: { ...KID, jacket: '#3a9a5a', hat: 'hair', hair: '#2a1d16', skin: SKINS[2] }, seed: 63 },
+  kid3: { o: { ...KID, jacket: '#8a5ac9', hat: 'hair', hair: '#c9a46a', skin: SKINS[1] }, seed: 65 },
+  kid4: { o: { ...KID, jacket: '#f2c440', cap: '#e2453c', skin: SKINS[1] }, seed: 67 },
+});
+Object.assign(PROP, {
+  swatch: (p, x, y, u) => { p.poly([[x - 9 * u, y - 60 * u], [x + 9 * u, y - 60 * u], [x + 9 * u, y + 4 * u], [x - 9 * u, y + 4 * u]], '#f2b21c', 2.4 * u); p.dot(x, y, 5.5 * u); },
+});
