@@ -278,10 +278,9 @@ export const frameAt = (f, H, R) => {
       break; }
     case 'thumb': {
       const F = 9000;
-      P(R.dams, F, { pos: [0, 0, Z], pose: 'cheer', expr: 'grin', blink: false });
-      const ring = [['jhano', -1.3, -0.6, 'angry'], ['ninya', -0.7, -1.1, 'wow'], ['kim', 0.8, -1.1, 'smug'], ['roger', 1.4, -0.6, 'smug']];
+      P(R.dams, F, { pos: [0, 0, Z], pose: 'shrug', expr: 'shock', blink: false });
+      const ring = [['jhano', -1.05, -0.7, 'angry'], ['ninya', -0.55, -1.2, 'wow'], ['kim', 0.6, -1.2, 'smug'], ['roger', 1.1, -0.7, 'smug']];
       for (const [kk, dx, dz, ex] of ring) P(R[kk], F, { pos: [dx, 0, Z + dz], yaw: -dx * 12, pose: 'idle', expr: ex, blink: false });
-      add(pill('tp', F, 8990, 9010, [0, 2.65, Z], 'SPECIAL ABILITY?', 'yellow', 0.3));
       break; }
   }
   return A;
