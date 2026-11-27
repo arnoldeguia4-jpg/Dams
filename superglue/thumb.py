@@ -17,14 +17,9 @@ def arrow(d, pts, col=(232, 48, 44), w=26):
 
 # ---- vertical 1080x1920 (Shorts) ----
 V = src.copy(); d = ImageDraw.Draw(V)
-grad = Image.new('L', (1, 1920)); [grad.putpixel((0, y), int(170 * max(0, 1 - y / 520) + 170 * max(0, (y - 1450) / 470))) for y in range(1920)]
-V.paste(Image.new('RGB', V.size, (18, 12, 26)), (0, 0), grad.resize(V.size))
-d = ImageDraw.Draw(V)
-text(d, (540, 165), "HE DIDN'T WASH", 112, (255, 255, 255))
-text(d, (540, 305), "HIS DISHES", 140, (255, 255, 255))
-text(d, (540, 1640), "...AND SAVED", 120, (255, 214, 64))
-text(d, (540, 1790), "MILLIONS", 175, (255, 214, 64))
-arrow(d, [(930, 420), (985, 560), (900, 780)])
+text(d, (540, 165), "WHY IS SUPER GLUE", 96, (255, 255, 255))
+text(d, (540, 310), "SO STRONG?", 150, (255, 214, 64))
+text(d, (540, 1720), "IT WAS REJECTED TWICE", 78, (255, 255, 255))
 V.save('out/thumbnail_vertical.jpg', quality=93)
 
 # ---- landscape 1280x720 (YouTube) ----
@@ -34,11 +29,8 @@ L = bg.copy()
 fg = src.crop((0, 380, 1080, 1700)).resize((int(1080 * 720 / 1320 * 1.05), int(720 * 1.05)))
 L.paste(fg, (1280 - fg.width, -10))
 d = ImageDraw.Draw(L)
-text(d, (40, 110), "HE DIDN'T", 104, (255, 255, 255), anchor='lm', stroke=10)
-text(d, (40, 225), "WASH HIS", 104, (255, 255, 255), anchor='lm', stroke=10)
-text(d, (40, 340), "DISHES...", 104, (255, 255, 255), anchor='lm', stroke=10)
-text(d, (40, 500), "AND SAVED", 92, (255, 214, 64), anchor='lm', stroke=10)
-text(d, (40, 615), "MILLIONS", 120, (255, 214, 64), anchor='lm', stroke=10)
-arrow(d, [(560, 150), (860, 45), (1110, 215)], w=20)
+text(d, (40, 140), "WHY IS", 100, (255, 255, 255), anchor='lm', stroke=10)
+text(d, (40, 270), "SUPER GLUE", 110, (255, 255, 255), anchor='lm', stroke=10)
+text(d, (40, 420), "SO STRONG?", 130, (255, 214, 64), anchor='lm', stroke=12)
 L.save('out/thumbnail_youtube.jpg', quality=93)
 print('ok')
