@@ -18,8 +18,13 @@
    "end": 4.732
   },
   {
-   "text": "kaya niyang magalit\u2026 kahit walang kaaway.",
+   "text": "kaya niyang magalit…",
    "start": 5.117,
+   "end": 6.248
+  },
+  {
+   "text": "kahit walang kaaway.",
+   "start": 6.546,
    "end": 7.796
   },
   {
@@ -28,8 +33,13 @@
    "end": 8.966
   },
   {
-   "text": "nakikipagtsismisan\u2026 kahit mag-isa lang siya.",
+   "text": "nakikipagtsismisan…",
    "start": 9.247,
+   "end": 10.607
+  },
+  {
+   "text": "kahit mag-isa lang siya.",
+   "start": 10.941,
    "end": 12.058
   },
   {
@@ -38,8 +48,13 @@
    "end": 13.296
   },
   {
-   "text": "ang daming trabahong nasisimulan\u2026 pero halos walang natatapos.",
+   "text": "ang daming trabahong nasisimulan…",
    "start": 13.59,
+   "end": 15.57
+  },
+  {
+   "text": "pero halos walang natatapos.",
+   "start": 15.929,
    "end": 17.615
   },
   {
@@ -48,8 +63,13 @@
    "end": 18.752
   },
   {
-   "text": "nagagalit\u2026 kahit walang dahilan.",
+   "text": "nagagalit…",
    "start": 19.075,
+   "end": 19.892
+  },
+  {
+   "text": "kahit walang dahilan.",
+   "start": 20.21,
    "end": 21.357
   },
   {
@@ -58,8 +78,13 @@
    "end": 22.893
   },
   {
-   "text": "nakakapagtrabaho\u2026 kahit tulog.",
+   "text": "nakakapagtrabaho…",
    "start": 23.142,
+   "end": 24.371
+  },
+  {
+   "text": "kahit tulog.",
+   "start": 24.708,
    "end": 25.646
   },
   {
@@ -68,8 +93,13 @@
    "end": 26.809
   },
   {
-   "text": "ang aso namin\u2026 nakikipag-usap sa tao.",
+   "text": "ang aso namin…",
    "start": 27.043,
+   "end": 27.89
+  },
+  {
+   "text": "nakikipag-usap sa tao.",
+   "start": 28.233,
    "end": 29.76
   },
   {
@@ -78,8 +108,13 @@
    "end": 30.988
   },
   {
-   "text": "sa online games\u2026 wala pang nakakatalo.",
+   "text": "sa online games…",
    "start": 31.266,
+   "end": 32.398
+  },
+  {
+   "text": "wala pang nakakatalo.",
+   "start": 32.623,
    "end": 34.133
   },
   {
@@ -93,8 +128,13 @@
    "end": 37.305
   },
   {
-   "text": "May nunal sa ilalim ng ilong\u2026 at isang turo lang ng daliri niya,",
+   "text": "May nunal sa ilalim ng ilong…",
    "start": 37.651,
+   "end": 39.307
+  },
+  {
+   "text": "at isang turo lang ng daliri niya,",
+   "start": 39.697,
    "end": 41.608
   },
   {
@@ -118,13 +158,23 @@
    "end": 47.449
   },
   {
-   "text": "Sinubukan kong magalit tulad ni Mang Jhano\u2026 natawa lang ako.",
+   "text": "Sinubukan kong magalit tulad ni Mang Jhano…",
    "start": 47.888,
+   "end": 50.127
+  },
+  {
+   "text": "natawa lang ako.",
+   "start": 50.564,
    "end": 51.389
   },
   {
-   "text": "Sinubukan kong pakiligin si Kimberly gamit ang daliri\u2026 ayun,",
+   "text": "Sinubukan kong pakiligin si Kimberly gamit ang daliri…",
    "start": 51.823,
+   "end": 54.785
+  },
+  {
+   "text": "ayun,",
+   "start": 55.196,
    "end": 55.542
   },
   {
@@ -153,49 +203,84 @@
    "end": 62.401
   },
   {
-   "text": "\"Bakit ako lang ang wala?\" Tapos may nagsalita sa tabi ko.",
-   "start": 63.084,
-   "end": 67.013
+   "text": "\"Bakit ako lang ang wala?\"",
+   "start": 63.08,
+   "end": 64.35
+  },
+  {
+   "text": "Tapos may nagsalita sa tabi ko.",
+   "start": 64.94,
+   "end": 67.01
   },
   {
    "text": "Si Wangbu.",
-   "start": 67.597,
-   "end": 68.211
+   "start": 67.6,
+   "end": 68.21
   },
   {
    "text": "\"Dams,",
-   "start": 68.836,
-   "end": 69.333
+   "start": 68.84,
+   "end": 69.33
   },
   {
    "text": "sino ang tumatapos sa mga trabaho ni Justin?",
-   "start": 69.718,
-   "end": 72.966
+   "start": 69.72,
+   "end": 72.0
   },
   {
-   "text": "Ikaw.\" \"Sino ang nagpapatawa kay Jenny pagkatapos niyang magalit?",
-   "start": 73.423,
-   "end": 77.456
+   "text": "Ikaw.\"",
+   "start": 72.58,
+   "end": 72.97
   },
   {
-   "text": "Ikaw.\" \"Sino ang nakikinig sa tsismis ni Ninya?",
-   "start": 77.794,
-   "end": 81.147
+   "text": "\"Sino ang nagpapatawa kay Jenny pagkatapos niyang magalit?",
+   "start": 73.42,
+   "end": 76.51
   },
   {
-   "text": "Ikaw.\" \"At sino ang laging kakampi ni Kimberly\u2026 kaya hindi siya natatalo?",
-   "start": 81.536,
-   "end": 86.428
+   "text": "Ikaw.\"",
+   "start": 77.02,
+   "end": 77.46
   },
   {
-   "text": "Ikaw.\" Doon ko lang naintindihan.",
-   "start": 86.962,
-   "end": 88.467
+   "text": "\"Sino ang nakikinig sa tsismis ni Ninya?",
+   "start": 77.79,
+   "end": 80.09
   },
   {
-   "text": "Ang special ability ko pala\u2026 ang mga kaibigan ko.",
-   "start": 88.998,
-   "end": 92.369
+   "text": "Ikaw.\"",
+   "start": 80.64,
+   "end": 81.15
+  },
+  {
+   "text": "\"At sino ang laging kakampi ni Kimberly…",
+   "start": 81.54,
+   "end": 83.8
+  },
+  {
+   "text": "kaya hindi siya natatalo?",
+   "start": 84.06,
+   "end": 85.37
+  },
+  {
+   "text": "Ikaw.\"",
+   "start": 85.94,
+   "end": 86.43
+  },
+  {
+   "text": "Doon ko lang naintindihan.",
+   "start": 86.96,
+   "end": 88.47
+  },
+  {
+   "text": "Ang special ability ko pala…",
+   "start": 89.0,
+   "end": 90.66
+  },
+  {
+   "text": "ang mga kaibigan ko.",
+   "start": 91.11,
+   "end": 92.37
   },
   {
    "text": "Kaya ko silang patawanin.",
@@ -208,8 +293,13 @@
    "end": 95.967
   },
   {
-   "text": "Kahit ano'ng kailangan nila\u2026 andito ako.",
+   "text": "Kahit ano'ng kailangan nila…",
    "start": 96.39,
+   "end": 97.765
+  },
+  {
+   "text": "andito ako.",
+   "start": 98.179,
    "end": 98.967
   },
   {
@@ -218,8 +308,13 @@
    "end": 100.355
   },
   {
-   "text": "tinuro ako ni Roger gamit ang daliri niya\u2026 at kinilig din ako.",
+   "text": "tinuro ako ni Roger gamit ang daliri niya…",
    "start": 100.643,
+   "end": 102.945
+  },
+  {
+   "text": "at kinilig din ako.",
+   "start": 103.397,
    "end": 104.491
   },
   {

@@ -80,10 +80,11 @@ const drawFace = (expr, o) => {
     default: eyes('dot'); mouth('smile');
   }
   if (o.glasses) { g.strokeStyle = ink; g.lineWidth = 6; for (const s of [-1, 1]) { g.beginPath(); g.arc(128 + s * ex, ey, 30, 0, 7); g.stroke(); } g.beginPath(); g.moveTo(128 - ex + 30, ey); g.lineTo(128 + ex - 30, ey); g.stroke(); }
+  if (o.mole) { g.fillStyle = '#2a1a14'; g.beginPath(); g.arc(172, 150, 7.5, 0, 7); g.fill(); }
   if (o.moustache) { g.fillStyle = o.moustache; g.beginPath(); g.ellipse(112, 162, 20, 8, 0.2, 0, 7); g.ellipse(144, 162, 20, 8, -0.2, 0, 7); g.fill(); }
   const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; return t;
 };
-const faceTex = (expr, o) => { const k = expr + (o.glasses ? 'g' : '') + (o.moustache || ''); if (!faceCache.has(k)) faceCache.set(k, drawFace(expr, o)); return faceCache.get(k); };
+const faceTex = (expr, o) => { const k = expr + (o.glasses ? 'g' : '') + (o.moustache || '') + (o.mole ? 'm' : ''); if (!faceCache.has(k)) faceCache.set(k, drawFace(expr, o)); return faceCache.get(k); };
 
 // ---------- hair / hats ----------
 const hair = (head, s, H) => {
