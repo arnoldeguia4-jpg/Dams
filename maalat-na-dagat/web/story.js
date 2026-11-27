@@ -126,7 +126,7 @@ export const actorsAt = (f) => {
       add(fx('bg', [300, 22, -12], 30, 'bgl', (g) => glow(g, '255,210,160', 0.8), { order: 1 }));
       add(ch('ag', OUT.angalo, f, [300, -3, -10], { h: 30, expr: 'pained', armL: ARM.shield, armR: ARM.up, blob: false, tilt: T ? -3 : 3 * Math.sin(f * 1.3) }));
       if (!T) add(label('ar', f, 1592, 1624, [300, 24.8, -9], 'ARAY!', 3.0, '#ff6a5a'));
-      if (T) { add(ant('ta', f, [302.6, 14.6, -1], 2.8, 'bite', { flip: true, order: 9 })); add(burst('tb', 9007, 9000, [302.0, 15.4, -2], 3.4, '#ff8a7a')); }
+      if (T) { add(ant('ta', f, [302.5, 16.4, 0], 2.6, 'bite', { flip: true, order: 9 })); add(burst('tb', 9007, 9000, [301.8, 17.0, -1], 3.2, '#ff8a7a')); }
       break; }
     case 'fall': {
       const jolt = Math.max(0, 1 - (f - 1625) / 30) * Math.sin((f - 1625) * 0.9);
