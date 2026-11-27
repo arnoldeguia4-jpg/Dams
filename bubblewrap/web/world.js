@@ -51,6 +51,6 @@ export const build = () => {
   H.wrap = tbox(3.5, 1.8, 1.0, bubMat(3), { x: 0, y: 0.9, z: -1.6, parent: D }); H.wrap.userData.noND = true;
   H.boxes = group({ x: 4.5, z: -2, parent: D });
   for (let i = 0; i < 9; i++) tbox(0.9, 0.7, 0.9, M.card, { x: (i % 3) * 0.95, y: 0.35 + Math.floor(i / 3) * 0.72, z: (i % 2) * 0.2, parent: H.boxes });
-  plane(1.8, 0.5, lab('SHIPPING', 1.8, 0.5, '#c0353a', '#ffffff', 120), { y: 4.4, z: -4.8, parent: D });
+  H.shipSign = plane(1.8, 0.5, lab('SHIPPING', 1.8, 0.5, '#c0353a', '#ffffff', 120), { y: 4.4, z: -4.8, parent: D });
   return H;
 };

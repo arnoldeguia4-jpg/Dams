@@ -15,6 +15,7 @@ window.renderFrame = (f) => {
   for (const [at, amp] of S.kicks || []) { const k = kick(f, at, amp); sh = [sh[0] + k * 0.6, sh[1] + k]; }
   setCam(st, sh);
   applyLight(S.light, S.at, null, 0, S.span);
+  H.shipSign.visible = S.id === 'ibm';
   H.platen.position.y = 0.9 - 0.85 * w.press;
   H.sheetA.visible = w.sealed; H.plainA.visible = !w.sealed;
   H.plants.forEach((l, i) => { l.scale.set(1 + 0.2 * w.wilt, 1 - 0.55 * w.wilt, 1); l.material.color.set(w.wilt > 0.5 ? '#8a8a3a' : '#5aa04a'); });
