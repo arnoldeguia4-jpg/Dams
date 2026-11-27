@@ -105,9 +105,12 @@ export const LIGHTS = {
   lab: { az: 4, el: 50, sun: '#fff1d8', si: 2.4, sky: '#e6eeff', gnd: '#a08c70', hi: 1.3, top: '#5d93d9', hor: '#cfe0f2', fog: [60, 500], card: [1, 1, 1], sat: 1.06, gain: 1.0 },
   golden: { az: 20, el: 18, sun: '#ffcf96', si: 2.3, sky: '#c9a4c8', gnd: '#5a4a6a', hi: 0.95, top: '#ffc47c', hor: '#f3b2a0', fog: [40, 360], card: [1.06, 0.93, 0.8], sat: 1.1, gain: 1.0 },
   night: { az: -30, el: 40, sun: '#a9c0ff', si: 1.6, sky: '#8a9ed8', gnd: '#3a3c5c', hi: 1.35, top: '#141c3c', hor: '#33427a', fog: [30, 300], card: [0.62, 0.68, 0.95], sat: 0.95, gain: 1.0 },
+  underwater: { az: 0, el: 70, sun: '#7fd0d8', si: 1.2, sky: '#3a8a9a', gnd: '#1a3a40', hi: 1.3, top: '#0f3a4a', hor: '#1f5f6a', fog: [3, 42], card: [0.62, 0.82, 0.88], sat: 0.95, gain: 1.0 },
+  fog: { az: 20, el: 14, sun: '#ffe0b8', si: 1.6, sky: '#d8d4cc', gnd: '#8a8478', hi: 1.2, top: '#c9c6c0', hor: '#e6e2da', fog: [2, 26], card: [0.95, 0.94, 0.92], sat: 0.95, gain: 1.0 },
+  museum: { az: 20, el: 60, sun: '#ffe6c0', si: 1.8, sky: '#c9b8a0', gnd: '#3a3030', hi: 1.1, top: '#2a2a34', hor: '#4a4450', fog: [60, 400], card: [1.0, 0.95, 0.88], sat: 1.05, gain: 1.0 },
   stage: { az: 10, el: 40, sun: '#ffd9a0', si: 3.0, sky: '#8a6a7a', gnd: '#3a2430', hi: 0.7, top: '#2a1622', hor: '#5a2a38', fog: [40, 300], card: [1.08, 0.97, 0.86], sat: 1.12, gain: 1.0 },
 };
-export const look = { sat: 1.08, gain: 1, card: [1, 1, 1], flash: 0, cInf: 0, focus: 5, vig: 0.28, fade: 0, inkR: 2.4 };
+export const look = { sat: 1.08, gain: 1, card: [1, 1, 1], flash: 0, cInf: 0, focus: 5, vig: 0.28, fade: 0, inkR: 2.4, zoomB: 0, whip: [0, 0], iris: 2 };
 const cTmp = new THREE.Color(), cTmp2 = new THREE.Color();
 const mixHex = (a, b, t) => '#' + cTmp.set(a).lerp(cTmp2.set(b), t).getHexString();
 /** apply a preset (or a blend of two presets with t) around an action point `at` */
@@ -199,9 +202,10 @@ const inkMat = new THREE.ShaderMaterial({
 const N_TAPS = 48;
 const finalMat = new THREE.ShaderMaterial({
   uniforms: { tC: { value: rtInk.texture }, tN: { value: rtND.texture }, res: { value: new THREE.Vector2(W, H) }, cInf: { value: 0 }, focus: { value: 5 }, maxC: { value: 26 },
-    sat: { value: 1.08 }, gain: { value: 1 }, vig: { value: 0.28 }, flash: { value: 0 }, fade: { value: 0 } },
+    sat: { value: 1.08 }, gain: { value: 1 }, vig: { value: 0.28 }, flash: { value: 0 }, fade: { value: 0 },
+    zoomB: { value: 0 }, whip: { value: new THREE.Vector2() }, iris: { value: 2 }, irisC: { value: new THREE.Vector2(0.5, 0.55) } },
   vertexShader: QV,
-  fragmentShader: `uniform sampler2D tC; uniform sampler2D tN; uniform vec2 res; uniform float cInf, focus, maxC, sat, gain, vig, flash, fade; varying vec2 vUv;
+  fragmentShader: `uniform sampler2D tC; uniform sampler2D tN; uniform vec2 res; uniform float cInf, focus, maxC, sat, gain, vig, flash, fade, zoomB, iris; uniform vec2 whip, irisC; varying vec2 vUv;
     float depthAt(vec2 uv){ float a = texture2D(tN, uv).a; return a == 0. ? 1e4 : abs(a); }
     float coc(float d){ return clamp(cInf*abs(1.-focus/d), 0., maxC); }
     void main(){
@@ -221,11 +225,17 @@ const finalMat = new THREE.ShaderMaterial({
           col = acc/wsum;
         }
       }
+      if (zoomB > 0.001 || length(whip) > 0.0005) {   // transition blurs: radial zoom + directional whip
+        vec3 acc2 = vec3(0.); vec2 dz = (vUv - vec2(.5)) * zoomB;
+        for (int i = 0; i < 16; i++) { float t = float(i) / 15. - .5; acc2 += texture2D(tC, vUv - dz * (t + .5) + whip * t).rgb; }
+        col = mix(col, acc2 / 16., 1.);
+      }
       col *= gain;
       float l = dot(col, vec3(.2126,.7152,.0722)); col = mix(vec3(l), col, sat);
       col = col/(1.+max(col-0.85,0.)*0.6);
       vec2 p = vUv-.5; col *= 1. - vig*smoothstep(.25,.85,length(p*vec2(1.,.75))*1.4);
       col = mix(col, vec3(1.), flash); col = mix(col, vec3(0.), fade);
+      if (iris < 1.5) { vec2 q = (vUv - irisC) * vec2(1., res.y / res.x); float dq = length(q); col = mix(col, vec3(0.), smoothstep(iris - 0.003, iris + 0.003, dq)); col = mix(col, vec3(0.), (1. - smoothstep(0., 0.008, abs(dq - iris))) * step(0.01, iris)); }
       gl_FragColor = linearToOutputTexel(vec4(clamp(col,0.,1.),1.));
     }`,
 });
@@ -254,7 +264,7 @@ export const renderAll = () => {
   inkMat.uniforms.r.value = look.inkR;
   quad.material = inkMat; renderer.setRenderTarget(rtInk); renderer.render(quadScene, quadCam);
   const u = finalMat.uniforms;
-  u.cInf.value = look.cInf; u.focus.value = look.focus; u.sat.value = look.sat; u.gain.value = look.gain; u.vig.value = look.vig; u.flash.value = look.flash; u.fade.value = look.fade;
+  u.cInf.value = look.cInf; u.focus.value = look.focus; u.sat.value = look.sat; u.gain.value = look.gain; u.vig.value = look.vig; u.flash.value = look.flash; u.fade.value = look.fade; u.zoomB.value = look.zoomB || 0; u.whip.value.set(...(look.whip || [0, 0])); u.iris.value = look.iris ?? 2;
   quad.material = finalMat; renderer.setRenderTarget(null); renderer.render(quadScene, quadCam);
 };
 

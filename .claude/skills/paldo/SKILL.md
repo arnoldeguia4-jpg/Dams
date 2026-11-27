@@ -42,6 +42,25 @@ When the user asks for it ("ibigay mo muna ang script"), stop after Stage 3: sen
 - **Exact text:** the voiceover must read the script exactly. If the user changed words, update `script.txt` to match before timing.
 - **Credits on the ElevenLabs website:** generating the voice there spends the same credits, so check that the user has enough first.
 
+## Polish rules: the user's standing request, 2026-11-27 ("pulido na")
+**1. Every word in the background must be readable. No cut-off signs.**
+- **The problem:** on the Super Glue short, signs read "ASTMAN K" and "EW! SUPER GLU" because the vertical frame cut them.
+- **Before writing camera keys,** make each sign, banner, label and board narrower than about **65% of the visible width** at its distance. Visible width = `2 · d · tan(fov/2) · 0.5625` (for example, d 5 m at fov 40 gives about 2.0 m). Shorten the text, or stack it on 2 lines, if it doesn't fit. Wall signs over 2.5 m wide only belong in wide shots.
+- **In each shot,** a sign is either **fully inside the frame** (centred on the camera's look-x) or **fully outside it**. Never half.
+- **Marks and bubbles:** keep the font rule `720/len` and centre them on the camera's look line. Check that each is fully on screen at its first frame and its last frame.
+- **Stills review gate:** read every word on the sheet. If any word is clipped at a frame edge, covered by a character's head, or overlapped by another mark, fix it and re-render before the full render. This is a hard rule.
+
+**2. Pleasing effects and transitions on every cut.** The kit supports these: `web/transitions.js`, the engine uniforms `zoomB`/`whip`/`iris`, and `web/main_template.js`.
+- **Wiring:** export `TRANSITIONS = [[cutFrame, kind], ...]` from `story.js`, and start `main.js` from `main_template.js`.
+- **`whip`:** directional smear, ±5 frames. Use it on most cuts inside the same era or place.
+- **`zoom`:** radial zoom-blur and an FOV punch. Use it for reveals and time jumps. Don't put a zoom on the same frame as a FLASH, because together they wash out to white.
+- **`iris`:** cartoon iris-out and iris-in to black, ±9 frames. Use **1–2 per video at most**, for example the big mid-story jump, or going into the "That's why" ending.
+- **`punch`:** a quick 8% punch-in with a tiny shake. Put it on 3–5 key words: the twist word, a number, "REJECTED".
+- **Keep the existing tools:** FLASHES for place or time jumps, `kicks` on hits, burst and puff fx on every reveal, and pop-in easing (`back`) on every mark.
+- **Camera:** it always moves slowly. No static frame longer than about 2 s.
+- **Sound:** give every whip and zoom a `whoosh` 2–4 frames before the cut, and every punch a `pop` or `thunk`.
+- **Check transitions** with `node render.mjs stills/t "<cut-2>,<cut>,<cut+2>"` on 2–3 cuts before the full render.
+
 ## Stage 1: Intake
 Ask one AskUserQuestion: **"Where are you starting from?"** The options are: need ideas + script / have a script / voiceover ready. Also ask the length: 20–30 s or 45–60 s. This user chose **45–60 s**.
 
@@ -92,7 +111,7 @@ Use the **ElevenLabs connector** (`mcp__ElevenLabs__*`; load the tools with Tool
 ## Stage 5: Build the animation (see `references/engine.md`)
 1. Set up the project inside the repo: `penicillin/` was the example, so use `<slug>/`. Copy `kit/` there, then `cp voice_take.mp3 voice.mp3`, and run `npm i three@0.160.0` (or keep the vendored `web/three.module.js`).
 2. Get the timing **from real word timestamps** (the user flagged a narration/picture mismatch on the Liberty short: `timing.py`'s silence DP drifted by up to 2.7 s). Attach `voice.mp3` (raw GitHub URL) to the voice flow with `creative_attach_reference_file`, run `creative_transcribe_audio` (eleven_scribe_v1, ~300 credits/min), download `words_download_url` to `work/words.json`, then set each phrase's start/end in `work/phrases.json` to its first/last word (numbers are single tokens, e.g. "1886,"). `timing.py voice.mp3 script.txt --out work` is only a fallback; if used, spot-check every phrase start against the transcript. Total frames = round(duration × 30). Before the full render, check that each shot's first frame lands 0–3 frames before its phrase's first word.
-3. Write the shot plan by editing `web/story.js`. Each SHOT has frames a..b, a light preset, a shadow centre, camera keys, kicks and a dof function. There is usually one shot per phrase, and the reaction lands 0–3 frames before its word. Add white flashes at place or time jumps. At the twist, the music stops and there is a push-in with a roll.
+3. Write the shot plan by editing `web/story.js` (copy `web/main_template.js` over `main.js` and add a `TRANSITIONS` list; see Polish rules). Each SHOT has frames a..b, a light preset, a shadow centre, camera keys, kicks and a dof function. There is usually one shot per phrase, and the reaction lands 0–3 frames before its word. Add white flashes at place or time jumps. At the twist, the music stops and there is a push-in with a roll.
 4. Build the sets in `web/world.js` (several sets far apart on x) and the cast in `web/cast.js` (outfits, ARM poses, PROPs, fx drawings).
 5. For stills, run `node render.mjs stills/a "<mid-frame of every shot>"` and then `python3 sheet.py stills/a stills/sheet_a.jpg`. Read the sheet, fix the traps listed in `references/engine.md`, re-render only the fixed frames, and repeat. Then **send the sheet to the user**.
 
