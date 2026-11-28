@@ -17,14 +17,15 @@ def arrow(d, pts, col=(232, 48, 44), w=26):
 
 # ---- vertical 1080x1920 (Shorts) ----
 V = src.copy(); d = ImageDraw.Draw(V)
-grad = Image.new('L', (1, 1920)); [grad.putpixel((0, y), int(170 * max(0, 1 - y / 520) + 170 * max(0, (y - 1450) / 470))) for y in range(1920)]
-V.paste(Image.new('RGB', V.size, (18, 12, 26)), (0, 0), grad.resize(V.size))
-d = ImageDraw.Draw(V)
-text(d, (540, 165), "HE DIDN'T WASH", 112, (255, 255, 255))
-text(d, (540, 305), "HIS DISHES", 140, (255, 255, 255))
-text(d, (540, 1640), "...AND SAVED", 120, (255, 214, 64))
-text(d, (540, 1790), "MILLIONS", 175, (255, 214, 64))
-arrow(d, [(930, 420), (985, 560), (900, 780)])
+text(d, (540, 165), "AN 11-YEAR-OLD", 104, (255, 255, 255))
+text(d, (540, 315), "INVENTED THIS!", 120, (255, 214, 64))
+text(d, (540, 1720), "BY ACCIDENT", 100, (255, 255, 255))
+# big popsicle graphic beside the hero (vertical)
+d.rounded_rectangle((770, 1260, 840, 1470), 22, fill=(217, 176, 122), outline=(20, 14, 24), width=10)
+d.rounded_rectangle((690, 820, 920, 1300), 110, fill=(226, 69, 60), outline=(20, 14, 24), width=14)
+d.rounded_rectangle((730, 880, 770, 1220), 20, fill=(255, 154, 138))
+for k in range(10):
+    import math; a = k * math.pi / 5; d.line([(805 + math.cos(a) * 170, 1060 + math.sin(a) * 260), (805 + math.cos(a) * 215, 1060 + math.sin(a) * 320)], fill=(255, 214, 64), width=12)
 V.save('out/thumbnail_vertical.jpg', quality=93)
 
 # ---- landscape 1280x720 (YouTube) ----
@@ -34,11 +35,8 @@ L = bg.copy()
 fg = src.crop((0, 380, 1080, 1700)).resize((int(1080 * 720 / 1320 * 1.05), int(720 * 1.05)))
 L.paste(fg, (1280 - fg.width, -10))
 d = ImageDraw.Draw(L)
-text(d, (40, 110), "HE DIDN'T", 104, (255, 255, 255), anchor='lm', stroke=10)
-text(d, (40, 225), "WASH HIS", 104, (255, 255, 255), anchor='lm', stroke=10)
-text(d, (40, 340), "DISHES...", 104, (255, 255, 255), anchor='lm', stroke=10)
-text(d, (40, 500), "AND SAVED", 92, (255, 214, 64), anchor='lm', stroke=10)
-text(d, (40, 615), "MILLIONS", 120, (255, 214, 64), anchor='lm', stroke=10)
-arrow(d, [(560, 150), (860, 45), (1110, 215)], w=20)
+text(d, (40, 140), "AN 11-YEAR-OLD", 92, (255, 255, 255), anchor='lm', stroke=10)
+text(d, (40, 280), "INVENTED", 120, (255, 214, 64), anchor='lm', stroke=12)
+text(d, (40, 420), "THIS!", 140, (255, 214, 64), anchor='lm', stroke=12)
 L.save('out/thumbnail_youtube.jpg', quality=93)
 print('ok')
